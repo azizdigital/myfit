@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1e1b4b">
+<title>My Fit – Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="config.js" onerror="console.warn('config.js not found — using defaults')"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cp:#16a34a;--cpd:#14532d;--cpl:#22c55e;--cppa:#dcfce7;--cpfa:#f0fdf4;
+  --cc:#fff;--cb:#f0fdf4;--ct:#14532d;--ct2:#166534;--ctm:#6b7280;
+  --cbr:#d1fae5;--cred:#ef4444;--cor:#f97316;
+  --cad:#1e1b4b;--cadl:#4338ca;--cadpa:#ede9fe;
+  --fd:'Fraunces',Georgia,serif;--fb:'Plus Jakarta Sans',system-ui,sans-serif;
+  --sh:0 1px 4px rgba(0,0,0,.07);--sm:0 4px 16px rgba(0,0,0,.10);--sl:0 10px 40px rgba(0,0,0,.14);
+  --r:16px;--rs:10px;--tr:all .22s cubic-bezier(.4,0,.2,1)
+}
+html{font-size:16px}
+body{font-family:var(--fb);background:#0f0e2a;color:var(--ct);min-height:100dvh}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+input,select{font-family:inherit}
+
+/* PIN SCREEN */
+#pin-screen{position:fixed;inset:0;background:linear-gradient(160deg,#0f0e2a 0%,#1e1b4b 60%,#312e81 100%);display:flex;align-items:center;justify-content:center;z-index:9000;flex-direction:column;gap:0;padding:20px}
+.ps-logo{font-size:48px;margin-bottom:16px;animation:psin 1s cubic-bezier(.34,1.56,.64,1)}
+.ps-title{font-family:var(--fd);font-size:30px;font-weight:700;color:#fff;margin-bottom:6px;animation:psin 1s .1s cubic-bezier(.4,0,.2,1) both}
+.ps-sub{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:36px;animation:psin 1s .2s cubic-bezier(.4,0,.2,1) both}
+@keyframes psin{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.pin-wrap{display:flex;gap:14px;justify-content:center;margin-bottom:28px;animation:psin 1s .3s cubic-bezier(.4,0,.2,1) both}
+.pin-d{width:56px;height:64px;border:2px solid rgba(255,255,255,.2);border-radius:12px;font-family:var(--fd);font-size:30px;font-weight:700;text-align:center;color:#fff;outline:none;background:rgba(255,255,255,.08);transition:var(--tr);-webkit-text-security:disc}
+.pin-d:focus{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.12)}
+.pin-btn{background:linear-gradient(135deg,#4338ca,#6d28d9);color:#fff;border:none;border-radius:var(--rs);padding:14px 40px;font-size:15px;font-weight:700;cursor:pointer;transition:var(--tr);animation:psin 1s .4s cubic-bezier(.4,0,.2,1) both}
+.pin-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(99,60,255,.4)}
+.pin-err{color:#f87171;font-size:13px;margin-top:12px;min-height:20px;text-align:center}
+.pin-back{margin-top:18px;color:rgba(255,255,255,.45);font-size:13px;cursor:pointer;transition:var(--tr);text-decoration:none;display:block;text-align:center}
+.pin-back:hover{color:rgba(255,255,255,.8)}
+
+/* MAIN ADMIN */
+#admin-app{display:none;min-height:100dvh;background:var(--cb)}
+.adm-topbar{background:linear-gradient(135deg,var(--cad),var(--cadl));padding:18px 24px;color:#fff;display:flex;align-items:center;justify-content:space-between}
+.adm-tb-l{display:flex;align-items:center;gap:12px}
+.adm-tb-ico{width:38px;height:38px;background:rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.adm-tb-title{font-family:var(--fd);font-size:20px;font-weight:700}
+.adm-tb-sub{font-size:12px;opacity:.7;margin-top:1px}
+.adm-tb-r{display:flex;align-items:center;gap:8px}
+.adm-lock-btn{background:rgba(255,255,255,.15);color:#fff;border:none;border-radius:var(--rs);padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:var(--tr)}
+.adm-lock-btn:hover{background:rgba(255,255,255,.25)}
+.adm-home-btn{background:rgba(255,255,255,.12);color:#fff;border:none;border-radius:var(--rs);padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:var(--tr);text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.adm-home-btn:hover{background:rgba(255,255,255,.22)}
+
+/* TABS */
+.adm-tabs-wrap{background:var(--cc);border-bottom:1px solid var(--cbr);padding:0 24px}
+.adm-tabs{display:flex;gap:0}
+.adm-tab{padding:14px 20px;font-size:14px;font-weight:600;color:var(--ctm);cursor:pointer;border-bottom:3px solid transparent;transition:var(--tr);background:none;border-top:none;border-left:none;border-right:none}
+.adm-tab.act{color:var(--cadl);border-bottom-color:var(--cadl)}
+.adm-tab:hover{color:var(--ct)}
+
+/* CONTENT */
+.adm-content{padding:24px;max-width:1100px}
+@media(max-width:600px){.adm-content{padding:16px}}
+
+/* CARDS */
+.card{background:var(--cc);border-radius:var(--r);padding:20px;box-shadow:var(--sh);border:1px solid var(--cbr);margin-bottom:16px}
+h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-bottom:12px}
+.card-t{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ctm);margin-bottom:9px}
+.gap{margin-bottom:18px}
+
+/* STAT BANNER */
+.coach-banner{background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:var(--r);padding:20px 22px;color:#fff;margin-bottom:20px}
+.coach-stats{display:flex;gap:24px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15)}
+.cst{text-align:center;min-width:60px}
+.cst-v{font-family:var(--fd);font-size:26px;font-weight:700}
+.cst-l{font-size:10px;opacity:.7;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+
+/* USER GRID */
+.ug{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:18px}
+.uc{background:var(--cc);border:2px solid var(--cbr);border-radius:var(--r);padding:16px;position:relative;transition:var(--tr)}
+.uc.active-u{border-color:var(--cp);background:var(--cpfa)}
+.uc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.uc-av{width:46px;height:46px;border-radius:50%;background:var(--cp);display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;flex-shrink:0;border:2px solid var(--cppa);color:#fff;font-weight:700}
+.uc-av img{width:100%;height:100%;object-fit:cover}
+.uc-nm{font-weight:700;font-size:15px;color:var(--cpd)}
+.uc-inf{font-size:12px;color:var(--ctm);margin-top:2px}
+.uc-tag{position:absolute;top:10px;right:10px;background:var(--cp);color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;text-transform:uppercase}
+.uc-stats{display:flex;gap:10px;margin-bottom:12px;padding:10px;background:var(--cpfa);border-radius:var(--rs)}
+.uc-stat{flex:1;text-align:center}
+.uc-sv{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--cpd)}
+.uc-sl{font-size:10px;color:var(--ctm);font-weight:600}
+.uc-acts{display:flex;gap:8px;flex-wrap:wrap}
+.add-usr-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;background:var(--cpfa);border:2px dashed var(--cbr);border-radius:var(--r);cursor:pointer;color:var(--ctm);font-size:14px;font-weight:700;transition:var(--tr);width:100%}
+.add-usr-btn:hover{border-color:var(--cp);color:var(--cp);background:var(--cppa)}
+
+/* MONITOR CARDS */
+.mon-card{background:var(--cc);border:1px solid var(--cbr);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
+.mon-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.mon-av{width:44px;height:44px;border-radius:50%;background:var(--cp);display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;flex-shrink:0;border:2px solid var(--cppa);color:#fff;font-weight:700}
+.mon-av img{width:100%;height:100%;object-fit:cover}
+.mon-nm{font-weight:700;font-size:15px;color:var(--cpd)}
+.mon-inf{font-size:12px;color:var(--ctm);margin-top:2px}
+.mon-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:10px}
+@media(max-width:500px){.mon-stats{grid-template-columns:repeat(3,1fr)}}
+.mon-stat{background:var(--cpfa);border-radius:var(--rs);padding:10px 8px;text-align:center;border:1px solid var(--cbr)}
+.mon-sv{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--cpd);line-height:1}
+.mon-sl{font-size:10px;color:var(--ctm);font-weight:600;margin-top:3px}
+.mon-prog-bar{background:var(--cppa);border-radius:99px;height:6px;overflow:hidden;margin-bottom:4px}
+.mon-prog-fill{height:100%;background:linear-gradient(90deg,var(--cp),var(--cpl));border-radius:99px}
+.mon-prog-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--ctm)}
+.mon-last{font-size:11px;color:var(--ctm);margin-top:8px;padding-top:8px;border-top:1px solid var(--cbr)}
+
+/* FORM */
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:13px;font-weight:700;color:var(--ct2);margin-bottom:5px}
+.fi{width:100%;padding:10px 13px;border:2px solid var(--cbr);border-radius:var(--rs);font-size:15px;color:var(--ct);background:var(--cc);transition:var(--tr);outline:none}
+.fi:focus{border-color:var(--cpl);box-shadow:0 0 0 4px rgba(34,197,94,.12)}
+.fi-sm{padding:8px 11px;font-size:14px}
+.fi-mono{font-family:monospace;font-size:13px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:500px){.g2{grid-template-columns:1fr}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:var(--rs);font-size:14px;font-weight:700;transition:var(--tr);cursor:pointer;border:none}
+.btn-p{background:var(--cp);color:#fff}
+.btn-p:hover{background:var(--cpd);transform:translateY(-1px)}
+.btn-s{background:var(--cppa);color:var(--cp)}
+.btn-s:hover{background:var(--cpfa)}
+.btn-d{background:#fee2e2;color:var(--cred)}
+.btn-sm{padding:7px 14px;font-size:13px}
+.btn-w{width:100%}
+.gh-pull-btn{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff;border:none;border-radius:var(--rs);padding:12px 18px;font-size:14px;font-weight:700;cursor:pointer;width:100%;font-family:var(--fb);transition:var(--tr);margin-bottom:10px}
+.gh-pull-btn:hover{opacity:.9;transform:translateY(-1px)}
+.info-box{background:var(--cpfa);border:1px solid var(--cbr);border-radius:var(--rs);padding:14px 16px;font-size:13px;color:var(--ct2);line-height:1.7;margin-bottom:14px}
+.sett-sec{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ctm);margin:18px 0 8px}
+.sett-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--cc);border:1px solid var(--cbr);border-radius:var(--rs);margin-bottom:8px;cursor:pointer;transition:var(--tr)}
+.sett-row:hover{background:var(--cpfa)}
+.sett-rl{display:flex;align-items:center;gap:11px}
+.divider{height:1px;background:var(--cbr);margin:20px 0}
+.ph-up{width:72px;height:72px;border-radius:50%;border:3px dashed var(--cpl);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 16px;cursor:pointer;font-size:22px;transition:var(--tr);background:var(--cpfa);overflow:hidden;position:relative}
+.ph-up:hover{border-color:var(--cp);background:var(--cppa)}
+.ph-up img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%}
+
+/* MODAL */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.42);display:flex;align-items:flex-end;justify-content:center;z-index:3000;padding:16px;backdrop-filter:blur(4px)}
+@media(min-width:600px){.modal-ov{align-items:center}}
+.modal{background:var(--cc);border-radius:var(--r) var(--r) 0 0;padding:24px;width:100%;max-width:460px;position:relative;max-height:90dvh;overflow-y:auto}
+@media(min-width:600px){.modal{border-radius:var(--r)}}
+.modal-ttl{font-family:var(--fd);font-size:22px;font-weight:700;color:var(--cpd);margin-bottom:4px}
+.modal-sub{font-size:13px;color:var(--ctm);margin-bottom:18px}
+.modal-x{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--cpfa);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--ctm);transition:var(--tr)}
+.modal-x:hover{background:var(--cppa);color:var(--cp)}
+
+/* TOAST */
+#toast-c{position:fixed;bottom:24px;right:24px;z-index:5000;display:flex;flex-direction:column;gap:8px;align-items:flex-end;pointer-events:none}
+.toast-msg{background:var(--cpd);color:#fff;padding:12px 20px;border-radius:var(--rs);font-size:14px;font-weight:600;pointer-events:auto;animation:tin .28s ease,tout .28s ease 2.7s forwards;max-width:300px;box-shadow:var(--sl)}
+@keyframes tin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tout{from{opacity:1}to{opacity:0}}
+
+.empty-st{text-align:center;padding:38px 20px;color:var(--ctm)}
+.bdg{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700}
+.bdg-g{background:var(--cppa);color:var(--cp)}
+</style>
+</head>
+<body>
+
+<!-- PIN SCREEN -->
+<div id="pin-screen">
+  <div class="ps-logo">🔒</div>
+  <div class="ps-title">Admin Panel</div>
+  <div class="ps-sub">My Fit · Coach Access Only</div>
+  <div class="pin-wrap">
+    <input class="pin-d" id="pd0" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(0)">
+    <input class="pin-d" id="pd1" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(1)">
+    <input class="pin-d" id="pd2" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(2)">
+    <input class="pin-d" id="pd3" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(3)">
+  </div>
+  <button class="pin-btn" onclick="submitPin()">Unlock Admin →</button>
+  <div class="pin-err" id="pin-err"></div>
+  <a href="index.html" class="pin-back">← Back to My Fit</a>
+</div>
+
+<!-- ADMIN APP -->
+<div id="admin-app">
+  <div class="adm-topbar">
+    <div class="adm-tb-l">
+      <div class="adm-tb-ico">🔒</div>
+      <div><div class="adm-tb-title">Admin Panel</div><div class="adm-tb-sub">My Fit · Coach Dashboard</div></div>
+    </div>
+    <div class="adm-tb-r">
+      <a href="index.html" class="adm-home-btn">🏠 App</a>
+      <button class="adm-lock-btn" onclick="lockAdmin()">🔒 Lock</button>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="adm-tabs-wrap">
+    <div class="adm-tabs">
+      <button class="adm-tab act" id="atab-coach" onclick="switchTab('coach')">📊 Coach View</button>
+      <button class="adm-tab" id="atab-users" onclick="switchTab('users')">👥 Users</button>
+      <button class="adm-tab" id="atab-settings" onclick="switchTab('settings')">⚙️ Settings</button>
+    </div>
+  </div>
+
+  <div class="adm-content">
+
+    <!-- COACH VIEW -->
+    <div id="apane-coach">
+      <div class="coach-banner">
+        <div style="font-size:11px;font-weight:700;opacity:.7;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Coach Overview</div>
+        <div style="font-family:var(--fd);font-size:22px;font-weight:700;color:#fff">All Members Progress</div>
+        <div class="coach-stats">
+          <div class="cst"><div class="cst-v" id="c-total">0</div><div class="cst-l">Members</div></div>
+          <div class="cst"><div class="cst-v" id="c-logged">0</div><div class="cst-l">Logged Today</div></div>
+          <div class="cst"><div class="cst-v" id="c-streak">0</div><div class="cst-l">Avg Streak</div></div>
+          <div class="cst"><div class="cst-v" id="c-track">0</div><div class="cst-l">On Track</div></div>
+        </div>
+      </div>
+      <div id="coach-gh-area"></div>
+      <div id="coach-members"></div>
+    </div>
+
+    <!-- USERS -->
+    <div id="apane-users" style="display:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <h2 style="margin-bottom:0" id="adm-ucnt">All Users (0)</h2>
+        <button class="btn btn-p btn-sm" onclick="openAddUserModal()">+ Add User</button>
+      </div>
+      <div class="ug" id="adm-ugrid"></div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="apane-settings" style="display:none">
+      <div class="sett-sec">☁️ GitHub Cloud Sync</div>
+      <div id="adm-gh-status"></div>
+      <div class="card gap">
+        <h2 style="margin-bottom:4px">Shared Repo Setup</h2>
+        <div class="info-box">
+          <strong>Setup sekali — semua user auto-sync:</strong><br>
+          1. Create <strong>private</strong> repo: e.g. <code>azizmohamad/myfit-data</code><br>
+          2. GitHub → Settings → Developer Settings → PAT → Tokens (classic)<br>
+          3. Generate token → scope: <strong>repo</strong> → No expiration<br>
+          4. Paste below → Save<br>
+          Each user creates <code>data/username.json</code> automatically ✨
+        </div>
+        <div class="fg"><label class="fl">GitHub Repo (username/repo-name)</label><input type="text" class="fi fi-mono" id="adm-gh-repo" placeholder="e.g. azizmohamad/myfit-data"></div>
+        <div class="fg"><label class="fl">Personal Access Token (PAT)</label><input type="password" class="fi fi-mono" id="adm-gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off"></div>
+        <div class="fg"><label class="fl">Branch</label><input type="text" class="fi fi-mono" id="adm-gh-branch" value="main"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-p btn-sm" onclick="saveGHSettings()">Save & Test Connection</button>
+          <button class="btn btn-s btn-sm" onclick="manualSync()">☁️ Sync Now</button>
+          <button class="btn btn-d btn-sm" onclick="clearGHSettings()">✕ Disconnect</button>
+        </div>
+        <div style="font-size:12px;color:var(--ctm);margin-top:8px" id="adm-gh-last"></div>
+      </div>
+      <div class="sett-sec">🔑 Security</div>
+      <div class="sett-row" onclick="changePin()"><div class="sett-rl"><span>🔑</span><span style="font-size:14px;font-weight:600;margin-left:10px">Change Admin PIN</span></div><span style="color:var(--ctm)">→</span></div>
+      <div class="divider"></div>
+      <div style="text-align:center;font-size:12px;color:var(--ctm);padding:8px 0">
+        © 2026 Aziz Mohamad · Power Dynamics Division<br>
+        Admin Panel · My Fit v1.3
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="toast-c"></div>
+
+<script>
+// ═══════════════════════════════
+// CONFIG DEFAULTS (from config.js)
+// ═══════════════════════════════
+const DEFAULT_ADMIN_PIN = '1211';
+if(typeof DEFAULT_GH_REPO==='undefined') var DEFAULT_GH_REPO='';
+if(typeof DEFAULT_GH_TOKEN==='undefined') var DEFAULT_GH_TOKEN='';
+if(typeof DEFAULT_GH_BRANCH==='undefined') var DEFAULT_GH_BRANCH='main';
+const TODAY=()=>new Date().toISOString().split('T')[0];
+
+// ═══════════════════════════════
+// INDEXEDDB — same DB as main app
+// ═══════════════════════════════
+let DB;
+async function initDB(){
+  return new Promise((res,rej)=>{
+    const req=indexedDB.open('MyFitDB',4);
+    req.onerror=()=>rej(req.error);
+    req.onsuccess=()=>{DB=req.result;res()};
+    req.onupgradeneeded=e=>{
+      const d=e.target.result;
+      if(!d.objectStoreNames.contains('kv'))d.createObjectStore('kv');
+      if(d.objectStoreNames.contains('weights'))d.deleteObjectStore('weights');
+      if(!d.objectStoreNames.contains('users'))d.createObjectStore('users',{keyPath:'id',autoIncrement:true});
+      if(!d.objectStoreNames.contains('food')){
+        const fs=d.createObjectStore('food',{keyPath:'id',autoIncrement:true});
+        fs.createIndex('userId','userId');fs.createIndex('date','date');
+      }
+    };
+  });
+}
+const kvGet=k=>new Promise((res,rej)=>{const r=DB.transaction('kv','readonly').objectStore('kv').get(k);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+const kvSet=(k,v)=>new Promise((res,rej)=>{const r=DB.transaction('kv','readwrite').objectStore('kv').put(v,k);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)});
+const kvDel=k=>new Promise((res,rej)=>{const r=DB.transaction('kv','readwrite').objectStore('kv').delete(k);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)});
+const userAdd=v=>new Promise((res,rej)=>{const r=DB.transaction('users','readwrite').objectStore('users').add(v);r.onsuccess=()=>{v.id=r.result;res(v)};r.onerror=()=>rej(r.error)});
+const userPut=v=>new Promise((res,rej)=>{const r=DB.transaction('users','readwrite').objectStore('users').put(v);r.onsuccess=()=>res(v);r.onerror=()=>rej(r.error)});
+const userGet=id=>new Promise((res,rej)=>{const r=DB.transaction('users','readonly').objectStore('users').get(id);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+const userAll=()=>new Promise((res,rej)=>{const r=DB.transaction('users','readonly').objectStore('users').getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+const userDel=id=>new Promise((res,rej)=>{const r=DB.transaction('users','readwrite').objectStore('users').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)});
+const foodAll=()=>new Promise((res,rej)=>{const r=DB.transaction('food','readonly').objectStore('food').getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+const foodDel=id=>new Promise((res,rej)=>{const r=DB.transaction('food','readwrite').objectStore('food').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)});
+
+// ═══════════════════════════════
+// PIN
+// ═══════════════════════════════
+function pinNav(i){const v=document.getElementById('pd'+i);if(v&&v.value&&i<3)document.getElementById('pd'+(i+1)).focus()}
+async function submitPin(){
+  const pin=[0,1,2,3].map(i=>document.getElementById('pd'+i).value.trim()).join('');
+  if(pin.length!==4){document.getElementById('pin-err').textContent='Please enter all 4 digits';return}
+  const saved=await kvGet('adminPin')||DEFAULT_ADMIN_PIN;
+  if(pin===saved){
+    document.getElementById('pin-screen').style.display='none';
+    document.getElementById('admin-app').style.display='block';
+    loadAdmin();
+  } else {
+    document.getElementById('pin-err').textContent='Wrong PIN. Try again.';
+    [0,1,2,3].forEach(i=>document.getElementById('pd'+i).value='');
+    document.getElementById('pd0').focus();
+  }
+}
+// Allow Enter key to submit
+document.addEventListener('keydown',e=>{if(e.key==='Enter')submitPin()});
+function lockAdmin(){
+  document.getElementById('admin-app').style.display='none';
+  document.getElementById('pin-screen').style.display='flex';
+  [0,1,2,3].forEach(i=>document.getElementById('pd'+i).value='');
+  document.getElementById('pin-err').textContent='';
+  document.getElementById('pd0').focus();
+}
+
+// ═══════════════════════════════
+// TABS
+// ═══════════════════════════════
+function switchTab(tab){
+  ['coach','users','settings'].forEach(t=>{
+    document.getElementById('atab-'+t).classList.toggle('act',t===tab);
+    document.getElementById('apane-'+t).style.display=t===tab?'block':'none';
+  });
+  if(tab==='users')renderUsers();
+  if(tab==='settings')loadGHSettings();
+  if(tab==='coach')renderCoachDashboard();
+}
+
+// ═══════════════════════════════
+// INIT
+// ═══════════════════════════════
+let GH={repo:'',token:'',branch:'main'};
+async function loadAdmin(){
+  const ghS=await kvGet('ghSettings');
+  if(ghS){GH={repo:ghS.repo||'',token:ghS.token||'',branch:ghS.branch||'main'}}
+  else if(DEFAULT_GH_TOKEN&&DEFAULT_GH_TOKEN!=='GANTI_TOKEN'){
+    GH={repo:DEFAULT_GH_REPO,token:DEFAULT_GH_TOKEN,branch:DEFAULT_GH_BRANCH};
+    await kvSet('ghSettings',{repo:GH.repo,token:GH.token,branch:GH.branch,file:'azizfit-data.json'});
+  }
+  renderCoachDashboard();
+}
+
+// ═══════════════════════════════
+// COACH DASHBOARD
+// ═══════════════════════════════
+function calcStreakFor(weights){
+  if(!weights||!weights.length)return 0;
+  const dates=weights.map(w=>w.date).sort().reverse();
+  let st=0,check=new Date();
+  for(const d of dates){const dd=new Date(d+'T00:00:00');const diff=Math.floor((check-dd)/864e5);if(diff===0||diff===1){st++;check=dd}else break}
+  return st;
+}
+
+async function renderCoachDashboard(){
+  const users=await userAll();
+  const today=TODAY();
+  let loggedToday=0,totalStreak=0,onTrack=0;
+  for(const u of users){
+    const wts=await kvGet('wts_'+u.id)||[];
+    if(wts.find(w=>w.date===today))loggedToday++;
+    totalStreak+=calcStreakFor(wts);
+    if(u.weight&&u.targetWeight&&u.startWeight){const lost=u.startWeight-u.weight;const needed=u.startWeight-u.targetWeight;if(needed>0&&lost/needed>=0.1)onTrack++}
+  }
+  document.getElementById('c-total').textContent=users.length;
+  document.getElementById('c-logged').textContent=loggedToday;
+  document.getElementById('c-streak').textContent=users.length?Math.round(totalStreak/users.length):0;
+  document.getElementById('c-track').textContent=onTrack;
+
+  const ghArea=document.getElementById('coach-gh-area');
+  if(GH.repo&&GH.token){
+    ghArea.innerHTML=`<button class="gh-pull-btn" onclick="pullAllFromGitHub()">☁️ Pull All Members from GitHub</button><div style="font-size:12px;color:var(--ctm);text-align:center;margin-bottom:16px">Fetches every <code>data/*.json</code> file from <strong>${GH.repo}</strong></div>`;
+  } else {
+    ghArea.innerHTML=`<div class="info-box" style="margin-bottom:14px">⚠️ GitHub not configured. Go to <strong>Settings tab</strong> to connect a shared repo.</div>`;
+  }
+
+  const mc=document.getElementById('coach-members');if(!mc)return;
+  if(!users.length){mc.innerHTML='<div class="empty-st"><div style="font-size:38px;margin-bottom:10px">👥</div><div>No users yet. Add users in the Users tab.</div></div>';return}
+
+  let h=`<h2 style="margin-bottom:14px">Member Progress (${users.length})</h2>`;
+  for(const u of users){
+    const wts=await kvGet('wts_'+u.id)||[];
+    const lastW=wts.length?wts[wts.length-1].weight:u.weight;
+    const bmi=u.height&&lastW?((lastW)/((u.height/100)**2)).toFixed(1):'—';
+    const streak=calcStreakFor(wts);
+    const startW=u.startWeight||u.weight||0,targetW=u.targetWeight||0;
+    const lost=startW-(lastW||startW),needed=startW-targetW;
+    const progPct=needed>0?Math.max(0,Math.min(100,Math.round(lost/needed*100))):0;
+    const isToday=wts.find(w=>w.date===today);
+    const lastDate=wts.length?new Date(wts[wts.length-1].date+'T00:00:00').toLocaleDateString('en-MY',{month:'short',day:'numeric',year:'numeric'}):'Never';
+    const bmiNum=parseFloat(bmi);
+    const bmiColor=isNaN(bmiNum)?'var(--ctm)':bmiNum<18.5?'#3b82f6':bmiNum<25?'var(--cp)':bmiNum<30?'var(--cor)':'var(--cred)';
+    const av=u.photo?`<img src="${u.photo}" alt="">`:(u.name.charAt(0).toUpperCase());
+    h+=`<div class="mon-card">
+      <div class="mon-top">
+        <div class="mon-av">${av}</div>
+        <div style="flex:1"><div class="mon-nm">${u.name}</div><div class="mon-inf">${u.age?u.age+' yrs · ':''}${u.gender==='male'?'♂️ Male':'♀️ Female'} · ${u.height||'—'}cm · ${isToday?'<span style="color:var(--cp);font-weight:700">✓ Logged today</span>':'<span style="color:var(--cor)">⏳ Not logged today</span>'}</div></div>
+        <div style="text-align:right;flex-shrink:0"><div style="font-size:11px;color:var(--ctm)">Streak</div><div style="font-family:var(--fd);font-size:22px;font-weight:700;color:${streak>=7?'var(--cp)':streak>=3?'var(--cor)':'var(--ctm)'}">🔥${streak}</div></div>
+      </div>
+      <div class="mon-stats">
+        <div class="mon-stat"><div class="mon-sv">${lastW?lastW.toFixed(1):'—'}</div><div class="mon-sl">kg now</div></div>
+        <div class="mon-stat"><div class="mon-sv">${startW||'—'}</div><div class="mon-sl">start</div></div>
+        <div class="mon-stat"><div class="mon-sv">${targetW||'—'}</div><div class="mon-sl">target</div></div>
+        <div class="mon-stat"><div class="mon-sv" style="color:${lost>0?'var(--cp)':'var(--ctm)'}">${lost>0?'-'+lost.toFixed(1):'0'}</div><div class="mon-sl">kg lost</div></div>
+        <div class="mon-stat"><div class="mon-sv" style="color:${bmiColor}">${bmi}</div><div class="mon-sl">BMI</div></div>
+      </div>
+      <div><div class="mon-prog-bar"><div class="mon-prog-fill" style="width:${progPct}%"></div></div><div class="mon-prog-lbl"><span>${progPct}% to goal</span><span>${Math.max(0,(lastW||startW)-targetW).toFixed(1)} kg to go</span></div></div>
+      <div class="mon-last">Last log: ${lastDate} · ${wts.length} entries</div>
+    </div>`;
+  }
+  mc.innerHTML=h;
+}
+
+async function pullAllFromGitHub(){
+  if(!GH.repo||!GH.token){toast('GitHub not configured.');return}
+  toast('⏳ Pulling all members…');
+  try{
+    const listUrl=`https://api.github.com/repos/${GH.repo}/contents/data`;
+    const lr=await fetch(listUrl,{headers:{Authorization:`token ${GH.token}`,Accept:'application/vnd.github.v3+json'}});
+    if(!lr.ok){toast('❌ Cannot list data folder. Users need to sync first.');return}
+    const files=await lr.json();
+    const jsonFiles=files.filter(f=>f.name.endsWith('.json'));
+    if(!jsonFiles.length){toast('⚠️ No user data found yet.');return}
+    let pulled=0;
+    for(const file of jsonFiles){
+      try{
+        const fr=await fetch(file.download_url,{headers:{Authorization:`token ${GH.token}`}});
+        if(!fr.ok)continue;
+        const ud=await fr.json();
+        if(ud.user){const ex=await userGet(ud.userId);if(!ex)await userAdd({...ud.user,id:ud.userId});else await userPut({...ud.user,id:ud.userId})}
+        if(ud.weights)await kvSet('wts_'+ud.userId,ud.weights);
+        if(ud.badges)await kvSet('badges_'+ud.userId,ud.badges);
+        if(ud.food){const all=await foodAll();for(const fe of ud.food){if(!all.find(x=>x.id===fe.id))try{await DB.transaction('food','readwrite').objectStore('food').add(fe)}catch{}}}
+        pulled++;
+      }catch(e){console.warn('Failed',file.name,e)}
+    }
+    await renderCoachDashboard();
+    toast(`✅ Pulled ${pulled} member${pulled===1?'':'s'} from GitHub!`);
+  }catch(e){toast('❌ Pull failed: '+e.message)}
+}
+
+// ═══════════════════════════════
+// USERS
+// ═══════════════════════════════
+async function renderUsers(){
+  const users=await userAll();
+  const cnt=document.getElementById('adm-ucnt');if(cnt)cnt.textContent=`All Users (${users.length})`;
+  const grid=document.getElementById('adm-ugrid');if(!grid)return;
+  let h='';
+  for(const u of users){
+    const wts=await kvGet('wts_'+u.id)||[];
+    const lastW=wts.length?wts[wts.length-1].weight:u.weight;
+    const bmi=u.height&&lastW?((lastW)/((u.height/100)**2)).toFixed(1):'—';
+    const streak=calcStreakFor(wts);
+    const av=u.photo?`<img src="${u.photo}" alt="">`:(u.name.charAt(0).toUpperCase());
+    h+=`<div class="uc">
+      <div class="uc-top"><div class="uc-av">${av}</div><div><div class="uc-nm">${u.name}</div><div class="uc-inf">${u.age?u.age+' yrs · ':''}${u.gender==='male'?'♂️':'♀️'} · ${u.height||'—'}cm</div></div></div>
+      <div class="uc-stats"><div class="uc-stat"><div class="uc-sv">${lastW?lastW.toFixed(1):'—'}</div><div class="uc-sl">kg</div></div><div class="uc-stat"><div class="uc-sv">${bmi}</div><div class="uc-sl">BMI</div></div><div class="uc-stat"><div class="uc-sv">${u.targetWeight||'—'}</div><div class="uc-sl">target</div></div><div class="uc-stat"><div class="uc-sv">🔥${streak}</div><div class="uc-sl">streak</div></div></div>
+      <div class="uc-acts"><button class="btn btn-s btn-sm" onclick="openEditUser(${u.id})">✏️ Edit</button><button class="btn btn-d btn-sm" onclick="deleteUser(${u.id})">✕ Delete</button></div>
+    </div>`;
+  }
+  h+=`<div class="add-usr-btn" onclick="openAddUserModal()"><span style="font-size:22px">➕</span> Add New User</div>`;
+  grid.innerHTML=h;
+}
+
+let tmpPhoto={};
+function openAddUserModal(){
+  tmpPhoto.au=null;
+  const m=document.createElement('div');m.className='modal-ov';m.id='au-modal';
+  m.innerHTML=`<div class="modal"><div class="modal-x" onclick="closeM('au-modal')">✕</div><div class="modal-ttl">Add New User</div><div class="modal-sub">Create a new profile</div><div class="ph-up" id="au-ph-area" onclick="document.getElementById('au-ph-inp').click()">📷<input type="file" id="au-ph-inp" accept="image/*" style="display:none" onchange="handlePhoto(this,'au')"></div><div class="g2"><div class="fg"><label class="fl">Full Name *</label><input type="text" class="fi fi-sm" id="au-name" placeholder="e.g. Siti"></div><div class="fg"><label class="fl">Age</label><input type="number" class="fi fi-sm" id="au-age" placeholder="28"></div><div class="fg"><label class="fl">Gender</label><select class="fi fi-sm" id="au-gen"><option value="male">Male</option><option value="female">Female</option></select></div><div class="fg"><label class="fl">Height (cm)</label><input type="number" class="fi fi-sm" id="au-h" placeholder="160"></div><div class="fg"><label class="fl">Weight (kg)</label><input type="number" class="fi fi-sm" id="au-w" placeholder="65" step="0.1"></div><div class="fg"><label class="fl">Target (kg)</label><input type="number" class="fi fi-sm" id="au-tw" placeholder="55" step="0.1"></div></div><button class="btn btn-p btn-w" onclick="saveNewUser()">Add User ✓</button></div>`;
+  document.body.appendChild(m);
+}
+async function saveNewUser(){
+  const nm=document.getElementById('au-name').value.trim();if(!nm){toast('Please enter a name!');return}
+  const p={name:nm,age:parseInt(document.getElementById('au-age').value)||0,gender:document.getElementById('au-gen').value,height:parseFloat(document.getElementById('au-h').value)||0,weight:parseFloat(document.getElementById('au-w').value)||0,targetWeight:parseFloat(document.getElementById('au-tw').value)||0,photo:tmpPhoto.au||null,startDate:TODAY(),startWeight:parseFloat(document.getElementById('au-w').value)||0};
+  const saved=await userAdd(p);
+  if(p.weight){let wts=[];wts.push({date:TODAY(),weight:p.weight,time:new Date().toISOString()});await kvSet('wts_'+saved.id,wts)}
+  tmpPhoto.au=null;closeM('au-modal');toast('✅ '+p.name+' added!');renderUsers();
+}
+async function openEditUser(uid){
+  const u=await userGet(uid);if(!u)return;tmpPhoto['eu_'+uid]=null;
+  const m=document.createElement('div');m.className='modal-ov';m.id='eu-modal';
+  m.innerHTML=`<div class="modal"><div class="modal-x" onclick="closeM('eu-modal')">✕</div><div class="modal-ttl">Edit Profile</div><div class="modal-sub">${u.name}</div><div class="ph-up" id="eu-ph-area" onclick="document.getElementById('eu-ph-inp').click()">${u.photo?`<img src="${u.photo}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%">`:'📷'}<input type="file" id="eu-ph-inp" accept="image/*" style="display:none" onchange="handlePhoto(this,'eu-${uid}')"></div><div class="g2"><div class="fg"><label class="fl">Full Name</label><input type="text" class="fi fi-sm" id="eu-name" value="${u.name||''}"></div><div class="fg"><label class="fl">Age</label><input type="number" class="fi fi-sm" id="eu-age" value="${u.age||''}"></div><div class="fg"><label class="fl">Gender</label><select class="fi fi-sm" id="eu-gen"><option value="male" ${u.gender==='male'?'selected':''}>Male</option><option value="female" ${u.gender==='female'?'selected':''}>Female</option></select></div><div class="fg"><label class="fl">Height (cm)</label><input type="number" class="fi fi-sm" id="eu-h" value="${u.height||''}"></div><div class="fg"><label class="fl">Weight (kg)</label><input type="number" class="fi fi-sm" id="eu-w" value="${u.weight||''}" step="0.1"></div><div class="fg"><label class="fl">Target (kg)</label><input type="number" class="fi fi-sm" id="eu-tw" value="${u.targetWeight||''}" step="0.1"></div><div class="fg"><label class="fl">Start Weight (kg)</label><input type="number" class="fi fi-sm" id="eu-sw" value="${u.startWeight||u.weight||''}" step="0.1"></div></div><button class="btn btn-p btn-w" onclick="saveEditUser(${uid})">Save Changes ✓</button></div>`;
+  document.body.appendChild(m);
+}
+async function saveEditUser(uid){
+  const u=await userGet(uid);if(!u)return;
+  u.name=document.getElementById('eu-name').value.trim()||u.name;u.age=parseInt(document.getElementById('eu-age').value)||u.age;u.gender=document.getElementById('eu-gen').value;u.height=parseFloat(document.getElementById('eu-h').value)||u.height;u.weight=parseFloat(document.getElementById('eu-w').value)||u.weight;u.targetWeight=parseFloat(document.getElementById('eu-tw').value)||u.targetWeight;u.startWeight=parseFloat(document.getElementById('eu-sw').value)||u.startWeight||u.weight;
+  if(tmpPhoto['eu_'+uid])u.photo=tmpPhoto['eu_'+uid];delete tmpPhoto['eu_'+uid];
+  await userPut(u);closeM('eu-modal');toast('✅ '+u.name+' updated!');renderUsers();
+}
+async function deleteUser(uid){
+  const u=await userGet(uid);if(!u)return;if(!confirm('Delete '+u.name+'? Cannot undo.'))return;
+  await userDel(uid);await kvDel('wts_'+uid);await kvDel('badges_'+uid);
+  const all=await foodAll();for(const f of all.filter(x=>x.userId===uid))await foodDel(f.id);
+  toast('🗑️ '+u.name+' deleted');renderUsers();
+}
+function handlePhoto(inp,ctx){
+  const f=inp.files[0];if(!f)return;const r=new FileReader();
+  r.onload=e=>{
+    const d=e.target.result;
+    if(ctx==='au'){tmpPhoto.au=d;const a=document.getElementById('au-ph-area');if(a)a.innerHTML=`<img src="${d}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%">`}
+    else if(ctx.startsWith('eu-')){const uid=parseInt(ctx.slice(3));tmpPhoto['eu_'+uid]=d;const a=document.getElementById('eu-ph-area');if(a)a.innerHTML=`<img src="${d}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%">`}
+  };r.readAsDataURL(f);
+}
+function closeM(id){const e=document.getElementById(id);if(e)e.remove()}
+
+// ═══════════════════════════════
+// GITHUB SETTINGS
+// ═══════════════════════════════
+async function loadGHSettings(){
+  const s=await kvGet('ghSettings');if(!s)return;
+  const ri=document.getElementById('adm-gh-repo');if(ri)ri.value=s.repo||'';
+  const ti=document.getElementById('adm-gh-token');if(ti)ti.value=s.token||'';
+  const bi=document.getElementById('adm-gh-branch');if(bi)bi.value=s.branch||'main';
+  updGHStatus();
+}
+async function saveGHSettings(){
+  const repo=(document.getElementById('adm-gh-repo').value||'').trim();
+  const token=(document.getElementById('adm-gh-token').value||'').trim();
+  const branch=(document.getElementById('adm-gh-branch').value||'main').trim();
+  if(!repo||!token){toast('❌ Please enter repo and token!');return}
+  GH={repo,token,branch};
+  await kvSet('ghSettings',{repo,token,branch,file:'azizfit-data.json'});
+  toast('⏳ Testing connection…');
+  const ok=await testConnection();
+  if(ok){toast('✅ GitHub connected!');updGHStatus()}
+  else{toast('❌ Connection failed. Check repo name and token.')}
+}
+async function testConnection(){
+  try{const r=await fetch(`https://api.github.com/repos/${GH.repo}`,{headers:{Authorization:`token ${GH.token}`,Accept:'application/vnd.github.v3+json'}});return r.ok}catch{return false}
+}
+async function manualSync(){toast('⏳ Syncing current device…');await pullAllFromGitHub()}
+async function clearGHSettings(){
+  if(!confirm('Disconnect GitHub?'))return;
+  await kvDel('ghSettings');GH={repo:'',token:'',branch:'main'};
+  document.getElementById('adm-gh-repo').value='';document.getElementById('adm-gh-token').value='';
+  updGHStatus();toast('🔌 Disconnected');
+}
+function updGHStatus(){
+  const el=document.getElementById('adm-gh-status');if(!el)return;
+  if(!GH.repo||!GH.token){el.innerHTML=`<div class="info-box" style="background:#fff7ed;border-color:#fed7aa;color:#92400e;margin-bottom:14px">☁️ Not configured — fill in the form below.</div>`;return}
+  el.innerHTML=`<div style="background:var(--cppa);border:1px solid var(--cpl);border-radius:var(--rs);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px"><div style="font-size:14px;font-weight:700;color:var(--cpd)">☁️ ${GH.repo}</div><span class="bdg bdg-g">Connected ✓</span></div>`;
+}
+
+// ═══════════════════════════════
+// CHANGE PIN
+// ═══════════════════════════════
+async function changePin(){
+  const np=prompt('Enter new 4-digit PIN:');
+  if(!np||!/^\d{4}$/.test(np)){toast('Invalid PIN — must be 4 digits');return}
+  await kvSet('adminPin',np);toast('✅ PIN changed to: '+np);
+}
+
+// ═══════════════════════════════
+// TOAST
+// ═══════════════════════════════
+function toast(msg){const c=document.getElementById('toast-c'),t=document.createElement('div');t.className='toast-msg';t.textContent=msg;c.appendChild(t);setTimeout(()=>t.remove(),3100)}
+
+// ═══════════════════════════════
+// INIT
+// ═══════════════════════════════
+document.addEventListener('DOMContentLoaded',async()=>{
+  await initDB();
+  document.getElementById('pd0').focus();
+});
+</script>
+</body>
+</html>
