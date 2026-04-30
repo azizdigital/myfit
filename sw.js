@@ -1,5 +1,5 @@
 const CACHE_NAME = 'myfit-v1.0';
-const CORE_ASSETS = ['./index.html', './manifest.json'];
+const CORE_ASSETS = ['./index.html', './manifest.json', './config.js'];
 
 self.addEventListener('install', event => {
   event.waitUntil(
