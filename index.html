@@ -10,9 +10,9 @@
 <meta name="apple-mobile-web-app-title" content="My Fit">
 <link rel="manifest" href="manifest.json">
 <title>My Fit – Daily Tracker</title>
+<script src="config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="config.js" onerror="console.warn('config.js not found')"></script>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -317,6 +317,46 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 .add-usr-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;background:var(--cpfa);border:2px dashed var(--cbr);border-radius:var(--r);cursor:pointer;color:var(--ctm);font-size:14px;font-weight:700;transition:var(--tr);width:100%}
 .add-usr-btn:hover{border-color:var(--cp);color:var(--cp);background:var(--cppa)}
 
+/* ADMIN TABS */
+.adm-tabs{display:flex;gap:6px;margin-bottom:20px;background:var(--cpfa);padding:5px;border-radius:var(--rs);border:1px solid var(--cbr)}
+.adm-tab{flex:1;padding:9px 8px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;text-align:center;transition:var(--tr);color:var(--ctm);border:none;background:none}
+.adm-tab.act{background:var(--cc);color:var(--cpd);box-shadow:var(--sh)}
+.adm-pane{display:none}
+.adm-pane.act{display:block}
+
+/* COACH DASHBOARD */
+.coach-hdr{background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:var(--r);padding:20px 22px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden}
+.coach-hdr::before{content:'';position:absolute;top:-30%;right:-5%;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)}
+.coach-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:8px}
+.coach-ttl{font-family:var(--fd);font-size:22px;font-weight:700;margin-bottom:3px}
+.coach-sub{font-size:13px;opacity:.75}
+.coach-stats{display:flex;gap:18px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15)}
+.cst{text-align:center}
+.cst-v{font-family:var(--fd);font-size:22px;font-weight:700}
+.cst-l{font-size:10px;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
+/* Per-user monitoring card */
+.mon-card{background:var(--cc);border:1px solid var(--cbr);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--sh);transition:var(--tr)}
+.mon-card:hover{box-shadow:var(--sm);border-color:var(--cpl)}
+.mon-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.mon-av{width:44px;height:44px;border-radius:50%;background:var(--cp);display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;flex-shrink:0;border:2px solid var(--cppa);color:#fff;font-weight:700}
+.mon-av img{width:100%;height:100%;object-fit:cover}
+.mon-nm{font-weight:700;font-size:15px;color:var(--cpd)}
+.mon-inf{font-size:12px;color:var(--ctm);margin-top:2px}
+.mon-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px}
+@media(max-width:600px){.mon-stats{grid-template-columns:repeat(3,1fr)}}
+.mon-stat{background:var(--cpfa);border-radius:var(--rs);padding:10px 8px;text-align:center;border:1px solid var(--cbr)}
+.mon-sv{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--cpd);line-height:1}
+.mon-sl{font-size:10px;color:var(--ctm);font-weight:600;margin-top:3px}
+.mon-prog-bar{background:var(--cppa);border-radius:99px;height:6px;overflow:hidden;margin-bottom:4px}
+.mon-prog-fill{height:100%;background:linear-gradient(90deg,var(--cp),var(--cpl));border-radius:99px;transition:width .6s ease}
+.mon-prog-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--ctm)}
+.mon-last{font-size:11px;color:var(--ctm);margin-top:8px;padding-top:8px;border-top:1px solid var(--cbr)}
+/* Coach sync setup */
+.gh-adm-setup{background:var(--cpfa);border:1px solid var(--cbr);border-radius:var(--r);padding:16px;margin-bottom:16px}
+.gh-adm-connected{background:var(--cppa);border:1px solid var(--cpl);border-radius:var(--r);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.gh-pull-btn{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff;border:none;border-radius:var(--rs);padding:11px 18px;font-size:14px;font-weight:700;cursor:pointer;width:100%;font-family:var(--fb);transition:var(--tr);margin-bottom:12px}
+.gh-pull-btn:hover{opacity:.9;transform:translateY(-1px)}
+
 /* MODAL */
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.42);display:flex;align-items:flex-end;justify-content:center;z-index:3000;padding:16px;backdrop-filter:blur(4px);animation:fdi .2s ease}
 @media(min-width:600px){.modal-ov{align-items:center}}
@@ -434,19 +474,18 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
       <div class="sb-logo-ico">⚖️</div>
       <div><div class="sb-logo-t">My Fit</div><div class="sb-logo-s">crafted by Aziz Mohamad</div></div>
     </div>
-    <div class="sb-usr" id="sb-usr" onclick="window.location.href='admin.html'">
+    <div class="sb-usr" id="sb-usr" onclick="showUserSwitcher()">
       <div class="sb-av" id="sb-av">A</div>
       <div><div class="sb-unm" id="sb-unm">—</div><div class="sb-usw">Tap to switch user</div></div>
     </div>
-    <!-- GitHub sync pill -->
 
     <div class="nav-it act" id="snav-today" onclick="go('today')"><span class="ico">🏠</span>Today</div>
     <div class="nav-it" id="snav-checklist" onclick="go('checklist')"><span class="ico">✅</span>Checklist</div>
     <div class="nav-it" id="snav-food" onclick="go('food')"><span class="ico">🍽️</span>Food Log</div>
     <div class="nav-it" id="snav-progress" onclick="go('progress')"><span class="ico">📊</span>Progress</div>
     <div class="nav-it" id="snav-profile" onclick="go('profile')"><span class="ico">👤</span>Profile</div>
-    <div class="nav-it" id="snav-panduan" onclick="go('panduan')"><span class="ico">📖</span>Guide</div>
-    <a href="admin.html" class="nav-it" id="snav-admin" style="text-decoration:none"><span class="ico">🔒</span>Admin</a>
+    <div class="nav-it" id="snav-panduan" onclick="go('panduan')"><span class="ico">📖</span>Panduan</div>
+    <a href="admin.html" class="nav-it" style="text-decoration:none"><span class="ico">🔒</span>Admin</a>
     <div class="sb-streak"><div class="sb-stk-l">🔥 Current Streak</div><div class="sb-stk-v" id="sb-sv">0 days</div></div>
   </nav>
 
@@ -557,8 +596,105 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
       <div style="text-align:center;padding:22px 20px 8px;font-size:12px;color:var(--ctm)">© 2026 Aziz Mohamad<br>Power Dynamics Division</div>
     </div>
 
-    
-  </div><!-- /content -->
+    <!-- ADMIN -->
+    <div class="page" id="page-admin">
+      <div class="adm-banner">
+        <div class="adm-badge">🔒 Admin Mode</div>
+        <div class="adm-ttl">Admin Panel</div>
+        <div class="adm-sub">Manage users, monitor progress, configure cloud sync.</div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="adm-tabs">
+        <button class="adm-tab act" id="atab-users" onclick="switchAdmTab('users')">👥 Users</button>
+        <button class="adm-tab" id="atab-coach" onclick="switchAdmTab('coach')">📊 Coach View</button>
+        <button class="adm-tab" id="atab-settings" onclick="switchAdmTab('settings')">⚙️ Settings</button>
+      </div>
+
+      <!-- Tab: Users -->
+      <div class="adm-pane act" id="apane-users">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <h2 style="margin-bottom:0" id="adm-ucnt">All Users (0)</h2>
+          <button class="btn btn-p btn-sm" onclick="openAddUserModal()">+ Add User</button>
+        </div>
+        <div class="ug" id="adm-ugrid"></div>
+      </div>
+
+      <!-- Tab: Coach Dashboard -->
+      <div class="adm-pane" id="apane-coach">
+        <div class="coach-hdr">
+          <div class="coach-badge">📊 Coach View</div>
+          <div class="coach-ttl">All Members Progress</div>
+          <div class="coach-sub">Real-time overview of everyone's journey</div>
+          <div class="coach-stats">
+            <div class="cst"><div class="cst-v" id="c-total-users">0</div><div class="cst-l">Members</div></div>
+            <div class="cst"><div class="cst-v" id="c-logged-today">0</div><div class="cst-l">Logged Today</div></div>
+            <div class="cst"><div class="cst-v" id="c-avg-streak">0</div><div class="cst-l">Avg Streak</div></div>
+            <div class="cst"><div class="cst-v" id="c-on-track">0</div><div class="cst-l">On Track</div></div>
+          </div>
+        </div>
+        <!-- GitHub pull from shared repo -->
+        <div id="coach-gh-area"></div>
+        <!-- Member cards -->
+        <div id="coach-members"></div>
+      </div>
+
+      <!-- Tab: Settings -->
+      <div class="adm-pane" id="apane-settings">
+        <!-- GitHub Sync Settings (Admin-controlled, applies to ALL devices) -->
+        <div class="sett-sec">☁️ GitHub Cloud Sync — Coach Setup</div>
+        <div class="info-box" style="margin-bottom:14px">
+          <strong>📌 Setup sekali, berlaku semua device:</strong><br>
+          Coach setup token di sini → semua user sync ke repo yang sama → coach boleh monitor semua data dalam 1 file JSON.
+        </div>
+        <div id="adm-gh-status-area"></div>
+        <div class="card gap">
+          <h2 style="margin-bottom:4px">Connect Shared Repo</h2>
+          <div class="info-box">
+            <strong>Steps:</strong><br>
+            1. Create <strong>private</strong> repo: e.g. <code>azizmohamad/azizfit-data</code><br>
+            2. GitHub → Settings → Developer Settings → PAT → Tokens (classic)<br>
+            3. Generate token with <strong>repo</strong> scope<br>
+            4. Copy &amp; paste below, click Save
+          </div>
+          <div class="fg"><label class="fl">GitHub Repo (username/repo-name)</label><input type="text" class="fi fi-mono" id="adm-gh-repo" placeholder="e.g. azizmohamad/azizfit-data"></div>
+          <div class="fg"><label class="fl">Personal Access Token (PAT)</label><input type="password" class="fi fi-mono" id="adm-gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off"></div>
+          <div class="fg"><label class="fl">Branch</label><input type="text" class="fi fi-mono" id="adm-gh-branch" value="main"></div>
+          <div class="fg"><label class="fl">Filename in repo</label><input type="text" class="fi fi-mono" id="adm-gh-file" value="azizfit-data.json"></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn-p btn-sm" onclick="saveAdmGHSettings()">Save & Test Connection</button>
+            <button class="btn btn-s btn-sm" onclick="ghSync()">☁️ Sync Now</button>
+            <button class="btn btn-d btn-sm" onclick="clearGHSettings()">✕ Disconnect</button>
+          </div>
+          <div style="font-size:12px;color:var(--ctm);margin-top:8px" id="adm-gh-last-sync"></div>
+        </div>
+
+        <div class="sett-sec">🔑 Security</div>
+        <div class="sett-row" onclick="changeAdminPin()"><div class="sett-rl"><span class="sett-ico">🔑</span><span class="sett-lbl">Change Admin PIN</span></div><span style="color:var(--ctm)">→</span></div>
+        <div class="sett-row" onclick="S.adminUnlocked=false;go('today')"><div class="sett-rl"><span class="sett-ico">🔒</span><span class="sett-lbl">Lock Admin &amp; Back to App</span></div><span style="color:var(--ctm)">→</span></div>
+      </div>
+
+    </div>
+
+      <!-- PANDUAN -->
+    <div class="page" id="page-panduan">
+      <div class="pg-ttl">📖 Panduan</div>
+      <div class="pg-sub">Cara bancuh &amp; guna produk dengan betul</div>
+      <div class="card gap">
+        <h2>💧 Tips Minum Air Banyak</h2>
+        <img src="images/Tips_Minum_Air.png" style="width:100%;border-radius:12px;display:block" alt="Tips Minum Air">
+      </div>
+      <div class="card gap">
+        <h2>🥤 Cara Bancuh Shake F1</h2>
+        <img src="images/Cara_bancuh_Formula_1.png" style="width:100%;border-radius:12px;display:block" alt="Cara Bancuh Shake F1">
+      </div>
+      <div class="card">
+        <h2>🌿 Cara Guna Aloe &amp; Teamix</h2>
+        <img src="images/Cara_Bancuh_Teamix.png" style="width:100%;border-radius:12px;display:block" alt="Cara Guna Aloe Teamix">
+      </div>
+    </div>
+
+</div><!-- /content -->
 
   <nav id="bnav">
     <div class="bn-inner">
@@ -590,6 +726,9 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 // ═══════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════
+if(typeof DEFAULT_GH_REPO==='undefined') var DEFAULT_GH_REPO='';
+if(typeof DEFAULT_GH_TOKEN==='undefined') var DEFAULT_GH_TOKEN='';
+if(typeof DEFAULT_GH_BRANCH==='undefined') var DEFAULT_GH_BRANCH='main';
 const CAL_TARGET=2000,WATER_GLASSES=8;
 const TODAY=()=>new Date().toISOString().split('T')[0];
 const DEFAULT_ADMIN_PIN='1211';
@@ -692,19 +831,7 @@ async function wtsSave(uid,date,weight){let wts=await kvGet('wts_'+uid)||[];wts=
 // ═══════════════════════════════════════════════
 // GITHUB SYNC
 // ═══════════════════════════════════════════════
-// ═══════════════════════════════════════
-// COACH PRE-CONFIG — fill in your details
-// ═══════════════════════════════════════
-const DEFAULT_GH_REPO  = 'GANTI_REPO_NAME';   // e.g. 'azizmohamad/myfit-data'
-const DEFAULT_GH_TOKEN = 'GANTI_TOKEN';        // e.g. 'ghp_xxxxxxxxxxxxxxxxxxxx'
-const DEFAULT_GH_BRANCH= 'main';
-// ═══════════════════════════════════════
 let GH={repo:'',token:'',branch:'main',file:'azizfit-data.json'};
-// Per-user filename: data/<sanitized_name>.json
-function ghUserFile(){
-  const nm=(S.profile&&S.profile.name?S.profile.name:'unknown').toLowerCase().replace(/[^a-z0-9]/g,'_').replace(/_+/g,'_').replace(/^_|_$/g,'');
-  return'data/'+nm+'.json';
-}
 let ghSyncTimer=null;
 
 async function loadGHSettings(){
@@ -746,15 +873,6 @@ async function ghTestConnection(){
   }catch{return false}
 }
 
-// Collect single user's data for per-user GitHub file
-async function collectUserData(uid){
-  const user=await userGet(uid);
-  const wts=await kvGet('wts_'+uid)||[];
-  const allFood=await foodAll();
-  const food=allFood.filter(f=>f.userId===uid);
-  const badges=await kvGet('badges_'+uid)||[];
-  return{version:'1.3',exportDate:new Date().toISOString(),userId:uid,user,weights:wts,food,badges};
-}
 async function collectAllData(){
   const users=await userAll(),allFood=await foodAll(),weightsData={};
   for(const u of users)weightsData[u.id]=await kvGet('wts_'+u.id)||[];
@@ -765,16 +883,14 @@ async function ghSync(){
   if(!GH.repo||!GH.token){toast('☁️ GitHub not set up. Configure in Settings.');return}
   updGHStatus('syncing');const sbSync=document.getElementById('sb-sync');if(sbSync){sbSync.className='sb-sync syncing';document.getElementById('sb-sync-txt').textContent='Syncing…'}
   try{
-    // Only sync current user's data to their own file
-  const userData=await collectUserData(S.uid);
-    const content=btoa(unescape(encodeURIComponent(JSON.stringify(userData,null,2))));
-    const userFile=ghUserFile();
-    const fileUrl=`https://api.github.com/repos/${GH.repo}/contents/${userFile}`;
+    const data=await collectAllData();
+    const content=btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2))));
+    const fileUrl=`https://api.github.com/repos/${GH.repo}/contents/${GH.file}`;
     // Get SHA if file exists
     let sha=null;
     try{const sr=await fetch(fileUrl,{headers:{Authorization:`token ${GH.token}`,Accept:'application/vnd.github.v3+json'}});if(sr.ok){const sd=await sr.json();sha=sd.sha}}catch{}
     // Commit
-    const body={message:`MyFit sync ${S.profile?S.profile.name:'user'} ${new Date().toISOString().slice(0,10)}`,content,branch:GH.branch};
+    const body={message:`MyFit sync ${new Date().toISOString().slice(0,10)}`,content,branch:GH.branch};
     if(sha)body.sha=sha;
     const cr=await fetch(fileUrl,{method:'PUT',headers:{Authorization:`token ${GH.token}`,'Content-Type':'application/json',Accept:'application/vnd.github.v3+json'},body:JSON.stringify(body)});
     if(cr.ok){
@@ -791,8 +907,7 @@ async function ghSync(){
 async function ghLoad(){
   if(!GH.repo||!GH.token)return false;
   try{
-    const userFile=ghUserFile();
-    const fileUrl=`https://api.github.com/repos/${GH.repo}/contents/${userFile}`;
+    const fileUrl=`https://api.github.com/repos/${GH.repo}/contents/${GH.file}`;
     const r=await fetch(fileUrl,{headers:{Authorization:`token ${GH.token}`,Accept:'application/vnd.github.v3+json'}});
     if(!r.ok)return false;
     const fd=await r.json();
@@ -866,13 +981,7 @@ async function init(){
   // Load GitHub settings
   if(sp)sp.textContent='Loading settings…';
   const ghS=await kvGet('ghSettings');
-  if(ghS){
-    GH={repo:ghS.repo||'',token:ghS.token||'',branch:ghS.branch||'main',file:ghS.file||'azizfit-data.json'};
-  } else if(DEFAULT_GH_TOKEN && DEFAULT_GH_TOKEN!=='GANTI_TOKEN'){
-    // Auto-load coach pre-config on first launch
-    GH={repo:DEFAULT_GH_REPO,token:DEFAULT_GH_TOKEN,branch:DEFAULT_GH_BRANCH,file:'azizfit-data.json'};
-    await kvSet('ghSettings',{repo:GH.repo,token:GH.token,branch:GH.branch,file:GH.file});
-  }
+  if(ghS){GH={repo:ghS.repo||'',token:ghS.token||'',branch:ghS.branch||'main',file:ghS.file||'azizfit-data.json'}}
   // Try GitHub sync on startup
   if(GH.repo&&GH.token){
     document.getElementById('sp-sync-badge').classList.add('show');
@@ -950,7 +1059,7 @@ function go(page){
   S.page=page;
   if(page==='progress')renderProgress();
   if(page==='food')setMealByHour();
-
+  if(page==='admin'){renderAdminPanel();switchAdmTab('users')}
   if(page==='profile'){loadGHSettings();updGHLastSync();resetProfIdle()}
   window.scrollTo(0,0);
 }
@@ -1128,15 +1237,75 @@ function updSBUser(){const p=S.profile;if(!p)return;document.getElementById('sb-
 // ═══════════════════════════════════════════════
 // ADMIN — DEFAULT PIN 1211
 // ═══════════════════════════════════════════════
-
-
-
-
-
-
-
-
-
+async function openAdmin(){
+  const pin=await kvGet('adminPin')||DEFAULT_ADMIN_PIN;
+  if(!S.adminUnlocked){
+    showPinModal(false,async(entered)=>{
+      if(entered===pin){S.adminUnlocked=true;go('admin')}
+      else toast('❌ Wrong PIN!');
+    });
+  }else go('admin');
+}
+function showPinModal(isSetting,cb){
+  const m=document.createElement('div');m.className='modal-ov';m.id='pin-modal';
+  m.innerHTML=`<div class="modal" style="text-align:center"><div class="modal-x" onclick="closeM('pin-modal')">✕</div><div class="modal-ttl">🔒 ${isSetting?'Set New PIN':'Admin PIN'}</div><div class="modal-sub">${isSetting?'Enter a new 4-digit PIN':'Enter your 4-digit admin PIN'}</div><div class="pin-wrap"><input class="pin-d" id="pd0" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(0)"><input class="pin-d" id="pd1" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(1)"><input class="pin-d" id="pd2" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(2)"><input class="pin-d" id="pd3" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(3)"></div><button class="btn btn-p btn-w btn-lg" onclick="submitPin()">${isSetting?'Set PIN':'Unlock'}</button></div>`;
+  m._cb=cb;document.body.appendChild(m);setTimeout(()=>document.getElementById('pd0')&&document.getElementById('pd0').focus(),80);
+}
+function pinNav(i){const v=document.getElementById('pd'+i);if(v&&v.value&&i<3)document.getElementById('pd'+(i+1)).focus()}
+function submitPin(){const pin=[0,1,2,3].map(i=>{const el=document.getElementById('pd'+i);return el?el.value.trim():''}).join('');if(pin.length!==4){toast('Enter all 4 digits');return}const m=document.getElementById('pin-modal');if(m&&m._cb){m._cb(pin);closeM('pin-modal')}}
+async function changeAdminPin(){
+  showPinModal(true,async(newPin)=>{
+    await kvSet('adminPin',newPin);S.adminUnlocked=true;
+    toast('✅ Admin PIN changed to: '+newPin);
+    const hint=document.querySelector('.adm-ttl ~ .adm-sub');
+  });
+}
+async function renderAdminPanel(){
+  const users=await userAll();
+  const cnt=document.getElementById('adm-ucnt');if(cnt)cnt.textContent='All Users ('+users.length+')';
+  const grid=document.getElementById('adm-ugrid');if(!grid)return;
+  let h='';
+  for(const u of users){
+    const isActive=u.id===S.uid;const wts=await kvGet('wts_'+u.id)||[];const lastW=wts.length?wts[wts.length-1].weight:(u.weight||null);
+    const bmi=u.height&&lastW?((lastW)/((u.height/100)**2)).toFixed(1):'—';const streak=calcStreakFor(wts);
+    const av=u.photo?`<img src="${u.photo}" alt="${u.name}">`:(u.name.charAt(0).toUpperCase());
+    h+=`<div class="uc ${isActive?'active-u':''}">
+      ${isActive?'<div class="uc-tag">Active</div>':''}
+      <div class="uc-top"><div class="uc-av">${av}</div><div><div class="uc-nm">${u.name}</div><div class="uc-inf">${u.age?u.age+' yrs · ':''}${u.gender==='male'?'♂️':'♀️'} · ${u.height||'—'}cm</div></div></div>
+      <div class="uc-stats"><div class="uc-stat"><div class="uc-sv">${lastW?lastW.toFixed(1):'—'}</div><div class="uc-sl">kg</div></div><div class="uc-stat"><div class="uc-sv">${bmi}</div><div class="uc-sl">BMI</div></div><div class="uc-stat"><div class="uc-sv">${u.targetWeight||'—'}</div><div class="uc-sl">target</div></div><div class="uc-stat"><div class="uc-sv">🔥${streak}</div><div class="uc-sl">streak</div></div></div>
+      <div class="uc-acts">${!isActive?`<button class="btn btn-p btn-sm" onclick="switchUser(${u.id})">↔ Switch</button>`:'<span class="bdg bdg-g" style="padding:7px 14px">Active ✓</span>'}<button class="btn btn-s btn-sm" onclick="openEditUserModal(${u.id})">✏️ Edit</button>${!isActive?`<button class="btn btn-d btn-sm" onclick="deleteUser(${u.id})">✕ Delete</button>`:''}</div>
+    </div>`;
+  }
+  h+=`<div class="add-usr-btn" onclick="openAddUserModal()"><span style="font-size:22px">➕</span> Add New User</div>`;
+  grid.innerHTML=h;
+}
+async function switchUser(uid){S.uid=uid;await kvSet('activeUser',uid);S.profile=await userGet(uid);S.adminUnlocked=true;await loadDay();renderToday();renderCL();renderFood();renderProfile();updSBUser();updSBStreak();renderAdminPanel();toast('✅ Switched to '+S.profile.name)}
+function openAddUserModal(){
+  S.tmpPhoto.au=null;const m=document.createElement('div');m.className='modal-ov';m.id='au-modal';
+  m.innerHTML=`<div class="modal"><div class="modal-x" onclick="closeM('au-modal')">✕</div><div class="modal-ttl">Add New User</div><div class="modal-sub">Create a new profile</div><div class="ph-up" id="au-ph-area" onclick="document.getElementById('au-ph-inp').click()" style="width:72px;height:72px;font-size:20px;margin-bottom:16px">📷<input type="file" id="au-ph-inp" accept="image/*" style="display:none" onchange="handlePhoto(this,'au')"></div><div class="g2"><div class="fg"><label class="fl">Full Name *</label><input type="text" class="fi fi-sm" id="au-name" placeholder="e.g. Siti"></div><div class="fg"><label class="fl">Age</label><input type="number" class="fi fi-sm" id="au-age" placeholder="28"></div><div class="fg"><label class="fl">Gender</label><select class="fi fi-sm" id="au-gen"><option value="male">Male</option><option value="female">Female</option></select></div><div class="fg"><label class="fl">Height (cm)</label><input type="number" class="fi fi-sm" id="au-h" placeholder="160"></div><div class="fg"><label class="fl">Weight (kg)</label><input type="number" class="fi fi-sm" id="au-w" placeholder="65" step="0.1"></div><div class="fg"><label class="fl">Target (kg)</label><input type="number" class="fi fi-sm" id="au-tw" placeholder="55" step="0.1"></div></div><button class="btn btn-p btn-w" onclick="saveNewUser()">Add User ✓</button></div>`;
+  document.body.appendChild(m);
+}
+async function saveNewUser(){
+  const nm=document.getElementById('au-name').value.trim();if(!nm){toast('Please enter a name!');return}
+  const p={name:nm,age:parseInt(document.getElementById('au-age').value)||0,gender:document.getElementById('au-gen').value,height:parseFloat(document.getElementById('au-h').value)||0,weight:parseFloat(document.getElementById('au-w').value)||0,targetWeight:parseFloat(document.getElementById('au-tw').value)||0,photo:S.tmpPhoto.au||null,startDate:TODAY(),startWeight:parseFloat(document.getElementById('au-w').value)||0};
+  const saved=await userAdd(p);if(p.weight)await wtsSave(saved.id,TODAY(),p.weight);S.tmpPhoto.au=null;closeM('au-modal');toast('✅ '+p.name+' added!');renderAdminPanel();
+}
+async function openEditUserModal(uid){
+  const u=await userGet(uid);if(!u)return;S.tmpPhoto['eu_'+uid]=null;
+  const m=document.createElement('div');m.className='modal-ov';m.id='eu-modal';
+  m.innerHTML=`<div class="modal"><div class="modal-x" onclick="closeM('eu-modal')">✕</div><div class="modal-ttl">Edit Profile</div><div class="modal-sub">${u.name}</div><div class="ph-up" id="eu-ph-area" onclick="document.getElementById('eu-ph-inp').click()" style="width:72px;height:72px;font-size:20px;margin-bottom:16px">${u.photo?`<img src="${u.photo}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%">`:'📷'}<input type="file" id="eu-ph-inp" accept="image/*" style="display:none" onchange="handlePhoto(this,'eu-${uid}')"></div><div class="g2"><div class="fg"><label class="fl">Full Name *</label><input type="text" class="fi fi-sm" id="eu-name" value="${u.name||''}"></div><div class="fg"><label class="fl">Age</label><input type="number" class="fi fi-sm" id="eu-age" value="${u.age||''}"></div><div class="fg"><label class="fl">Gender</label><select class="fi fi-sm" id="eu-gen"><option value="male" ${u.gender==='male'?'selected':''}>Male</option><option value="female" ${u.gender==='female'?'selected':''}>Female</option></select></div><div class="fg"><label class="fl">Height (cm)</label><input type="number" class="fi fi-sm" id="eu-h" value="${u.height||''}"></div><div class="fg"><label class="fl">Weight (kg)</label><input type="number" class="fi fi-sm" id="eu-w" value="${u.weight||''}" step="0.1"></div><div class="fg"><label class="fl">Target (kg)</label><input type="number" class="fi fi-sm" id="eu-tw" value="${u.targetWeight||''}" step="0.1"></div><div class="fg"><label class="fl">Start Weight (kg)</label><input type="number" class="fi fi-sm" id="eu-sw" value="${u.startWeight||u.weight||''}" step="0.1"></div></div><button class="btn btn-p btn-w" onclick="saveEditUser(${uid})">Save Changes ✓</button></div>`;
+  document.body.appendChild(m);
+}
+async function saveEditUser(uid){
+  const u=await userGet(uid);if(!u)return;
+  u.name=document.getElementById('eu-name').value.trim()||u.name;u.age=parseInt(document.getElementById('eu-age').value)||u.age;u.gender=document.getElementById('eu-gen').value;u.height=parseFloat(document.getElementById('eu-h').value)||u.height;u.weight=parseFloat(document.getElementById('eu-w').value)||u.weight;u.targetWeight=parseFloat(document.getElementById('eu-tw').value)||u.targetWeight;u.startWeight=parseFloat(document.getElementById('eu-sw').value)||u.startWeight||u.weight;
+  if(S.tmpPhoto['eu_'+uid])u.photo=S.tmpPhoto['eu_'+uid];delete S.tmpPhoto['eu_'+uid];
+  await userPut(u);if(uid===S.uid){S.profile=u;renderProfile();renderToday();updSBUser()}closeM('eu-modal');toast('✅ '+u.name+' updated!');renderAdminPanel();
+}
+async function deleteUser(uid){
+  const u=await userGet(uid);if(!u)return;if(!confirm('Delete '+u.name+'? All data will be removed permanently.'))return;
+  await userDel(uid);await kvDel('wts_'+uid);await kvDel('badges_'+uid);const allFood=await foodAll();for(const f of allFood.filter(x=>x.userId===uid))await foodDel(f.id);toast('🗑️ '+u.name+' deleted');renderAdminPanel();
+}
 function showUserSwitcher(){window.location.href='admin.html'}
 
 // ═══════════════════════════════════════════════
@@ -1219,7 +1388,7 @@ async function renderCoachDashboard(){
   // GitHub pull area
   const ghArea=document.getElementById('coach-gh-area');
   if(GH.repo&&GH.token){
-    ghArea.innerHTML=`<button class="gh-pull-btn" onclick="coachPullGitHub()">☁️ Pull All Members from GitHub</button><div style="font-size:12px;color:var(--ctm);text-align:center;margin-bottom:16px">Pulls all users' latest data from <strong>${GH.repo}</strong></div>`;
+    ghArea.innerHTML=`<button class="gh-pull-btn" onclick="coachPullGitHub()">☁️ Pull Latest Data from GitHub Repo</button><div style="font-size:12px;color:var(--ctm);text-align:center;margin-bottom:16px">Pulls all users' latest data from <strong>${GH.repo}</strong></div>`;
   }else{
     ghArea.innerHTML=`<div class="info-box" style="margin-bottom:14px">⚠️ GitHub not configured. Go to <strong>Settings tab</strong> to connect a shared repo — then you can pull data from all devices here.</div>`;
   }
@@ -1272,39 +1441,10 @@ async function renderCoachDashboard(){
 
 async function coachPullGitHub(){
   if(!GH.repo||!GH.token){toast('GitHub not configured. Go to Settings tab.');return}
-  toast('⏳ Pulling all members from GitHub…');
-  try{
-    // List all files in data/ folder
-    const listUrl=`https://api.github.com/repos/${GH.repo}/contents/data`;
-    const lr=await fetch(listUrl,{headers:{Authorization:`token ${GH.token}`,Accept:'application/vnd.github.v3+json'}});
-    if(!lr.ok){toast('❌ Cannot list data folder. Sync at least one user first.');return}
-    const files=await lr.json();
-    const jsonFiles=files.filter(f=>f.name.endsWith('.json'));
-    if(!jsonFiles.length){toast('⚠️ No user data found yet. Users need to sync first.');return}
-    let pulled=0;
-    for(const file of jsonFiles){
-      try{
-        const fr=await fetch(file.download_url,{headers:{Authorization:`token ${GH.token}`}});
-        if(!fr.ok)continue;
-        const userData=await fr.json();
-        // Import this user's data
-        if(userData.user){
-          const existing=await userGet(userData.userId);
-          if(!existing)await userAdd({...userData.user,id:userData.userId});
-          else await userPut({...userData.user,id:userData.userId});
-        }
-        if(userData.weights)await kvSet('wts_'+userData.userId,userData.weights);
-        if(userData.badges)await kvSet('badges_'+userData.userId,userData.badges);
-        if(userData.food){
-          const allFood=await foodAll();
-          for(const fe of userData.food){if(!allFood.find(x=>x.id===fe.id))await foodAdd(fe)}
-        }
-        pulled++;
-      }catch(e){console.warn('Failed to load',file.name,e)}
-    }
-    await loadDay();renderToday();renderCoachDashboard();
-    toast(`✅ Pulled ${pulled} member${pulled===1?'':'s'} from GitHub!`);
-  }catch(e){toast('❌ Pull failed: '+e.message)}
+  toast('⏳ Pulling from GitHub…');
+  const ok=await ghLoad();
+  if(ok){await loadDay();renderToday();renderCoachDashboard();toast('✅ Pulled latest data from GitHub!')}
+  else toast('❌ Pull failed. Check connection in Settings tab.');
 }
 
 // ═══════════════════════════════════════════════
