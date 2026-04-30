@@ -738,11 +738,12 @@ async function init(){
 
   // Load GitHub settings from config.js or saved settings
   const ghS=await kvGet('ghSettings');
-  if(ghS){
-    GH={repo:ghS.repo||'',token:ghS.token||'',branch:ghS.branch||'main'};
-  } else if(typeof DEFAULT_GH_TOKEN!=='undefined' && DEFAULT_GH_TOKEN && DEFAULT_GH_TOKEN!=='GANTI_TOKEN_DI_SINI'){
+  const cfgToken=typeof DEFAULT_GH_TOKEN!=='undefined'&&DEFAULT_GH_TOKEN&&DEFAULT_GH_TOKEN!=='GANTI_TOKEN_DI_SINI';
+  if(cfgToken){
     GH={repo:DEFAULT_GH_REPO,token:DEFAULT_GH_TOKEN,branch:DEFAULT_GH_BRANCH};
     await kvSet('ghSettings',{repo:GH.repo,token:GH.token,branch:GH.branch,file:'data'});
+  } else if(ghS){
+    GH={repo:ghS.repo||'',token:ghS.token||'',branch:ghS.branch||'main'};
   }
 
   // Load active user
