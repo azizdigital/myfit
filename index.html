@@ -579,6 +579,7 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
         <div style="font-size:12px;color:var(--ctm);margin-top:2px;display:flex;align-items:center;gap:6px" id="prof-save-status"><span>💾 Auto-saves on tab switch, app close, or 1-min idle</span></div>
       </div>
 
+      <!-- ══ GITHUB SYNC SECTION ══ -->
       <div class="sett-sec">🔔 Notifications</div>
       <div class="sett-row"><div class="sett-rl"><span class="sett-ico">🔔</span><span class="sett-lbl">Enable Daily Reminders</span></div><div class="toggle" id="notif-tog" onclick="togNotif()"></div></div>
 
@@ -596,105 +597,9 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
       <div style="text-align:center;padding:22px 20px 8px;font-size:12px;color:var(--ctm)">© 2026 Aziz Mohamad<br>Power Dynamics Division</div>
     </div>
 
-    <!-- ADMIN -->
-    <div class="page" id="page-admin">
-      <div class="adm-banner">
-        <div class="adm-badge">🔒 Admin Mode</div>
-        <div class="adm-ttl">Admin Panel</div>
-        <div class="adm-sub">Manage users, monitor progress, configure cloud sync.</div>
-      </div>
 
-      <!-- Tabs -->
-      <div class="adm-tabs">
-        <button class="adm-tab act" id="atab-users" onclick="switchAdmTab('users')">👥 Users</button>
-        <button class="adm-tab" id="atab-coach" onclick="switchAdmTab('coach')">📊 Coach View</button>
-        <button class="adm-tab" id="atab-settings" onclick="switchAdmTab('settings')">⚙️ Settings</button>
-      </div>
 
-      <!-- Tab: Users -->
-      <div class="adm-pane act" id="apane-users">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-          <h2 style="margin-bottom:0" id="adm-ucnt">All Users (0)</h2>
-          <button class="btn btn-p btn-sm" onclick="openAddUserModal()">+ Add User</button>
-        </div>
-        <div class="ug" id="adm-ugrid"></div>
-      </div>
-
-      <!-- Tab: Coach Dashboard -->
-      <div class="adm-pane" id="apane-coach">
-        <div class="coach-hdr">
-          <div class="coach-badge">📊 Coach View</div>
-          <div class="coach-ttl">All Members Progress</div>
-          <div class="coach-sub">Real-time overview of everyone's journey</div>
-          <div class="coach-stats">
-            <div class="cst"><div class="cst-v" id="c-total-users">0</div><div class="cst-l">Members</div></div>
-            <div class="cst"><div class="cst-v" id="c-logged-today">0</div><div class="cst-l">Logged Today</div></div>
-            <div class="cst"><div class="cst-v" id="c-avg-streak">0</div><div class="cst-l">Avg Streak</div></div>
-            <div class="cst"><div class="cst-v" id="c-on-track">0</div><div class="cst-l">On Track</div></div>
-          </div>
-        </div>
-        <!-- GitHub pull from shared repo -->
-        <div id="coach-gh-area"></div>
-        <!-- Member cards -->
-        <div id="coach-members"></div>
-      </div>
-
-      <!-- Tab: Settings -->
-      <div class="adm-pane" id="apane-settings">
-        <!-- GitHub Sync Settings (Admin-controlled, applies to ALL devices) -->
-        <div class="sett-sec">☁️ GitHub Cloud Sync — Coach Setup</div>
-        <div class="info-box" style="margin-bottom:14px">
-          <strong>📌 Setup sekali, berlaku semua device:</strong><br>
-          Coach setup token di sini → semua user sync ke repo yang sama → coach boleh monitor semua data dalam 1 file JSON.
-        </div>
-        <div id="adm-gh-status-area"></div>
-        <div class="card gap">
-          <h2 style="margin-bottom:4px">Connect Shared Repo</h2>
-          <div class="info-box">
-            <strong>Steps:</strong><br>
-            1. Create <strong>private</strong> repo: e.g. <code>azizmohamad/azizfit-data</code><br>
-            2. GitHub → Settings → Developer Settings → PAT → Tokens (classic)<br>
-            3. Generate token with <strong>repo</strong> scope<br>
-            4. Copy &amp; paste below, click Save
-          </div>
-          <div class="fg"><label class="fl">GitHub Repo (username/repo-name)</label><input type="text" class="fi fi-mono" id="adm-gh-repo" placeholder="e.g. azizmohamad/azizfit-data"></div>
-          <div class="fg"><label class="fl">Personal Access Token (PAT)</label><input type="password" class="fi fi-mono" id="adm-gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off"></div>
-          <div class="fg"><label class="fl">Branch</label><input type="text" class="fi fi-mono" id="adm-gh-branch" value="main"></div>
-          <div class="fg"><label class="fl">Filename in repo</label><input type="text" class="fi fi-mono" id="adm-gh-file" value="azizfit-data.json"></div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn btn-p btn-sm" onclick="saveAdmGHSettings()">Save & Test Connection</button>
-            <button class="btn btn-s btn-sm" onclick="ghSync()">☁️ Sync Now</button>
-            <button class="btn btn-d btn-sm" onclick="clearGHSettings()">✕ Disconnect</button>
-          </div>
-          <div style="font-size:12px;color:var(--ctm);margin-top:8px" id="adm-gh-last-sync"></div>
-        </div>
-
-        <div class="sett-sec">🔑 Security</div>
-        <div class="sett-row" onclick="changeAdminPin()"><div class="sett-rl"><span class="sett-ico">🔑</span><span class="sett-lbl">Change Admin PIN</span></div><span style="color:var(--ctm)">→</span></div>
-        <div class="sett-row" onclick="S.adminUnlocked=false;go('today')"><div class="sett-rl"><span class="sett-ico">🔒</span><span class="sett-lbl">Lock Admin &amp; Back to App</span></div><span style="color:var(--ctm)">→</span></div>
-      </div>
-
-    </div>
-
-      <!-- PANDUAN -->
-    <div class="page" id="page-panduan">
-      <div class="pg-ttl">📖 Panduan</div>
-      <div class="pg-sub">Cara bancuh &amp; guna produk dengan betul</div>
-      <div class="card gap">
-        <h2>💧 Tips Minum Air Banyak</h2>
-        <img src="images/Tips_Minum_Air.png" style="width:100%;border-radius:12px;display:block" alt="Tips Minum Air">
-      </div>
-      <div class="card gap">
-        <h2>🥤 Cara Bancuh Shake F1</h2>
-        <img src="images/Cara_bancuh_Formula_1.png" style="width:100%;border-radius:12px;display:block" alt="Cara Bancuh Shake F1">
-      </div>
-      <div class="card">
-        <h2>🌿 Cara Guna Aloe &amp; Teamix</h2>
-        <img src="images/Cara_Bancuh_Teamix.png" style="width:100%;border-radius:12px;display:block" alt="Cara Guna Aloe Teamix">
-      </div>
-    </div>
-
-</div><!-- /content -->
+  </div><!-- /content -->
 
   <nav id="bnav">
     <div class="bn-inner">
