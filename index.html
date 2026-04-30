@@ -35,10 +35,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 input,select,textarea{font-family:inherit}
 img{max-width:100%}
 
-/* ── SPLASH / LOADING ── */
-#splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;background:linear-gradient(160deg,rgba(20,83,45,.88) 0%,rgba(22,163,74,.85) 55%,rgba(34,197,94,.82) 100%),url(images/background.png);background-size:cover;background-position:center;overflow:hidden}
+/* SPLASH */
+#splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(160deg,rgba(20,83,45,.92) 0%,rgba(22,163,74,.88) 55%,rgba(34,197,94,.85) 100%),url(images/background.png);background-size:cover;background-position:center;overflow:hidden}
 #splash::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,.04);top:-180px;right:-160px}
-#splash::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05);bottom:-100px;left:-80px}
 .sp-icon{width:90px;height:90px;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:46px;margin-bottom:20px;border:2px solid rgba(255,255,255,.25);animation:spico 1s cubic-bezier(.34,1.56,.64,1)}
 @keyframes spico{from{opacity:0;transform:scale(.6) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .sp-title{font-family:var(--fd);font-size:38px;font-weight:700;color:#fff;animation:spup .7s .15s cubic-bezier(.4,0,.2,1) both}
@@ -53,9 +52,6 @@ img{max-width:100%}
 .sp-sync-badge.show{display:flex}
 #splash.hide{animation:spfade .5s ease forwards}
 @keyframes spfade{to{opacity:0;pointer-events:none}}
-
-/* FILE:// BANNER */
-#fbanner{display:none;background:#fef3c7;border-bottom:2px solid #f59e0b;padding:10px 16px;font-size:13px;color:#92400e;text-align:center;font-weight:600;position:fixed;top:0;left:0;right:0;z-index:9998}
 
 /* ONBOARDING */
 #onboarding{position:fixed;inset:0;background:var(--cpfa);z-index:8000;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
@@ -83,25 +79,13 @@ img{max-width:100%}
 .sb-logo-ico{width:40px;height:40px;background:linear-gradient(135deg,var(--cpd),var(--cpl));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .sb-logo-t{font-family:var(--fd);font-size:20px;font-weight:700;color:var(--cpd);line-height:1}
 .sb-logo-s{font-size:11px;color:var(--ctm);margin-top:2px}
-.sb-usr{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--cpfa);border-radius:var(--rs);border:1px solid var(--cbr);margin-bottom:8px;cursor:pointer;transition:var(--tr)}
+.sb-usr{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--cpfa);border-radius:var(--rs);border:1px solid var(--cbr);margin-bottom:8px;cursor:pointer;transition:var(--tr);text-decoration:none}
 .sb-usr:hover{background:var(--cppa)}
 .sb-av{width:32px;height:32px;border-radius:50%;background:var(--cp);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;overflow:hidden;color:#fff;font-weight:700}
 .sb-av img{width:100%;height:100%;object-fit:cover}
 .sb-unm{font-size:13px;font-weight:700;color:var(--cpd)}
 .sb-usw{font-size:10px;color:var(--ctm)}
-/* GitHub sync pill in sidebar */
-.sb-sync{display:flex;align-items:center;gap:7px;padding:7px 12px;border-radius:var(--rs);font-size:12px;font-weight:600;cursor:pointer;transition:var(--tr);margin-bottom:6px;border:1px solid var(--cbr)}
-.sb-sync.ok{background:#f0fdf4;color:var(--cp);border-color:var(--cbr)}
-.sb-sync.na{background:#fff7ed;color:var(--cor);border-color:#fed7aa}
-.sb-sync.err{background:#fef2f2;color:var(--cred);border-color:#fecaca}
-.sb-sync.syncing{background:var(--cpfa);color:var(--ctm);border-color:var(--cbr)}
-.sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.ok .sync-dot{background:var(--cp);animation:sdpulse 2s infinite}
-.na .sync-dot{background:var(--cor)}
-.err .sync-dot{background:var(--cred)}
-.syncing .sync-dot{background:var(--ctm);animation:sdpulse .6s infinite}
-@keyframes sdpulse{0%,100%{opacity:1}50%{opacity:.3}}
-.nav-it{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:var(--rs);cursor:pointer;font-size:14px;font-weight:500;color:var(--ctm);transition:var(--tr);user-select:none}
+.nav-it{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:var(--rs);cursor:pointer;font-size:14px;font-weight:500;color:var(--ctm);transition:var(--tr);user-select:none;text-decoration:none}
 .nav-it:hover{background:var(--cpfa);color:var(--cp)}
 .nav-it.act{background:var(--cppa);color:var(--cp);font-weight:700}
 .nav-it .ico{font-size:18px;width:22px;text-align:center}
@@ -135,10 +119,9 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 
 /* GRIDS */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media(max-width:900px){.g4{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+@media(max-width:900px){.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.g2,.g4{grid-template-columns:1fr}}
 .gap{margin-bottom:18px}
 
 /* BUTTONS */
@@ -148,7 +131,6 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 .btn-s{background:var(--cppa);color:var(--cp)}
 .btn-s:hover{background:var(--cpfa)}
 .btn-d{background:#fee2e2;color:var(--cred)}
-.btn-d:hover{background:#fecaca}
 .btn-sm{padding:7px 14px;font-size:13px}
 .btn-lg{padding:14px 28px;font-size:16px;border-radius:var(--r)}
 .btn-w{width:100%}
@@ -158,24 +140,6 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 .fl{display:block;font-size:13px;font-weight:700;color:var(--ct2);margin-bottom:5px}
 .fi{width:100%;padding:10px 13px;border:2px solid var(--cbr);border-radius:var(--rs);font-size:15px;color:var(--ct);background:var(--cc);transition:var(--tr);outline:none}
 .fi:focus{border-color:var(--cpl);box-shadow:0 0 0 4px rgba(34,197,94,.12)}
-.fi-sm{padding:8px 11px;font-size:14px}
-.fi-mono{font-family:monospace;font-size:13px;letter-spacing:.02em}
-
-/* GitHub sync status card */
-.gh-status-card{background:var(--cpfa);border:1px solid var(--cbr);border-radius:var(--rs);padding:14px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.gh-sc-l{display:flex;align-items:center;gap:10px}
-.gh-sc-ico{font-size:20px}
-.gh-sc-ttl{font-size:14px;font-weight:700;color:var(--cpd)}
-.gh-sc-sub{font-size:12px;color:var(--ctm);margin-top:2px}
-.gh-chip{padding:4px 10px;border-radius:99px;font-size:11px;font-weight:700}
-.gh-chip-ok{background:var(--cppa);color:var(--cp)}
-.gh-chip-na{background:#fff7ed;color:var(--cor)}
-.gh-chip-err{background:#fee2e2;color:var(--cred)}
-
-/* PIN */
-.pin-wrap{display:flex;gap:12px;justify-content:center;margin:20px 0}
-.pin-d{width:52px;height:60px;border:2px solid var(--cbr);border-radius:var(--rs);font-family:var(--fd);font-size:28px;font-weight:700;text-align:center;color:var(--cpd);outline:none;background:var(--cpfa);transition:var(--tr)}
-.pin-d:focus{border-color:var(--cp);box-shadow:0 0 0 4px rgba(34,197,94,.12)}
 
 /* DASHBOARD */
 .dash-hdr{background:linear-gradient(135deg,var(--cpd) 0%,var(--cp) 100%);border-radius:var(--r);padding:26px 28px;color:#fff;margin-bottom:18px;position:relative;overflow:hidden}
@@ -263,9 +227,8 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 .bmi-ob{color:var(--cred);background:#fee2e2}
 .bmi-uw{color:var(--cbl);background:#eff6ff}
 .bdg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:12px}
-.bdg-it{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;background:var(--cpfa);border-radius:var(--rs);border:2px solid var(--cbr);text-align:center;transition:var(--tr)}
-.bdg-it.earn{background:var(--cppa);border-color:var(--cpl);animation:bpop .5s ease}
-@keyframes bpop{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+.bdg-it{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 8px;background:var(--cpfa);border-radius:var(--rs);border:2px solid var(--cbr);text-align:center}
+.bdg-it.earn{background:var(--cppa);border-color:var(--cpl)}
 .bdg-em{font-size:28px}
 .bdg-it:not(.earn) .bdg-em{filter:grayscale(1) opacity(.35)}
 .bdg-nm{font-size:11px;font-weight:700;color:var(--ct2)}
@@ -277,7 +240,7 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 .wk-dot.full{background:var(--cp);color:#fff}
 .wk-dot.today{border:2px solid var(--cp)}
 
-/* PROFILE/SETTINGS */
+/* PROFILE */
 .prof-hero{display:flex;align-items:center;gap:18px;padding:22px 24px;background:linear-gradient(135deg,var(--cpd),var(--cp));border-radius:var(--r);color:#fff;margin-bottom:18px}
 .prof-ph-wrap{position:relative;flex-shrink:0}
 .prof-ph{width:78px;height:78px;border-radius:50%;border:3px solid rgba(255,255,255,.5);background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:30px;overflow:hidden}
@@ -294,68 +257,8 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 .toggle.on::after{left:23px}
 .sett-sec{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ctm);margin:18px 0 8px}
 
-/* ADMIN */
-.adm-banner{background:linear-gradient(135deg,#1e1b4b,#4338ca);border-radius:var(--r);padding:22px 24px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden}
-.adm-banner::before{content:'';position:absolute;top:-30%;right:-5%;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06)}
-.adm-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:10px}
-.adm-ttl{font-family:var(--fd);font-size:26px;font-weight:700;margin-bottom:4px}
-.adm-sub{font-size:13px;opacity:.8}
-.ug{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:18px}
-.uc{background:var(--cc);border:2px solid var(--cbr);border-radius:var(--r);padding:16px;position:relative;transition:var(--tr)}
-.uc.active-u{border-color:var(--cp);background:var(--cpfa)}
-.uc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.uc-av{width:48px;height:48px;border-radius:50%;background:var(--cp);display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden;flex-shrink:0;border:2px solid var(--cppa);color:#fff;font-weight:700}
-.uc-av img{width:100%;height:100%;object-fit:cover}
-.uc-nm{font-weight:700;font-size:15px;color:var(--cpd)}
-.uc-inf{font-size:12px;color:var(--ctm);margin-top:2px}
-.uc-tag{position:absolute;top:10px;right:10px;background:var(--cp);color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;text-transform:uppercase;letter-spacing:.05em}
-.uc-stats{display:flex;gap:10px;margin-bottom:12px;padding:10px;background:var(--cpfa);border-radius:var(--rs)}
-.uc-stat{flex:1;text-align:center}
-.uc-sv{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--cpd)}
-.uc-sl{font-size:10px;color:var(--ctm);font-weight:600}
-.uc-acts{display:flex;gap:8px;flex-wrap:wrap}
-.add-usr-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;background:var(--cpfa);border:2px dashed var(--cbr);border-radius:var(--r);cursor:pointer;color:var(--ctm);font-size:14px;font-weight:700;transition:var(--tr);width:100%}
-.add-usr-btn:hover{border-color:var(--cp);color:var(--cp);background:var(--cppa)}
-
-/* ADMIN TABS */
-.adm-tabs{display:flex;gap:6px;margin-bottom:20px;background:var(--cpfa);padding:5px;border-radius:var(--rs);border:1px solid var(--cbr)}
-.adm-tab{flex:1;padding:9px 8px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;text-align:center;transition:var(--tr);color:var(--ctm);border:none;background:none}
-.adm-tab.act{background:var(--cc);color:var(--cpd);box-shadow:var(--sh)}
-.adm-pane{display:none}
-.adm-pane.act{display:block}
-
-/* COACH DASHBOARD */
-.coach-hdr{background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:var(--r);padding:20px 22px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden}
-.coach-hdr::before{content:'';position:absolute;top:-30%;right:-5%;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)}
-.coach-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:8px}
-.coach-ttl{font-family:var(--fd);font-size:22px;font-weight:700;margin-bottom:3px}
-.coach-sub{font-size:13px;opacity:.75}
-.coach-stats{display:flex;gap:18px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15)}
-.cst{text-align:center}
-.cst-v{font-family:var(--fd);font-size:22px;font-weight:700}
-.cst-l{font-size:10px;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
-/* Per-user monitoring card */
-.mon-card{background:var(--cc);border:1px solid var(--cbr);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--sh);transition:var(--tr)}
-.mon-card:hover{box-shadow:var(--sm);border-color:var(--cpl)}
-.mon-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.mon-av{width:44px;height:44px;border-radius:50%;background:var(--cp);display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;flex-shrink:0;border:2px solid var(--cppa);color:#fff;font-weight:700}
-.mon-av img{width:100%;height:100%;object-fit:cover}
-.mon-nm{font-weight:700;font-size:15px;color:var(--cpd)}
-.mon-inf{font-size:12px;color:var(--ctm);margin-top:2px}
-.mon-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px}
-@media(max-width:600px){.mon-stats{grid-template-columns:repeat(3,1fr)}}
-.mon-stat{background:var(--cpfa);border-radius:var(--rs);padding:10px 8px;text-align:center;border:1px solid var(--cbr)}
-.mon-sv{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--cpd);line-height:1}
-.mon-sl{font-size:10px;color:var(--ctm);font-weight:600;margin-top:3px}
-.mon-prog-bar{background:var(--cppa);border-radius:99px;height:6px;overflow:hidden;margin-bottom:4px}
-.mon-prog-fill{height:100%;background:linear-gradient(90deg,var(--cp),var(--cpl));border-radius:99px;transition:width .6s ease}
-.mon-prog-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--ctm)}
-.mon-last{font-size:11px;color:var(--ctm);margin-top:8px;padding-top:8px;border-top:1px solid var(--cbr)}
-/* Coach sync setup */
-.gh-adm-setup{background:var(--cpfa);border:1px solid var(--cbr);border-radius:var(--r);padding:16px;margin-bottom:16px}
-.gh-adm-connected{background:var(--cppa);border:1px solid var(--cpl);border-radius:var(--r);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.gh-pull-btn{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff;border:none;border-radius:var(--rs);padding:11px 18px;font-size:14px;font-weight:700;cursor:pointer;width:100%;font-family:var(--fb);transition:var(--tr);margin-bottom:12px}
-.gh-pull-btn:hover{opacity:.9;transform:translateY(-1px)}
+/* GUIDE */
+.guide-img{width:100%;border-radius:12px;display:block}
 
 /* MODAL */
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.42);display:flex;align-items:flex-end;justify-content:center;z-index:3000;padding:16px;backdrop-filter:blur(4px);animation:fdi .2s ease}
@@ -387,11 +290,10 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 .empty-st{text-align:center;padding:38px 20px;color:var(--ctm)}
 .empty-ico{font-size:38px;margin-bottom:10px}
 .empty-txt{font-size:14px}
-.divider{height:1px;background:var(--cbr);margin:20px 0}
 .info-box{background:var(--cpfa);border:1px solid var(--cbr);border-radius:var(--rs);padding:14px 16px;font-size:13px;color:var(--ct2);line-height:1.7;margin-bottom:14px}
-.info-box strong{color:var(--cpd)}
+
 @media print{
-  #sidebar,#bnav,#fbanner,#splash{display:none!important}
+  #sidebar,#bnav{display:none!important}
   #content{margin-left:0!important}
   .page{display:block!important;padding:16px!important}
   body{background:#fff}
@@ -401,7 +303,7 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 </head>
 <body>
 
-<!-- SPLASH SCREEN -->
+<!-- SPLASH -->
 <div id="splash">
   <div class="sp-icon">⚖️</div>
   <div class="sp-title">My Fit</div>
@@ -412,8 +314,6 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
     <div class="sp-sync-badge" id="sp-sync-badge">☁️ Syncing from GitHub…</div>
   </div>
 </div>
-
-<div id="fbanner">⚠️ Buka via web server. Cuba: <strong>npx serve .</strong> atau upload ke Netlify / GitHub Pages</div>
 
 <!-- ONBOARDING -->
 <div id="onboarding">
@@ -427,7 +327,7 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
     <div class="ob-step" id="obs2">
       <button class="ob-back" onclick="obBack()">← Back</button>
       <div class="ph-up" id="ob-ph-area" onclick="document.getElementById('ob-ph-inp').click()">📷<input type="file" id="ob-ph-inp" accept="image/*" style="display:none" onchange="handlePhoto(this,'ob')"></div>
-      <div class="fg"><label class="fl">Full Name</label><input type="text" class="fi" id="ob-name" placeholder="e.g. Aziz Mohamad" value="Aziz Mohamad"></div>
+      <div class="fg"><label class="fl">Full Name</label><input type="text" class="fi" id="ob-name" placeholder="e.g. Aziz Mohamad"></div>
       <div class="g2">
         <div class="fg"><label class="fl">Age</label><input type="number" class="fi" id="ob-age" placeholder="30"></div>
         <div class="fg"><label class="fl">Gender</label><select class="fi" id="ob-gen"><option value="male">Male</option><option value="female">Female</option></select></div>
@@ -474,18 +374,17 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
       <div class="sb-logo-ico">⚖️</div>
       <div><div class="sb-logo-t">My Fit</div><div class="sb-logo-s">crafted by Aziz Mohamad</div></div>
     </div>
-    <div class="sb-usr" id="sb-usr" onclick="showUserSwitcher()">
+    <a href="admin.html" class="sb-usr" id="sb-usr">
       <div class="sb-av" id="sb-av">A</div>
-      <div><div class="sb-unm" id="sb-unm">—</div><div class="sb-usw">Tap to switch user</div></div>
-    </div>
-
+      <div><div class="sb-unm" id="sb-unm">—</div><div class="sb-usw">Tap to go to Admin</div></div>
+    </a>
     <div class="nav-it act" id="snav-today" onclick="go('today')"><span class="ico">🏠</span>Today</div>
     <div class="nav-it" id="snav-checklist" onclick="go('checklist')"><span class="ico">✅</span>Checklist</div>
     <div class="nav-it" id="snav-food" onclick="go('food')"><span class="ico">🍽️</span>Food Log</div>
     <div class="nav-it" id="snav-progress" onclick="go('progress')"><span class="ico">📊</span>Progress</div>
     <div class="nav-it" id="snav-profile" onclick="go('profile')"><span class="ico">👤</span>Profile</div>
-    <div class="nav-it" id="snav-panduan" onclick="go('panduan')"><span class="ico">📖</span>Panduan</div>
-    <a href="admin.html" class="nav-it" style="text-decoration:none"><span class="ico">🔒</span>Admin</a>
+    <a href="admin.html" class="nav-it" id="snav-admin"><span class="ico">🔒</span>Admin</a>
+    <div class="nav-it" id="snav-guide" onclick="go('guide')"><span class="ico">📖</span>Guide</div>
     <div class="sb-streak"><div class="sb-stk-l">🔥 Current Streak</div><div class="sb-stk-v" id="sb-sv">0 days</div></div>
   </nav>
 
@@ -495,7 +394,7 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
     <div class="page act" id="page-today">
       <div class="dash-hdr">
         <div class="dh-gr" id="dh-gr">Good Morning</div>
-        <div class="dh-nm" id="dh-nm">Aziz! 👋</div>
+        <div class="dh-nm" id="dh-nm">👋</div>
         <div class="dh-dt" id="dh-dt"></div>
         <div class="dh-qt" id="dh-qt"></div>
       </div>
@@ -512,10 +411,10 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
           <div style="font-size:12px;color:var(--ctm);margin-top:8px">Target: <strong>2,000 kcal</strong></div>
           <div style="width:100%;margin-top:10px"><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--ctm);margin-bottom:4px"><span id="cal-rl">Remaining</span><span id="cal-rv">2,000 kcal</span></div><div class="pb-wrap"><div class="pb-fill" id="cal-pb" style="width:0%"></div></div></div>
         </div>
-        <div class="card"><div class="card-t">Today's Checklist</div><div style="font-family:var(--fd);font-size:34px;font-weight:700;color:var(--cpd)" id="d-clpct">0%</div><div style="font-size:13px;color:var(--ctm);margin-bottom:8px" id="d-clcnt">0 of 0 items done</div><div class="pb-wrap"><div class="pb-fill" id="d-clpb" style="width:0%"></div></div><button class="btn btn-s btn-sm" style="margin-top:12px;width:100%" onclick="go('checklist')">Open Checklist →</button></div>
+        <div class="card"><div class="card-t">Today's Checklist</div><div style="font-family:var(--fd);font-size:34px;font-weight:700;color:var(--cpd)" id="d-clpct">0%</div><div style="font-size:13px;color:var(--ctm);margin-bottom:8px" id="d-clcnt">0 of 0 done</div><div class="pb-wrap"><div class="pb-fill" id="d-clpb" style="width:0%"></div></div><button class="btn btn-s btn-sm" style="margin-top:12px;width:100%" onclick="go('checklist')">Open Checklist →</button></div>
       </div>
       <div class="g2 gap">
-        <div class="card"><div class="card-t">💧 Water Intake</div><div style="font-family:var(--fd);font-size:28px;font-weight:700;color:#3b82f6" id="d-wval">0L</div><div style="font-size:12px;color:var(--ctm);margin-bottom:10px">Target: 3–4L daily</div><div class="water-track" id="water-track"></div><div style="font-size:11px;color:var(--ctm);margin-top:8px">Tap a glass to log 500ml 💧</div><div style="margin-top:12px"><img src="images/Tips_Minum_Air.png" style="width:100%;border-radius:10px;cursor:pointer" onclick="go('panduan')" title="Tap to open guide" alt="Tips Air"></div></div>
+        <div class="card"><div class="card-t">💧 Water Intake</div><div style="font-family:var(--fd);font-size:28px;font-weight:700;color:#3b82f6" id="d-wval">0L</div><div style="font-size:12px;color:var(--ctm);margin-bottom:10px">Target: 3–4L daily</div><div class="water-track" id="water-track"></div><div style="font-size:11px;color:var(--ctm);margin-top:8px">Tap a glass to log 500ml 💧</div></div>
         <div class="card"><div class="card-t">⚖️ Log Weight</div><div style="font-size:13px;color:var(--ctm);margin-bottom:10px" id="d-winfo">No weight logged today</div><button class="lwb" onclick="openWM()">+ Log Today's Weight</button><div style="font-size:11px;color:var(--ctm);margin-top:8px;text-align:center">Best time: after waking up ☀️</div></div>
       </div>
     </div>
@@ -524,7 +423,7 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
     <div class="page" id="page-checklist">
       <div class="pg-ttl">Daily Checklist</div>
       <div class="pg-sub" id="cl-dlbl">Today's programme</div>
-      <div style="margin-bottom:16px"><img src="images/Daily_Checklist.png" style="width:100%;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.08)" alt="Daily Checklist Guide"></div>
+      <div style="margin-bottom:16px"><img src="images/Daily_Checklist.png" class="guide-img" alt="Daily Checklist Guide" onerror="this.style.display='none'"></div>
       <div id="cl-done-banner" class="cl-done-banner"><div style="font-size:32px">🎉</div><div style="font-family:var(--fd);font-size:22px;font-weight:700;margin:6px 0">Checklist Complete!</div><div style="font-size:14px;opacity:.9">Amazing work! You're on fire! 🔥</div></div>
       <div id="cl-container"></div>
       <button class="btn btn-s btn-sm" style="margin-top:4px" onclick="resetCL()">🔄 Reset Today's Checklist</button>
@@ -539,7 +438,7 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
         <div style="font-weight:800;font-size:15px;color:var(--cpd);margin-bottom:14px">+ Add Food / Drink</div>
         <div class="food-src-wrap"><label class="fl">Search Food (Malaysian DB)</label><input type="text" class="fi" id="f-src" placeholder="e.g. Nasi putih, Ayam bakar…" oninput="srcFood(this.value)" autocomplete="off"><div class="food-sugg" id="f-sugg"></div></div>
         <div class="g2" style="margin-top:12px"><div class="fg" style="margin-bottom:0"><label class="fl">Food Name</label><input type="text" class="fi" id="f-name" placeholder="Food name"></div><div class="fg" style="margin-bottom:0"><label class="fl">Calories (kcal)</label><input type="number" class="fi" id="f-cal" placeholder="e.g. 250" min="0"></div></div>
-        <div class="g2" style="margin-top:12px"><div class="fg" style="margin-bottom:0"><label class="fl">Meal</label><select class="fi" id="f-meal"><option value="Breakfast">🌅 Breakfast</option><option value="Snack 1">🍏 Snack 1</option><option value="Lunch" selected>🍛 Lunch</option><option value="Snack 2">🍌 Snack 2</option><option value="Dinner">🌙 Dinner/Evening</option><option value="Other">📝 Other</option></select></div><div class="fg" style="margin-bottom:0"><label class="fl">Amount</label><input type="text" class="fi" id="f-amt" placeholder="e.g. 1 cup, 200g"></div></div>
+        <div class="g2" style="margin-top:12px"><div class="fg" style="margin-bottom:0"><label class="fl">Meal</label><select class="fi" id="f-meal"><option value="Breakfast">🌅 Breakfast</option><option value="Snack 1">🍏 Snack 1</option><option value="Lunch" selected>🍛 Lunch</option><option value="Snack 2">🍌 Snack 2</option><option value="Dinner">🌙 Dinner</option><option value="Other">📝 Other</option></select></div><div class="fg" style="margin-bottom:0"><label class="fl">Amount</label><input type="text" class="fi" id="f-amt" placeholder="e.g. 1 cup, 200g"></div></div>
         <button class="btn btn-p btn-w" style="margin-top:14px" onclick="addFood()">Add to Log ✓</button>
       </div>
       <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><h2 style="margin-bottom:0">Today's Log</h2><div style="font-size:12px;color:var(--ctm)" id="f-cnt">0 entries</div></div><div id="f-list"><div class="empty-st"><div class="empty-ico">🍽️</div><div class="empty-txt">No food logged yet.</div></div></div></div>
@@ -559,7 +458,7 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
       <div class="card"><h2>Weekly Summary</h2><div id="wk-sum"><div class="empty-st"><div class="empty-txt">Log at least 2 days of weight to see summary.</div></div></div></div>
     </div>
 
-    <!-- PROFILE & SETTINGS -->
+    <!-- PROFILE -->
     <div class="page" id="page-profile">
       <div class="pg-ttl">Profile & Settings</div>
       <div class="prof-hero gap">
@@ -576,28 +475,30 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
           <div class="fg"><label class="fl">Current Weight (kg)</label><input type="number" class="fi" id="e-wt" placeholder="Weight" step="0.1"></div>
           <div class="fg"><label class="fl">Target Weight (kg)</label><input type="number" class="fi" id="e-tw" placeholder="Target" step="0.1"></div>
         </div>
-        <div style="font-size:12px;color:var(--ctm);margin-top:2px;display:flex;align-items:center;gap:6px" id="prof-save-status"><span>💾 Auto-saves on tab switch, app close, or 1-min idle</span></div>
+        <div style="font-size:12px;color:var(--ctm);margin-top:2px" id="prof-save-status">💾 Auto-saves on tab switch, app close, or 1-min idle</div>
       </div>
-
-      <!-- ══ GITHUB SYNC SECTION ══ -->
       <div class="sett-sec">🔔 Notifications</div>
       <div class="sett-row"><div class="sett-rl"><span class="sett-ico">🔔</span><span class="sett-lbl">Enable Daily Reminders</span></div><div class="toggle" id="notif-tog" onclick="togNotif()"></div></div>
-
       <div class="sett-sec">📤 Export & Backup</div>
       <div class="sett-row" onclick="expJSON()"><div class="sett-rl"><span class="sett-ico">💾</span><span class="sett-lbl">Export Data (JSON Backup)</span></div><span style="color:var(--ctm)">→</span></div>
       <div class="sett-row" onclick="document.getElementById('imp-inp').click()"><div class="sett-rl"><span class="sett-ico">📥</span><span class="sett-lbl">Import Data (JSON Restore)</span></div><span style="color:var(--ctm)">→</span></div>
       <div class="sett-row" onclick="expImg()"><div class="sett-rl"><span class="sett-ico">📸</span><span class="sett-lbl">Share Progress (Instagram)</span></div><span style="color:var(--ctm)">→</span></div>
       <div class="sett-row" onclick="expPDF()"><div class="sett-rl"><span class="sett-ico">📄</span><span class="sett-lbl">Export as PDF Report</span></div><span style="color:var(--ctm)">→</span></div>
-
       <div class="sett-sec">🔒 Admin</div>
-      <div class="sett-row" onclick="openAdmin()"><div class="sett-rl"><span class="sett-ico">🔒</span><span class="sett-lbl">Admin Panel (Multi-user)</span></div><span style="color:var(--ctm)">→</span></div>
-
+      <div class="sett-row" onclick="window.location.href='admin.html'"><div class="sett-rl"><span class="sett-ico">🔒</span><span class="sett-lbl">Admin Panel (Coach)</span></div><span style="color:var(--ctm)">→</span></div>
       <div class="sett-sec">⚠️ Danger Zone</div>
       <div class="sett-row" onclick="resetAll()"><div class="sett-rl"><span class="sett-ico">🗑️</span><span class="sett-lbl" style="color:var(--cred)">Reset All Data</span></div><span style="color:var(--ctm)">→</span></div>
       <div style="text-align:center;padding:22px 20px 8px;font-size:12px;color:var(--ctm)">© 2026 Aziz Mohamad<br>Power Dynamics Division</div>
     </div>
 
-
+    <!-- GUIDE -->
+    <div class="page" id="page-guide">
+      <div class="pg-ttl">📖 Guide</div>
+      <div class="pg-sub">How to use your products correctly</div>
+      <div class="card gap"><h2>💧 Tips Minum Air Banyak</h2><img src="images/Tips_Minum_Air.png" class="guide-img" alt="Tips Minum Air" onerror="this.style.display='none'"></div>
+      <div class="card gap"><h2>🥤 Cara Bancuh Shake F1</h2><img src="images/Cara_bancuh_Formula_1.png" class="guide-img" alt="Cara Bancuh Shake F1" onerror="this.style.display='none'"></div>
+      <div class="card"><h2>🌿 Cara Guna Aloe &amp; Teamix</h2><img src="images/Cara_Bancuh_Teamix.png" class="guide-img" alt="Cara Guna Aloe Teamix" onerror="this.style.display='none'"></div>
+    </div>
 
   </div><!-- /content -->
 
@@ -614,9 +515,11 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 
 <div id="toast-c"></div>
 <input type="file" id="imp-inp" accept=".json" style="display:none" onchange="handleImpJSON(this)">
+
+<!-- Share card for html2canvas -->
 <div id="share-card" style="position:fixed;top:-9999px;left:0;width:380px;padding:30px;background:linear-gradient(135deg,#14532d,#16a34a);color:#fff;font-family:sans-serif;border-radius:24px">
   <div style="font-size:36px;text-align:center;margin-bottom:10px">⚖️</div>
-  <div style="font-size:26px;font-weight:800;text-align:center;margin-bottom:3px" id="sc-name">Aziz</div>
+  <div style="font-size:26px;font-weight:800;text-align:center;margin-bottom:3px" id="sc-name">—</div>
   <div style="font-size:12px;text-align:center;opacity:.75;margin-bottom:18px" id="sc-date"></div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
     <div style="background:rgba(255,255,255,.15);border-radius:12px;padding:14px;text-align:center"><div style="font-size:26px;font-weight:800" id="sc-wt">—</div><div style="font-size:10px;opacity:.8">WEIGHT (kg)</div></div>
@@ -628,12 +531,9 @@ h2{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--cpd);margin-
 </div>
 
 <script>
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // CONSTANTS
-// ═══════════════════════════════════════════════
-if(typeof DEFAULT_GH_REPO==='undefined') var DEFAULT_GH_REPO='';
-if(typeof DEFAULT_GH_TOKEN==='undefined') var DEFAULT_GH_TOKEN='';
-if(typeof DEFAULT_GH_BRANCH==='undefined') var DEFAULT_GH_BRANCH='main';
+// ═══════════════════════════════════════════════════════
 const CAL_TARGET=2000,WATER_GLASSES=8;
 const TODAY=()=>new Date().toISOString().split('T')[0];
 const DEFAULT_ADMIN_PIN='1211';
@@ -652,55 +552,56 @@ const CL_SECTIONS=[
   {id:'evening',emoji:'🌙',label:'Evening Routine',time:'8:00pm',
    items:[{id:'e1',label:'Aloe Vera 100ml',cal:10},{id:'e2',label:'TeaMix Lemon 500ml',cal:15},{id:'e3',label:'Shake F1 – 5 scoops',cal:250}]}
 ];
+
 const AVOID=['Sugary drinks (Air manis)','Kuih','Instant noodles (Maggi)','Keropok','Jajan / Junk food','Biskut','White bread (Roti putih)','Red meat (too often)','Processed food (fishball, nuggets)'];
 const COOK=['🍲 Sup (Soup)','🫕 Rebus (Boiled)','🥣 Stim (Steamed)','🔥 Bakar (Grilled)','🐟 Singgang','🌶️ Tomyam','🍛 Kari tanpa santan','🍋 Asam rebus'];
 
-// ── FOOD DATABASE ──
-// To add more: copy pattern {n:'Food name',c:calories}
-// Calories reference: https://cronometer.com or https://fatsecret.com.my
 const FOOD_DB=[
-  // Herbalife
   {n:'Shake F1 (5 scoops)',c:250},{n:'Aloe Vera 100ml',c:10},{n:'TeaMix Lemon 500ml',c:15},
-  // Nasi & carbs
   {n:'Nasi putih (1 cup)',c:200},{n:'Nasi putih (2 cups)',c:400},{n:'Nasi putih (3 cups)',c:600},
   {n:'Roti wholemeal (1 keping)',c:70},{n:'Roti wholemeal (2 keping)',c:140},{n:'Oatmeal (1 cup)',c:150},
-  {n:'Mee kuning (1 cup)',c:220},{n:'Bihun (1 cup)',c:190},{n:'Kuey teow (1 cup)',c:210},
-  // Protein
+  {n:'Mee kuning (1 cup)',c:220},{n:'Bihun (1 cup)',c:190},
   {n:'Dada ayam (1 ketul)',c:165},{n:'Dada ayam (2 ketul)',c:330},{n:'Ayam kampung (1 ketul)',c:180},
   {n:'Ikan kembung (1 ekor)',c:110},{n:'Ikan siakap (1 ekor)',c:130},{n:'Ikan (2 ekor)',c:260},
   {n:'Putih telur (1 biji)',c:17},{n:'Putih telur (6 biji)',c:102},{n:'Telur rebus (1 biji)',c:78},
   {n:'Telur goreng (1 biji)',c:100},{n:'Tuna (1 tin)',c:120},{n:'Salmon (100g)',c:206},{n:'Udang (100g)',c:99},
-  // Sayur
   {n:'Sayur tumis (1 cup)',c:50},{n:'Ulam (1 cup)',c:20},{n:'Sup sayur (1 cup)',c:40},
   {n:'Salad (1 bowl)',c:35},{n:'Bayam rebus (1 cup)',c:41},{n:'Kailan (1 cup)',c:45},{n:'Kobis (1 cup)',c:22},
-  // Buah
   {n:'Epal hijau (1 biji)',c:55},{n:'Epal hijau (2 biji)',c:110},{n:'Epal hijau (3 biji)',c:165},
   {n:'Pisang berangan (1 biji)',c:65},{n:'Pisang berangan (3 biji)',c:195},
   {n:'Tembikai (1 cup)',c:46},{n:'Betik (1 cup)',c:54},{n:'Oren (1 biji)',c:62},{n:'Anggur (1 cup)',c:62},
   {n:'Mangga (1 biji)',c:99},{n:'Jambu batu (1 biji)',c:37},
-  // Snack sihat
   {n:'Peanut butter (1 sudu)',c:95},{n:'Badam (10 biji)',c:70},{n:'Badam (20-30 biji)',c:140},
   {n:'Kacang walnut (30g)',c:196},{n:'Greek yogurt (1 cup)',c:130},
-  // Minuman
   {n:'Air kosong (500ml)',c:0},{n:'Air kosong (1L)',c:0},{n:'Kopi O kosong',c:5},{n:'Teh O kosong',c:5},
   {n:'Air kelapa muda',c:45},{n:'Milo O ais',c:60},{n:'Susu soya (1 cup)',c:80},
-  // Malaysian food
   {n:'Nasi goreng biasa',c:520},{n:'Nasi goreng ayam',c:570},{n:'Mee goreng biasa',c:440},
   {n:'Nasi lemak (1 bungkus)',c:550},{n:'Nasi lemak ayam',c:650},{n:'Roti canai kosong',c:300},
   {n:'Roti canai telur',c:380},{n:'Char kuey teow',c:480},{n:'Laksa (1 mangkuk)',c:420},
   {n:'Tomyam ayam (1 mangkuk)',c:180},{n:'Tomyam campur (1 mangkuk)',c:220},
   {n:'Ikan bakar (1 ekor)',c:200},{n:'Ayam bakar (1 ketul)',c:180},{n:'Sup ayam (1 mangkuk)',c:150},
   {n:'Sup tulang (1 mangkuk)',c:200},{n:'Asam pedas ikan',c:160},{n:'Rendang ayam (1 ketul)',c:280},
-  {n:'Sayur lodeh (1 cup)',c:80},{n:'Masak lemak ikan (1 cup)',c:180},
-  {n:'Nasi kerabu (1 pinggan)',c:450},{n:'Lontong (1 pinggan)',c:380},{n:'Bubur ayam (1 mangkuk)',c:200},
+  {n:'Sayur lodeh (1 cup)',c:80},{n:'Nasi kerabu (1 pinggan)',c:450},{n:'Bubur ayam (1 mangkuk)',c:200},
 ];
 
 const QUOTES=["Your body can do it. It's your mind you need to convince.","Small daily improvements lead to stunning results.","Discipline is choosing between what you want now and what you want most.","Every workout is progress. Every healthy meal is a victory.","The only bad workout is the one that didn't happen.","Take care of your body. It's the only place you have to live.","Push yourself because no one else is going to do it for you.","Success starts with self-discipline.","Your health is an investment, not an expense.","One day at a time. One meal at a time. One step at a time.","Believe in yourself and all that you are.","The secret of getting ahead is getting started.","Wake up with determination. Go to bed with satisfaction.","You didn't come this far to only come this far.","A year from now you'll wish you had started today.","Don't stop when you're tired. Stop when you're done.","The groundwork for all happiness is good health.","It always seems impossible until it's done.","Strive for progress, not perfection.","Your future self will thank you for what you're doing today.","Energy and persistence conquer all things.","Stay consistent. Results will come.","Sweat is just fat crying.","Make yourself proud.","Strong is the new beautiful.","Eat better. Feel better. Be better.","Every day is a chance to get better.","You are what you eat — don't be fast, cheap or fake.","Good things come to those who work for them.","The pain you feel today will be the strength you feel tomorrow."];
-const BADGES_DEF=[{id:'first_log',e:'⚖️',n:'First Step',d:'Log weight for the first time'},{id:'streak_3',e:'🔥',n:'3-Day Streak',d:'3 consecutive days logged'},{id:'streak_7',e:'💎',n:'Week Warrior',d:'7-day streak'},{id:'streak_30',e:'👑',n:'Month Master',d:'30-day streak!'},{id:'cl_done',e:'✅',n:'Perfect Day',d:'Complete full daily checklist'},{id:'water_4l',e:'💧',n:'Hydration Hero',d:'Drink 4L water in a day'},{id:'cal_tgt',e:'🎯',n:'On Target',d:'Hit the 2000 kcal target'},{id:'wt_goal',e:'🏆',n:'Goal Crusher',d:'Reach your target weight'},{id:'5kg',e:'🥇',n:'5kg Down',d:'Lose your first 5kg'},{id:'food_7',e:'📝',n:'Food Tracker',d:'Log food for 7 days'},];
 
-// ═══════════════════════════════════════════════
+const BADGES_DEF=[
+  {id:'first_log',e:'⚖️',n:'First Step',d:'Log weight for the first time'},
+  {id:'streak_3',e:'🔥',n:'3-Day Streak',d:'3 consecutive days logged'},
+  {id:'streak_7',e:'💎',n:'Week Warrior',d:'7-day streak'},
+  {id:'streak_30',e:'👑',n:'Month Master',d:'30-day streak!'},
+  {id:'cl_done',e:'✅',n:'Perfect Day',d:'Complete full daily checklist'},
+  {id:'water_4l',e:'💧',n:'Hydration Hero',d:'Drink 4L water in a day'},
+  {id:'cal_tgt',e:'🎯',n:'On Target',d:'Hit the 2000 kcal target'},
+  {id:'wt_goal',e:'🏆',n:'Goal Crusher',d:'Reach your target weight'},
+  {id:'5kg',e:'🥇',n:'5kg Down',d:'Lose your first 5kg'},
+  {id:'food_7',e:'📝',n:'Food Tracker',d:'Log food for 7 days'},
+];
+
+// ═══════════════════════════════════════════════════════
 // INDEXEDDB v4
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 let DB;
 async function initDB(){
   return new Promise((res,rej)=>{
@@ -714,7 +615,7 @@ async function initDB(){
       if(!d.objectStoreNames.contains('users')) d.createObjectStore('users',{keyPath:'id',autoIncrement:true});
       if(!d.objectStoreNames.contains('food')){
         const fs=d.createObjectStore('food',{keyPath:'id',autoIncrement:true});
-        fs.createIndex('userId','userId');fs.createIndex('date','date');
+        fs.createIndex('userId','userId'); fs.createIndex('date','date');
       }
     };
   });
@@ -726,181 +627,93 @@ const userAdd=v=>new Promise((res,rej)=>{const r=DB.transaction('users','readwri
 const userPut=v=>new Promise((res,rej)=>{const r=DB.transaction('users','readwrite').objectStore('users').put(v);r.onsuccess=()=>res(v);r.onerror=()=>rej(r.error)});
 const userGet=id=>new Promise((res,rej)=>{const r=DB.transaction('users','readonly').objectStore('users').get(id);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
 const userAll=()=>new Promise((res,rej)=>{const r=DB.transaction('users','readonly').objectStore('users').getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
-const userDel=id=>new Promise((res,rej)=>{const r=DB.transaction('users','readwrite').objectStore('users').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)});
 const foodAdd=v=>new Promise((res,rej)=>{const r=DB.transaction('food','readwrite').objectStore('food').add(v);r.onsuccess=()=>{v.id=r.result;res(v)};r.onerror=()=>rej(r.error)});
 const foodAll=()=>new Promise((res,rej)=>{const r=DB.transaction('food','readonly').objectStore('food').getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
 const foodDel=id=>new Promise((res,rej)=>{const r=DB.transaction('food','readwrite').objectStore('food').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)});
 async function wtsGet(uid){return(await kvGet('wts_'+uid)||[]).sort((a,b)=>a.date.localeCompare(b.date))}
-async function wtsSave(uid,date,weight){let wts=await kvGet('wts_'+uid)||[];wts=wts.filter(w=>w.date!==date);wts.push({date,weight,time:new Date().toISOString()});wts.sort((a,b)=>a.date.localeCompare(b.date));await kvSet('wts_'+uid,wts);return wts}
+async function wtsSave(uid,date,weight){
+  let wts=await kvGet('wts_'+uid)||[];
+  wts=wts.filter(w=>w.date!==date);
+  wts.push({date,weight,time:new Date().toISOString()});
+  wts.sort((a,b)=>a.date.localeCompare(b.date));
+  await kvSet('wts_'+uid,wts);
+  return wts;
+}
 
-// ═══════════════════════════════════════════════
-// GITHUB SYNC
-// ═══════════════════════════════════════════════
-let GH={repo:'',token:'',branch:'main',file:'azizfit-data.json'};
+// ═══════════════════════════════════════════════════════
+// GITHUB SYNC — per-user data/<name>.json
+// ═══════════════════════════════════════════════════════
+let GH={repo:'',token:'',branch:'main'};
 let ghSyncTimer=null;
 
-async function loadGHSettings(){
-  const s=await kvGet('ghSettings');if(!s)return;
-  GH={repo:s.repo||'',token:s.token||'',branch:s.branch||'main',file:s.file||'azizfit-data.json'};
-  const ri=document.getElementById('gh-repo');if(ri)ri.value=GH.repo;
-  const ti=document.getElementById('gh-token');if(ti)ti.value=GH.token;
-  const bi=document.getElementById('gh-branch');if(bi)bi.value=GH.branch;
-  const fi=document.getElementById('gh-file');if(fi)fi.value=GH.file;
-  updGHStatus();
+function ghUserFile(){
+  const nm=(S.profile&&S.profile.name?S.profile.name:'unknown')
+    .toLowerCase().replace(/[^a-z0-9]/g,'_').replace(/_+/g,'_').replace(/^_|_$/g,'');
+  return 'data/'+nm+'.json';
 }
 
-async function saveGHSettings(){
-  GH.repo=(document.getElementById('gh-repo').value||'').trim();
-  GH.token=(document.getElementById('gh-token').value||'').trim();
-  GH.branch=(document.getElementById('gh-branch').value||'main').trim();
-  GH.file=(document.getElementById('gh-file').value||'azizfit-data.json').trim();
-  if(!GH.repo||!GH.token){toast('❌ Please enter repo and token!');return}
-  await kvSet('ghSettings',{repo:GH.repo,token:GH.token,branch:GH.branch,file:GH.file});
-  toast('⏳ Testing connection…');updGHStatus('syncing');
-  const ok=await ghTestConnection();
-  if(ok){toast('✅ GitHub connected! Syncing now…');await ghSync()}
-  else toast('❌ Connection failed. Check repo name and token.');
-}
-
-async function clearGHSettings(){
-  if(!confirm('Disconnect GitHub sync?'))return;
-  await kvDel('ghSettings');GH={repo:'',token:'',branch:'main',file:'azizfit-data.json'};
-  document.getElementById('gh-repo').value='';document.getElementById('gh-token').value='';
-  if(ghSyncTimer){clearInterval(ghSyncTimer);ghSyncTimer=null}
-  updGHStatus();toast('🔌 GitHub disconnected');
-}
-
-async function ghTestConnection(){
-  if(!GH.repo||!GH.token)return false;
-  try{
-    const r=await fetch(`https://api.github.com/repos/${GH.repo}`,{headers:{Authorization:`token ${GH.token}`,Accept:'application/vnd.github.v3+json'}});
-    return r.ok;
-  }catch{return false}
-}
-
-async function collectAllData(){
-  const users=await userAll(),allFood=await foodAll(),weightsData={};
-  for(const u of users)weightsData[u.id]=await kvGet('wts_'+u.id)||[];
-  return{version:'1.2',exportDate:new Date().toISOString(),activeUser:S.uid,users,food:allFood,weights:weightsData};
+async function collectUserData(uid){
+  const user=await userGet(uid);
+  const wts=await kvGet('wts_'+uid)||[];
+  const allFood=await foodAll();
+  const food=allFood.filter(f=>f.userId===uid);
+  const badges=await kvGet('badges_'+uid)||[];
+  return{version:'1.3',exportDate:new Date().toISOString(),userId:uid,user,weights:wts,food,badges};
 }
 
 async function ghSync(){
-  if(!GH.repo||!GH.token){toast('☁️ GitHub not set up. Configure in Settings.');return}
-  updGHStatus('syncing');const sbSync=document.getElementById('sb-sync');if(sbSync){sbSync.className='sb-sync syncing';document.getElementById('sb-sync-txt').textContent='Syncing…'}
+  if(!GH.repo||!GH.token) return;
   try{
-    const data=await collectAllData();
-    const content=btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2))));
-    const fileUrl=`https://api.github.com/repos/${GH.repo}/contents/${GH.file}`;
-    // Get SHA if file exists
+    const userData=await collectUserData(S.uid);
+    const content=btoa(unescape(encodeURIComponent(JSON.stringify(userData,null,2))));
+    const userFile=ghUserFile();
+    const fileUrl=`https://api.github.com/repos/${GH.repo}/contents/${userFile}`;
     let sha=null;
     try{const sr=await fetch(fileUrl,{headers:{Authorization:`token ${GH.token}`,Accept:'application/vnd.github.v3+json'}});if(sr.ok){const sd=await sr.json();sha=sd.sha}}catch{}
-    // Commit
-    const body={message:`MyFit sync ${new Date().toISOString().slice(0,10)}`,content,branch:GH.branch};
-    if(sha)body.sha=sha;
+    const body={message:`MyFit sync ${S.profile?S.profile.name:'user'} ${new Date().toISOString().slice(0,10)}`,content,branch:GH.branch};
+    if(sha) body.sha=sha;
     const cr=await fetch(fileUrl,{method:'PUT',headers:{Authorization:`token ${GH.token}`,'Content-Type':'application/json',Accept:'application/vnd.github.v3+json'},body:JSON.stringify(body)});
     if(cr.ok){
-      const now=new Date().toLocaleTimeString('en-MY',{hour:'2-digit',minute:'2-digit'});
       await kvSet('ghLastSync',new Date().toISOString());
-      toast('☁️ Synced to GitHub! ('+now+')');
-      updGHStatus('ok');updGHLastSync();
-    }else{
-      const err=await cr.json();toast('❌ Sync failed: '+(err.message||cr.status));updGHStatus('err');
+      toast('☁️ Synced to GitHub!');
     }
-  }catch(e){toast('❌ Network error during sync');updGHStatus('err')}
+  }catch(e){console.warn('ghSync error',e)}
 }
 
 async function ghLoad(){
-  if(!GH.repo||!GH.token)return false;
+  if(!GH.repo||!GH.token) return false;
   try{
-    const fileUrl=`https://api.github.com/repos/${GH.repo}/contents/${GH.file}`;
+    const userFile=ghUserFile();
+    const fileUrl=`https://api.github.com/repos/${GH.repo}/contents/${userFile}`;
     const r=await fetch(fileUrl,{headers:{Authorization:`token ${GH.token}`,Accept:'application/vnd.github.v3+json'}});
-    if(!r.ok)return false;
+    if(!r.ok) return false;
     const fd=await r.json();
     const content=JSON.parse(decodeURIComponent(escape(atob(fd.content.replace(/\n/g,'')))));
-    await importDataObj(content);return true;
+    if(content.user) await userPut({...content.user,id:S.uid});
+    if(content.weights) await kvSet('wts_'+S.uid,content.weights);
+    if(content.badges) await kvSet('badges_'+S.uid,content.badges);
+    if(content.food){const all=await foodAll();for(const fe of content.food){if(!all.find(x=>x.id===fe.id))try{await foodAdd(fe)}catch{}}}
+    return true;
   }catch{return false}
 }
 
-async function importDataObj(data){
-  if(data.users)for(const u of data.users){const ex=await userGet(u.id);if(!ex)await userAdd(u);else await userPut(u)}
-  if(data.weights)for(const[uid,wts]of Object.entries(data.weights))await kvSet('wts_'+uid,wts);
-  if(data.food)for(const fEntry of data.food){const all=await foodAll();if(!all.find(x=>x.id===fEntry.id))await foodAdd(fEntry)}
-}
-
-function updGHStatus(state){
-  const s=document.getElementById('sb-sync');const st=document.getElementById('sb-sync-txt');
-  const area=document.getElementById('gh-status-area');const ls=document.getElementById('gh-last-sync');
-  if(!GH.repo||!GH.token){
-    if(s){s.className='sb-sync na';if(st)st.textContent='GitHub: Not set up'}
-    if(area)area.innerHTML=`<div class="gh-status-card"><div class="gh-sc-l"><span class="gh-sc-ico">☁️</span><div><div class="gh-sc-ttl">GitHub Sync</div><div class="gh-sc-sub">Not configured</div></div></div><span class="gh-chip gh-chip-na">Not set up</span></div>`;
-    return;
-  }
-  if(state==='syncing'){if(s){s.className='sb-sync syncing';if(st)st.textContent='Syncing…'}if(area)area.innerHTML=`<div class="gh-status-card"><div class="gh-sc-l"><span class="gh-sc-ico">☁️</span><div><div class="gh-sc-ttl">${GH.repo}</div><div class="gh-sc-sub">Syncing…</div></div></div><span class="gh-chip" style="background:#ede9fe;color:#7c3aed">Syncing…</span></div>`;return}
-  if(state==='err'){if(s){s.className='sb-sync err';if(st)st.textContent='Sync error'}if(area)area.innerHTML=`<div class="gh-status-card"><div class="gh-sc-l"><span class="gh-sc-ico">☁️</span><div><div class="gh-sc-ttl">${GH.repo}</div><div class="gh-sc-sub">Sync failed — check token</div></div></div><span class="gh-chip gh-chip-err">Error</span></div>`;return}
-  // ok
-  if(s){s.className='sb-sync ok';if(st)st.textContent='☁️ '+GH.repo.split('/')[1]}
-  if(area)area.innerHTML=`<div class="gh-status-card"><div class="gh-sc-l"><span class="gh-sc-ico">☁️</span><div><div class="gh-sc-ttl">${GH.repo}</div><div class="gh-sc-sub" id="gh-sc-sub">Synced</div></div></div><span class="gh-chip gh-chip-ok">Connected ✓</span></div>`;
-  updGHLastSync();
-}
-
-async function updGHLastSync(){
-  const ls=await kvGet('ghLastSync');
-  const el=document.getElementById('gh-last-sync');const sc=document.getElementById('gh-sc-sub');
-  if(ls){
-    const t=new Date(ls).toLocaleString('en-MY',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
-    if(el)el.textContent='Last synced: '+t;if(sc)sc.textContent='Last synced: '+t;
-  }
-}
-
 function schedGHSync(){
-  if(ghSyncTimer)clearInterval(ghSyncTimer);
-  if(GH.repo&&GH.token){
-    ghSyncTimer=setInterval(()=>ghSync(),30*60*1000);// every 30 min
-  }
+  if(ghSyncTimer) clearInterval(ghSyncTimer);
+  if(GH.repo&&GH.token) ghSyncTimer=setInterval(()=>ghSync(),30*60*1000);
 }
 
-// Auto-sync on page close
-window.addEventListener('beforeunload',()=>{
-  if(GH.repo&&GH.token){
-    // Use sendBeacon isn't ideal for GitHub API, so just trigger sync
-    // (runs if page is still active for a moment)
-    ghSync();
-  }
-});
+window.addEventListener('beforeunload',()=>{if(GH.repo&&GH.token)ghSync()});
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // STATE
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 let S={uid:null,profile:null,todayCL:{},todayFood:[],waterGlasses:0,weights:[],badges:[],notif:false,wtChart:null,notifTimers:[],tmpPhoto:{}};
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // INIT
-// ═══════════════════════════════════════════════
-async function init(){
-  const sp=document.getElementById('sp-status');
-  if(location.protocol==='file:'){document.getElementById('fbanner').style.display='block';document.getElementById('content').style.marginTop='44px'}
-  if(sp)sp.textContent='Opening database…';
-  try{await initDB()}catch(e){hideSplash();alert('Cannot open storage. Please open via HTTP server.');return}
-  // Ensure default admin PIN exists
-  const pin=await kvGet('adminPin');if(!pin)await kvSet('adminPin',DEFAULT_ADMIN_PIN);
-  // Load GitHub settings
-  if(sp)sp.textContent='Loading settings…';
-  const ghS=await kvGet('ghSettings');
-  if(ghS){GH={repo:ghS.repo||'',token:ghS.token||'',branch:ghS.branch||'main',file:ghS.file||'azizfit-data.json'}}
-  // Try GitHub sync on startup
-  if(GH.repo&&GH.token){
-    document.getElementById('sp-sync-badge').classList.add('show');
-    if(sp)sp.textContent='Syncing from GitHub…';
-    await ghLoad();
-    document.getElementById('sp-sync-badge').classList.remove('show');
-  }
-  S.uid=await kvGet('activeUser');
-  if(S.uid)S.profile=await userGet(S.uid);
-  if(!S.profile){hideSplash();document.getElementById('onboarding').style.display='flex'}
-  else{if(sp)sp.textContent='Almost ready…';await loadDay();hideSplash();startApp()}
-}
-
+// ═══════════════════════════════════════════════════════
 let _splashShown=Date.now();
+
 function hideSplash(){
   const sp=document.getElementById('splash');if(!sp)return;
   const elapsed=Date.now()-_splashShown;
@@ -908,52 +721,120 @@ function hideSplash(){
   setTimeout(()=>{sp.classList.add('hide');setTimeout(()=>sp.remove(),550)},remaining);
 }
 
+async function init(){
+  const spSt=document.getElementById('sp-status');
+  if(spSt) spSt.textContent='Opening database…';
+
+  try{await initDB()}catch(e){
+    hideSplash();
+    alert('Cannot open storage. Please open via HTTP server, not file://.');
+    return;
+  }
+
+  // Ensure default admin PIN
+  const pin=await kvGet('adminPin');
+  if(!pin) await kvSet('adminPin',DEFAULT_ADMIN_PIN);
+
+  // Load GitHub settings from config.js or saved settings
+  const ghS=await kvGet('ghSettings');
+  if(ghS){
+    GH={repo:ghS.repo||'',token:ghS.token||'',branch:ghS.branch||'main'};
+  } else if(typeof DEFAULT_GH_TOKEN!=='undefined' && DEFAULT_GH_TOKEN && DEFAULT_GH_TOKEN!=='GANTI_TOKEN_DI_SINI'){
+    GH={repo:DEFAULT_GH_REPO,token:DEFAULT_GH_TOKEN,branch:DEFAULT_GH_BRANCH};
+    await kvSet('ghSettings',{repo:GH.repo,token:GH.token,branch:GH.branch,file:'data'});
+  }
+
+  // Load active user
+  S.uid=await kvGet('activeUser');
+  if(S.uid) S.profile=await userGet(S.uid);
+
+  // Try GitHub load on startup
+  if(GH.repo&&GH.token&&S.uid){
+    const badge=document.getElementById('sp-sync-badge');
+    if(badge) badge.classList.add('show');
+    if(spSt) spSt.textContent='Syncing from GitHub…';
+    await ghLoad();
+    if(badge) badge.classList.remove('show');
+  }
+
+  if(!S.profile){
+    hideSplash();
+    document.getElementById('onboarding').style.display='flex';
+  } else {
+    if(spSt) spSt.textContent='Almost ready…';
+    await loadDay();
+    hideSplash();
+    startApp();
+  }
+}
+
 async function loadDay(){
   const d=TODAY();
   S.todayCL=await kvGet('cl_'+S.uid+'_'+d)||{};
   S.waterGlasses=await kvGet('water_'+S.uid+'_'+d)||0;
-  const allFood=await foodAll();S.todayFood=allFood.filter(f=>f.userId===S.uid&&f.date===d);
-  S.weights=await wtsGet(S.uid);S.badges=await kvGet('badges_'+S.uid)||[];S.notif=await kvGet('notif')||false;
+  const allFood=await foodAll();
+  S.todayFood=allFood.filter(f=>f.userId===S.uid&&f.date===d);
+  S.weights=await wtsGet(S.uid);
+  S.badges=await kvGet('badges_'+S.uid)||[];
+  S.notif=await kvGet('notif')||false;
 }
 
 function startApp(){
   scheduleDailyReset();
   document.getElementById('app').classList.add('rdy');
   renderToday();renderCL();renderFood();renderProfile();updSBUser();updSBStreak();
-  loadGHSettings();schedGHSync();updGHStatus(GH.repo&&GH.token?'ok':null);
-  schedNotifs();
-  if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  schedNotifs();schedGHSync();
+  if('serviceWorker'in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{});
 }
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // ONBOARDING
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 let obStep=1;
 function obNext(){
   if(obStep===2&&!document.getElementById('ob-name').value.trim()){toast('Sila masukkan nama!');return}
   if(obStep===3&&(!document.getElementById('ob-h').value||!document.getElementById('ob-w').value||!document.getElementById('ob-tw').value)){toast('Sila isi semua stats!');return}
   document.getElementById('obs'+obStep).classList.remove('act');document.getElementById('od'+obStep).classList.remove('act');
-  obStep++;document.getElementById('obs'+obStep).classList.add('act');document.getElementById('od'+obStep).classList.add('act');
+  obStep++;
+  document.getElementById('obs'+obStep).classList.add('act');document.getElementById('od'+obStep).classList.add('act');
 }
 function obBack(){
   if(obStep<=1)return;
   document.getElementById('obs'+obStep).classList.remove('act');document.getElementById('od'+obStep).classList.remove('act');
-  obStep--;document.getElementById('obs'+obStep).classList.add('act');document.getElementById('od'+obStep).classList.add('act');
+  obStep--;
+  document.getElementById('obs'+obStep).classList.add('act');document.getElementById('od'+obStep).classList.add('act');
 }
 async function finishOb(){
-  const p={name:document.getElementById('ob-name').value.trim()||'User',age:parseInt(document.getElementById('ob-age').value)||0,gender:document.getElementById('ob-gen').value,height:parseFloat(document.getElementById('ob-h').value)||170,weight:parseFloat(document.getElementById('ob-w').value)||80,targetWeight:parseFloat(document.getElementById('ob-tw').value)||70,photo:S.tmpPhoto.ob||null,startDate:TODAY(),startWeight:parseFloat(document.getElementById('ob-w').value)||80};
-  const saved=await userAdd(p);S.uid=saved.id;S.profile=saved;
-  await kvSet('activeUser',S.uid);await wtsSave(S.uid,TODAY(),p.weight);await loadDay();
+  const p={
+    name:document.getElementById('ob-name').value.trim()||'User',
+    age:parseInt(document.getElementById('ob-age').value)||0,
+    gender:document.getElementById('ob-gen').value,
+    height:parseFloat(document.getElementById('ob-h').value)||170,
+    weight:parseFloat(document.getElementById('ob-w').value)||80,
+    targetWeight:parseFloat(document.getElementById('ob-tw').value)||70,
+    photo:S.tmpPhoto.ob||null,
+    startDate:TODAY(),
+    startWeight:parseFloat(document.getElementById('ob-w').value)||80
+  };
+  const saved=await userAdd(p);
+  S.uid=saved.id; S.profile=saved;
+  await kvSet('activeUser',S.uid);
+  await wtsSave(S.uid,TODAY(),p.weight);
+  await loadDay();
   document.getElementById('onboarding').style.display='none';
-  startApp();toast('🎉 Welcome, '+p.name.split(' ')[0]+'!');confetti();
+  startApp();
+  toast('🎉 Welcome, '+p.name.split(' ')[0]+'!');
+  confetti();
+  // First sync after onboarding
+  setTimeout(()=>ghSync(),3000);
 }
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // NAVIGATION
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function go(page){
-  // Auto-save profile when leaving profile page
-  if(S.page==='profile'&&page!=='profile'&&S.profile)saveProf();
+  // Auto-save profile when leaving
+  if(S.page==='profile'&&page!=='profile'&&S.profile) saveProf();
   clearTimeout(_profIdleTimer);
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('act'));
   document.getElementById('page-'+page).classList.add('act');
@@ -962,16 +843,15 @@ function go(page){
   const sn=document.getElementById('snav-'+page);if(sn)sn.classList.add('act');
   const bn=document.getElementById('bnav-'+page);if(bn)bn.classList.add('act');
   S.page=page;
-  if(page==='progress')renderProgress();
-  if(page==='food')setMealByHour();
-  if(page==='admin'){renderAdminPanel();switchAdmTab('users')}
-  if(page==='profile'){loadGHSettings();updGHLastSync();resetProfIdle()}
+  if(page==='progress') renderProgress();
+  if(page==='food') setMealByHour();
+  if(page==='profile') resetProfIdle();
   window.scrollTo(0,0);
 }
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // TODAY
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function renderToday(){
   const now=new Date(),h=now.getHours();
   document.getElementById('dh-gr').textContent=h<12?'Good Morning':h<17?'Good Afternoon':'Good Evening';
@@ -981,416 +861,485 @@ function renderToday(){
   document.getElementById('dh-qt').textContent='"'+QUOTES[doy%QUOTES.length]+'"';
   updWeight();updCals();updCLProg();renderWater();updStreak();updBMI();
 }
+
 function updWeight(){
   const tw=S.weights.find(w=>w.date===TODAY());
-  if(tw){document.getElementById('d-wt').textContent=tw.weight.toFixed(1);document.getElementById('d-winfo').textContent='Logged today: '+tw.weight+' kg ✓';const prev=S.weights.filter(w=>w.date<TODAY());if(prev.length){const ch=tw.weight-prev[prev.length-1].weight;const el=document.getElementById('d-wtch');el.style.display='inline-block';if(ch<0){el.textContent='↓ '+Math.abs(ch).toFixed(1)+' kg';el.className='bdg bdg-g'}else if(ch>0){el.textContent='↑ '+ch.toFixed(1)+' kg';el.className='bdg bdg-r'}else{el.textContent='→ No change';el.className='bdg bdg-o'}}}
-  else{document.getElementById('d-wt').textContent='—';document.getElementById('d-winfo').textContent='No weight logged today yet'}
+  if(tw){
+    document.getElementById('d-wt').textContent=tw.weight.toFixed(1);
+    document.getElementById('d-winfo').textContent='Logged today: '+tw.weight+' kg ✓';
+    const prev=S.weights.filter(w=>w.date<TODAY());
+    if(prev.length){
+      const ch=tw.weight-prev[prev.length-1].weight;
+      const el=document.getElementById('d-wtch');el.style.display='inline-block';
+      if(ch<0){el.textContent='↓ '+Math.abs(ch).toFixed(1)+' kg';el.className='bdg bdg-g'}
+      else if(ch>0){el.textContent='↑ '+ch.toFixed(1)+' kg';el.className='bdg bdg-r'}
+      else{el.textContent='→ No change';el.className='bdg bdg-o'}
+    }
+  } else {
+    document.getElementById('d-wt').textContent='—';
+    document.getElementById('d-winfo').textContent='No weight logged today yet';
+  }
 }
-function updCals(){
-  const tot=S.todayFood.reduce((s,f)=>s+(f.cal||0),0),rem=Math.max(0,CAL_TARGET-tot),pct=Math.min(100,(tot/CAL_TARGET)*100);
-  document.getElementById('cal-v').textContent=tot.toLocaleString();document.getElementById('cal-rl').textContent=tot>CAL_TARGET?'Over by':'Remaining';document.getElementById('cal-rv').textContent=(tot>CAL_TARGET?tot-CAL_TARGET:rem).toLocaleString()+' kcal';
-  const ring=document.getElementById('cal-ring');if(ring)ring.style.strokeDashoffset=351.9-(pct/100)*351.9;
-  document.getElementById('cal-pb').style.width=pct+'%';
-  const ft=document.getElementById('f-total');if(ft)ft.textContent=tot.toLocaleString();const fr=document.getElementById('f-rem');if(fr)fr.textContent=rem.toLocaleString();const fp=document.getElementById('f-pb');if(fp)fp.style.width=pct+'%';
-}
-function updCLProg(){let tot=0,dn=0;CL_SECTIONS.forEach(s=>[...s.items,...(s.water?[s.water]:[])].forEach(it=>{tot++;if(S.todayCL[it.id])dn++}));const pct=tot>0?Math.round(dn/tot*100):0;document.getElementById('d-clpct').textContent=pct+'%';document.getElementById('d-clcnt').textContent=dn+' of '+tot+' items done';document.getElementById('d-clpb').style.width=pct+'%'}
-function updBMI(){const p=S.profile;if(!p||!p.height)return;const w=curWeight();if(!w)return;const b=(w/((p.height/100)**2)).toFixed(1);document.getElementById('d-bmi').textContent=b;document.getElementById('d-tdiff').textContent=w>p.targetWeight?(w-p.targetWeight).toFixed(1):'✓ Done!'}
-function updStreak(){document.getElementById('d-st').textContent=calcStreak();updSBStreak()}
-function renderWater(){const c=document.getElementById('water-track');if(!c)return;let h='';for(let i=0;i<WATER_GLASSES;i++)h+=`<div class="wg ${i<S.waterGlasses?'fil':''}" onclick="logWater(${i})"></div>`;c.innerHTML=h;document.getElementById('d-wval').textContent=(S.waterGlasses*500/1000).toFixed(1)+'L'}
-async function logWater(idx){S.waterGlasses=idx<S.waterGlasses?idx:idx+1;await kvSet('water_'+S.uid+'_'+TODAY(),S.waterGlasses);renderWater();toast('💧 '+(S.waterGlasses*500/1000).toFixed(1)+'L logged!');if(S.waterGlasses>=8)await awardBadge('water_4l')}
 
-// ═══════════════════════════════════════════════
+function updCals(){
+  const tot=S.todayFood.reduce((s,f)=>s+(f.cal||0),0);
+  const rem=Math.max(0,CAL_TARGET-tot);
+  const pct=Math.min(100,(tot/CAL_TARGET)*100);
+  document.getElementById('cal-v').textContent=tot.toLocaleString();
+  document.getElementById('cal-rl').textContent=tot>CAL_TARGET?'Over by':'Remaining';
+  document.getElementById('cal-rv').textContent=(tot>CAL_TARGET?tot-CAL_TARGET:rem).toLocaleString()+' kcal';
+  const ring=document.getElementById('cal-ring');
+  if(ring) ring.style.strokeDashoffset=351.9-(pct/100)*351.9;
+  document.getElementById('cal-pb').style.width=pct+'%';
+  const ft=document.getElementById('f-total');if(ft)ft.textContent=tot.toLocaleString();
+  const fr=document.getElementById('f-rem');if(fr)fr.textContent=rem.toLocaleString();
+  const fp=document.getElementById('f-pb');if(fp)fp.style.width=pct+'%';
+}
+
+function updCLProg(){
+  let tot=0,dn=0;
+  CL_SECTIONS.forEach(s=>[...s.items,...(s.water?[s.water]:[])].forEach(it=>{tot++;if(S.todayCL[it.id])dn++}));
+  const pct=tot>0?Math.round(dn/tot*100):0;
+  document.getElementById('d-clpct').textContent=pct+'%';
+  document.getElementById('d-clcnt').textContent=dn+' of '+tot+' done';
+  document.getElementById('d-clpb').style.width=pct+'%';
+}
+
+function updBMI(){
+  const p=S.profile;if(!p||!p.height)return;
+  const w=curWeight();if(!w)return;
+  const b=(w/((p.height/100)**2)).toFixed(1);
+  document.getElementById('d-bmi').textContent=b;
+  document.getElementById('d-tdiff').textContent=w>p.targetWeight?(w-p.targetWeight).toFixed(1):'✓ Done!';
+}
+
+function updStreak(){document.getElementById('d-st').textContent=calcStreak();updSBStreak()}
+
+function renderWater(){
+  const c=document.getElementById('water-track');if(!c)return;
+  let h='';
+  for(let i=0;i<WATER_GLASSES;i++) h+=`<div class="wg ${i<S.waterGlasses?'fil':''}" onclick="logWater(${i})"></div>`;
+  c.innerHTML=h;
+  document.getElementById('d-wval').textContent=(S.waterGlasses*500/1000).toFixed(1)+'L';
+}
+
+async function logWater(idx){
+  S.waterGlasses=idx<S.waterGlasses?idx:idx+1;
+  await kvSet('water_'+S.uid+'_'+TODAY(),S.waterGlasses);
+  renderWater();
+  toast('💧 '+(S.waterGlasses*500/1000).toFixed(1)+'L logged!');
+  if(S.waterGlasses>=8) await awardBadge('water_4l');
+}
+
+// ═══════════════════════════════════════════════════════
 // WEIGHT MODAL
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function openWM(){
   const ex=S.weights.find(w=>w.date===TODAY());
   const m=document.createElement('div');m.className='modal-ov';m.id='wt-modal';
   m.innerHTML=`<div class="modal"><div class="modal-x" onclick="closeM('wt-modal')">✕</div><div class="modal-ttl">Log Weight</div><div class="modal-sub">${new Date().toLocaleDateString('en-MY',{weekday:'long',month:'long',day:'numeric'})}</div><input type="number" class="wi-big" id="wi-val" value="${ex?ex.weight:''}" placeholder="0.0" step="0.1" min="30" max="300"><div class="wi-unit">kg</div><button class="btn btn-p btn-w btn-lg" onclick="saveWt()">Save Weight ✓</button></div>`;
-  document.body.appendChild(m);setTimeout(()=>{const i=document.getElementById('wi-val');if(i)i.focus()},80);
+  document.body.appendChild(m);
+  setTimeout(()=>{const i=document.getElementById('wi-val');if(i)i.focus()},80);
 }
 function closeM(id){const e=document.getElementById(id);if(e)e.remove()}
 async function saveWt(){
-  const v=parseFloat(document.getElementById('wi-val').value);if(!v||v<30||v>300){toast('Enter valid weight (30–300 kg)');return}
-  S.weights=await wtsSave(S.uid,TODAY(),v);if(S.profile){S.profile.weight=v;await userPut(S.profile)}
-  closeM('wt-modal');toast('⚖️ Weight logged: '+v+' kg!');
-  await awardBadge('first_log');const st=calcStreak();if(st>=3)await awardBadge('streak_3');if(st>=7)await awardBadge('streak_7');if(st>=30)await awardBadge('streak_30');
+  const v=parseFloat(document.getElementById('wi-val').value);
+  if(!v||v<30||v>300){toast('Please enter a valid weight (30–300 kg)');return}
+  S.weights=await wtsSave(S.uid,TODAY(),v);
+  if(S.profile){S.profile.weight=v;await userPut(S.profile)}
+  closeM('wt-modal');
+  toast('⚖️ Weight logged: '+v+' kg!');
+  await awardBadge('first_log');
+  const st=calcStreak();
+  if(st>=3)await awardBadge('streak_3');
+  if(st>=7)await awardBadge('streak_7');
+  if(st>=30)await awardBadge('streak_30');
   if(S.profile&&v<=S.profile.targetWeight){await awardBadge('wt_goal');confetti();toast('🏆 Target weight reached!')}
-  if(S.profile&&S.profile.startWeight-v>=5)await awardBadge('5kg');
+  if(S.profile&&S.profile.startWeight-v>=5) await awardBadge('5kg');
   renderToday();updSBStreak();
+  ghSync();
 }
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // CHECKLIST
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function renderCL(){
   const c=document.getElementById('cl-container');if(!c)return;
   document.getElementById('cl-dlbl').textContent='Today, '+new Date().toLocaleDateString('en-MY',{weekday:'long',month:'long',day:'numeric'});
   let h='';
   CL_SECTIONS.forEach(sec=>{
-    const all=[...sec.items,...(sec.water?[sec.water]:[])],dn=all.filter(it=>S.todayCL[it.id]).length;
+    const all=[...sec.items,...(sec.water?[sec.water]:[])];
+    const dn=all.filter(it=>S.todayCL[it.id]).length;
     h+=`<div class="cl-sec"><div class="cl-hdr"><div class="clh-l"><span class="clh-em">${sec.emoji}</span><div><div class="clh-tit">${sec.label}</div><div class="clh-tim">⏰ ${sec.time}</div></div></div><span class="clh-pg">${dn}/${all.length}</span></div><div class="cl-items">`;
-    if(sec.pickOne){h+=`<div class="pick-lbl">⚡ Pick ONE</div>`;sec.items.forEach(it=>h+=clItH(it,sec.id,true));if(sec.water){h+='<div style="height:4px"></div>';h+=clItH(sec.water,sec.id,false)}}
-    else sec.items.forEach(it=>h+=clItH(it,sec.id,false));
+    if(sec.pickOne){
+      h+=`<div class="pick-lbl">⚡ Pick ONE</div>`;
+      sec.items.forEach(it=>h+=clItH(it,sec.id,true));
+      if(sec.water){h+='<div style="height:4px"></div>';h+=clItH(sec.water,sec.id,false)}
+    } else {
+      sec.items.forEach(it=>h+=clItH(it,sec.id,false));
+    }
     h+='</div></div>';
   });
+  // Avoid
   h+=`<div class="cl-sec"><div class="cl-hdr"><div class="clh-l"><span class="clh-em">🚫</span><div><div class="clh-tit">Avoid These Foods</div><div class="clh-tim">Tap if consumed today</div></div></div></div><div class="cl-items">`;
   AVOID.forEach((a,i)=>{const v=S.todayCL['av_'+i];h+=`<div class="avoid-it ${v?'vio':''}" onclick="togAvoid(${i})"><div class="abox">${v?'<span style="color:#fff;font-size:11px">✓</span>':''}</div><span>${a}</span></div>`});
   h+='</div></div>';
+  // Cooking
   h+=`<div class="cl-sec"><div class="cl-hdr"><div class="clh-l"><span class="clh-em">🍳</span><div><div class="clh-tit">Cooking Methods Today</div><div class="clh-tim">Tick what you used</div></div></div></div><div class="cl-items">`;
   COOK.forEach((m,i)=>{const ck=S.todayCL['cm_'+i];h+=`<div class="cl-it ${ck?'chk':''}" onclick="togCook(${i})"><div class="ci-box"><span class="ci-chk">✓</span></div><span class="ci-lbl">${m}</span></div>`});
   h+='</div></div>';
+  // Exercise
   const ex=S.todayCL['exercise'];
   h+=`<div class="cl-sec"><div class="cl-hdr"><div class="clh-l"><span class="clh-em">🏃</span><div><div class="clh-tit">Exercise</div><div class="clh-tim">Min 1x/week (1 hr), best 3–5x walks</div></div></div></div><div class="cl-items"><div class="cl-it ${ex?'chk':''}" onclick="togEx()"><div class="ci-box"><span class="ci-chk">✓</span></div><span class="ci-lbl">Exercise done today (min 1 hour) 💪</span></div></div></div>`;
-  c.innerHTML=h;checkCLDone();
+  c.innerHTML=h;
+  checkCLDone();
 }
-function clItH(it,sid,po){const ck=S.todayCL[it.id];const meta=it.cal>0?it.cal+' kcal':it.water?it.water+'L':'';return`<div class="cl-it ${ck?'chk':''}" onclick="togCL('${it.id}','${sid}',${po})"><div class="ci-box"><span class="ci-chk">✓</span></div><span class="ci-lbl">${it.label}</span>${meta?`<span class="ci-cal">${meta}</span>`:''}</div>`}
-async function togCL(id,sid,po){const was=S.todayCL[id];if(po&&!was){const s=CL_SECTIONS.find(x=>x.id===sid);if(s)s.items.forEach(it=>delete S.todayCL[it.id])}was?delete S.todayCL[id]:(S.todayCL[id]=true);await kvSet('cl_'+S.uid+'_'+TODAY(),S.todayCL);renderCL();updCLProg();let tot=0,dn=0;CL_SECTIONS.forEach(s=>[...s.items,...(s.water?[s.water]:[])].forEach(it=>{tot++;if(S.todayCL[it.id])dn++}));if(dn===tot&&tot>0)await awardBadge('cl_done')}
+
+function clItH(it,sid,po){
+  const ck=S.todayCL[it.id];
+  const meta=it.cal>0?it.cal+' kcal':it.water?it.water+'L':'';
+  return`<div class="cl-it ${ck?'chk':''}" onclick="togCL('${it.id}','${sid}',${po})"><div class="ci-box"><span class="ci-chk">✓</span></div><span class="ci-lbl">${it.label}</span>${meta?`<span class="ci-cal">${meta}</span>`:''}</div>`;
+}
+
+async function togCL(id,sid,po){
+  const was=S.todayCL[id];
+  if(po&&!was){const s=CL_SECTIONS.find(x=>x.id===sid);if(s)s.items.forEach(it=>delete S.todayCL[it.id])}
+  was?delete S.todayCL[id]:(S.todayCL[id]=true);
+  await kvSet('cl_'+S.uid+'_'+TODAY(),S.todayCL);
+  renderCL();updCLProg();
+  let tot=0,dn=0;
+  CL_SECTIONS.forEach(s=>[...s.items,...(s.water?[s.water]:[])].forEach(it=>{tot++;if(S.todayCL[it.id])dn++}));
+  if(dn===tot&&tot>0) await awardBadge('cl_done');
+}
 async function togAvoid(i){const k='av_'+i;S.todayCL[k]?delete S.todayCL[k]:(S.todayCL[k]=true,toast('⚠️ Tracked. Avoid tomorrow!'));await kvSet('cl_'+S.uid+'_'+TODAY(),S.todayCL);renderCL()}
 async function togCook(i){S.todayCL['cm_'+i]=!S.todayCL['cm_'+i];await kvSet('cl_'+S.uid+'_'+TODAY(),S.todayCL);renderCL()}
 async function togEx(){S.todayCL['exercise']=!S.todayCL['exercise'];await kvSet('cl_'+S.uid+'_'+TODAY(),S.todayCL);renderCL();if(S.todayCL['exercise'])toast('💪 Exercise logged!')}
 async function resetCL(){if(!confirm('Reset today\'s checklist?'))return;S.todayCL={};await kvSet('cl_'+S.uid+'_'+TODAY(),{});renderCL();updCLProg();toast('🔄 Checklist reset')}
-function checkCLDone(){let tot=0,dn=0;CL_SECTIONS.forEach(s=>[...s.items,...(s.water?[s.water]:[])].forEach(it=>{tot++;if(S.todayCL[it.id])dn++}));const b=document.getElementById('cl-done-banner');if(b){if(dn===tot&&tot>0){b.classList.add('show');confetti()}else b.classList.remove('show')}}
+function checkCLDone(){
+  let tot=0,dn=0;
+  CL_SECTIONS.forEach(s=>[...s.items,...(s.water?[s.water]:[])].forEach(it=>{tot++;if(S.todayCL[it.id])dn++}));
+  const b=document.getElementById('cl-done-banner');
+  if(b){if(dn===tot&&tot>0){b.classList.add('show');confetti()}else b.classList.remove('show')}
+}
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // FOOD LOG
-// ═══════════════════════════════════════════════
-function srcFood(q){const el=document.getElementById('f-sugg');if(!q||q.length<2){el.classList.remove('show');return}const m=FOOD_DB.filter(f=>f.n.toLowerCase().includes(q.toLowerCase())).slice(0,10);if(!m.length){el.classList.remove('show');return}el.innerHTML=m.map(f=>`<div class="fsi" onclick="selFood('${f.n.replace(/'/g,"\\'")}',${f.c})"><span class="fsi-n">${f.n}</span><span class="fsi-c">${f.c} kcal</span></div>`).join('');el.classList.add('show')}
-function selFood(n,c){document.getElementById('f-name').value=n;document.getElementById('f-cal').value=c;document.getElementById('f-src').value=n;document.getElementById('f-sugg').classList.remove('show')}
+// ═══════════════════════════════════════════════════════
+function srcFood(q){
+  const el=document.getElementById('f-sugg');
+  if(!q||q.length<2){el.classList.remove('show');return}
+  const m=FOOD_DB.filter(f=>f.n.toLowerCase().includes(q.toLowerCase())).slice(0,10);
+  if(!m.length){el.classList.remove('show');return}
+  el.innerHTML=m.map(f=>`<div class="fsi" onclick="selFood('${f.n.replace(/'/g,"\\'")}',${f.c})"><span class="fsi-n">${f.n}</span><span class="fsi-c">${f.c} kcal</span></div>`).join('');
+  el.classList.add('show');
+}
+function selFood(n,c){
+  document.getElementById('f-name').value=n;
+  document.getElementById('f-cal').value=c;
+  document.getElementById('f-src').value=n;
+  document.getElementById('f-sugg').classList.remove('show');
+}
 async function addFood(){
-  const nm=document.getElementById('f-name').value.trim(),cl=parseInt(document.getElementById('f-cal').value),ml=document.getElementById('f-meal').value,amt=document.getElementById('f-amt').value.trim();
+  const nm=document.getElementById('f-name').value.trim();
+  const cl=parseInt(document.getElementById('f-cal').value);
+  const ml=document.getElementById('f-meal').value;
+  const amt=document.getElementById('f-amt').value.trim();
   if(!nm||isNaN(cl)){toast('Please enter food name and calories!');return}
   const entry={userId:S.uid,name:nm,cal:cl,meal:ml,amount:amt||'1 serving',date:TODAY(),time:new Date().toLocaleTimeString('en-MY',{hour:'2-digit',minute:'2-digit'})};
   await foodAdd(entry);S.todayFood.push(entry);
-  document.getElementById('f-name').value='';document.getElementById('f-cal').value='';document.getElementById('f-src').value='';document.getElementById('f-amt').value='';
+  document.getElementById('f-name').value='';document.getElementById('f-cal').value='';
+  document.getElementById('f-src').value='';document.getElementById('f-amt').value='';
   toast('✅ '+nm+' ('+cl+' kcal)');renderFood();updCals();
-  const tot=S.todayFood.reduce((s,f)=>s+f.cal,0);if(tot>=1800&&tot<=2200)await awardBadge('cal_tgt');
-  const all=await foodAll(),dates=[...new Set(all.filter(f=>f.userId===S.uid).map(f=>f.date))];if(dates.length>=7)await awardBadge('food_7');
+  const tot=S.todayFood.reduce((s,f)=>s+f.cal,0);
+  if(tot>=1800&&tot<=2200) await awardBadge('cal_tgt');
+  const all=await foodAll();
+  const dates=[...new Set(all.filter(f=>f.userId===S.uid).map(f=>f.date))];
+  if(dates.length>=7) await awardBadge('food_7');
 }
 function renderFood(){
   const list=document.getElementById('f-list'),cnt=document.getElementById('f-cnt');if(!list)return;
   if(!S.todayFood.length){list.innerHTML='<div class="empty-st"><div class="empty-ico">🍽️</div><div class="empty-txt">No food logged yet.</div></div>';if(cnt)cnt.textContent='0 entries';return}
   const meals={};S.todayFood.forEach(f=>{if(!meals[f.meal])meals[f.meal]=[];meals[f.meal].push(f)});
   let h='';
-  ['Breakfast','Snack 1','Lunch','Snack 2','Dinner','Other'].forEach(m=>{if(!meals[m])return;const mc=meals[m].reduce((s,f)=>s+f.cal,0);h+=`<div style="font-size:11px;font-weight:800;color:var(--ctm);text-transform:uppercase;letter-spacing:.06em;margin:12px 0 6px">${m} · ${mc} kcal</div>`;meals[m].forEach(f=>{h+=`<div class="meal-card"><div><div class="mc-nm">${f.name}</div><div class="mc-det">${f.amount} · ${f.time}</div></div><div style="text-align:right"><div class="mc-cal">${f.cal}</div><div style="font-size:10px;color:var(--ctm)">kcal</div><button onclick="delFood(${f.id})" style="font-size:11px;color:var(--cred);margin-top:4px;background:none;border:none;cursor:pointer">✕</button></div></div>`})});
+  ['Breakfast','Snack 1','Lunch','Snack 2','Dinner','Other'].forEach(m=>{
+    if(!meals[m])return;
+    const mc=meals[m].reduce((s,f)=>s+f.cal,0);
+    h+=`<div style="font-size:11px;font-weight:800;color:var(--ctm);text-transform:uppercase;letter-spacing:.06em;margin:12px 0 6px">${m} · ${mc} kcal</div>`;
+    meals[m].forEach(f=>{h+=`<div class="meal-card"><div><div class="mc-nm">${f.name}</div><div class="mc-det">${f.amount} · ${f.time}</div></div><div style="text-align:right"><div class="mc-cal">${f.cal}</div><div style="font-size:10px;color:var(--ctm)">kcal</div><button onclick="delFood(${f.id})" style="font-size:11px;color:var(--cred);margin-top:4px;background:none;border:none;cursor:pointer">✕</button></div></div>`});
+  });
   list.innerHTML=h;if(cnt)cnt.textContent=S.todayFood.length+' entries';
 }
 async function delFood(id){await foodDel(id);S.todayFood=S.todayFood.filter(f=>f.id!==id);renderFood();updCals()}
 function setMealByHour(){const h=new Date().getHours(),s=document.getElementById('f-meal');if(!s)return;s.value=h<10?'Breakfast':h<12?'Snack 1':h<15?'Lunch':h<18?'Snack 2':'Dinner'}
 document.addEventListener('click',e=>{const s=document.getElementById('f-sugg');if(s&&!e.target.closest('.food-src-wrap'))s.classList.remove('show')});
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // PROGRESS
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function renderProgress(){renderWtChart();renderBMI();renderGoalProg();renderWkGrid();renderBadges();renderWkSum()}
+
 function renderWtChart(){
-  const ctx=document.getElementById('wt-chart');if(!ctx)return;if(S.wtChart){S.wtChart.destroy();S.wtChart=null}
+  const ctx=document.getElementById('wt-chart');if(!ctx)return;
+  if(S.wtChart){S.wtChart.destroy();S.wtChart=null}
   const hist=S.weights.slice(-30);
   if(!hist.length){ctx.parentElement.innerHTML='<div class="empty-st"><div class="empty-ico">📈</div><div class="empty-txt">Log your weight to see the chart!</div></div>';return}
   S.wtChart=new Chart(ctx,{type:'line',data:{labels:hist.map(w=>new Date(w.date+'T00:00:00').toLocaleDateString('en-MY',{month:'short',day:'numeric'})),datasets:[{label:'Weight (kg)',data:hist.map(w=>w.weight),borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,.08)',borderWidth:2.5,pointBackgroundColor:'#16a34a',pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:5,tension:.4,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:11},maxTicksLimit:7}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:11},callback:v=>v+' kg'}}}}});
 }
-function renderBMI(){const p=S.profile;if(!p||!p.height)return;const w=curWeight();if(!w)return;const b=(w/((p.height/100)**2)).toFixed(1);let cl='',lbl='';if(b<18.5){cl='bmi-uw';lbl='Underweight'}else if(b<25){cl='bmi-n';lbl='Normal ✓'}else if(b<30){cl='bmi-ow';lbl='Overweight'}else{cl='bmi-ob';lbl='Obese'}const bv=document.getElementById('pr-bmi');if(bv){bv.textContent=b;bv.style.color=cl==='bmi-n'?'var(--cp)':cl==='bmi-ow'?'var(--cor)':'var(--cred)'}const bl=document.getElementById('pr-bmi-l');if(bl){bl.textContent=lbl;bl.className='bmi-l '+cl}const ht=document.getElementById('pr-ht');if(ht)ht.textContent=p.height;document.getElementById('d-bmi').textContent=b;const pb=document.getElementById('ps-bmi');if(pb)pb.textContent=b}
-function renderGoalProg(){const p=S.profile;if(!p)return;const cur=curWeight()||p.weight,st=p.startWeight||p.weight,tg=p.targetWeight;const tot=st-tg,lost=st-cur;const pct=tot>0?Math.max(0,Math.min(100,Math.round(lost/tot*100))):0;document.getElementById('pr-pct').textContent=pct+'%';document.getElementById('pr-desc').textContent=lost.toFixed(1)+' kg lost · '+Math.max(0,cur-tg).toFixed(1)+' kg to go';document.getElementById('pr-pb').style.width=pct+'%';document.getElementById('pr-sw').textContent=st+' kg';document.getElementById('pr-tw').textContent=tg+' kg';const psw=document.getElementById('ps-wt');if(psw)psw.textContent=(cur||p.weight).toFixed(1);const pst=document.getElementById('ps-tgt');if(pst)pst.textContent=tg}
-function renderWkGrid(){const g=document.getElementById('wk-grid');if(!g)return;const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];const now=new Date();let h='';for(let i=6;i>=0;i--){const d=new Date(now);d.setDate(d.getDate()-i);const ds=d.toISOString().split('T')[0];const isT=ds===TODAY(),hw=S.weights.find(w=>w.date===ds);h+=`<div class="wk-day"><div class="wk-dl">${days[d.getDay()]}</div><div class="wk-dot ${hw?'full':''} ${isT?'today':''}">${hw?'✓':''}</div></div>`}g.innerHTML=h}
-function renderBadges(){const g=document.getElementById('bdg-grid');if(!g)return;g.innerHTML=BADGES_DEF.map(b=>`<div class="bdg-it ${S.badges.includes(b.id)?'earn':''}" title="${b.d}"><div class="bdg-em">${b.e}</div><div class="bdg-nm">${b.n}</div></div>`).join('')}
-function renderWkSum(){const el=document.getElementById('wk-sum');if(!el)return;const wk=new Date();wk.setDate(wk.getDate()-7);const wkW=S.weights.filter(w=>new Date(w.date+'T00:00:00')>=wk);if(wkW.length<2){el.innerHTML='<div class="empty-st"><div class="empty-txt">Log at least 2 days of weight to see summary.</div></div>';return}const avg=(wkW.reduce((s,w)=>s+w.weight,0)/wkW.length).toFixed(1);const ch=(wkW[wkW.length-1].weight-wkW[0].weight).toFixed(1);const tot=S.todayFood.reduce((s,f)=>s+f.cal,0);el.innerHTML=`<div class="g2"><div><div class="card-t">Avg Weight</div><div style="font-family:var(--fd);font-size:24px;font-weight:700;color:var(--cpd)">${avg} kg</div></div><div><div class="card-t">Week Change</div><div style="font-family:var(--fd);font-size:24px;font-weight:700;color:${ch<0?'var(--cp)':'var(--cred)'}">${ch>0?'+':''}${ch} kg</div></div><div><div class="card-t">Days Logged</div><div style="font-family:var(--fd);font-size:24px;font-weight:700;color:var(--cpd)">${wkW.length}/7</div></div><div><div class="card-t">Today's Cal</div><div style="font-family:var(--fd);font-size:24px;font-weight:700;color:var(--cpd)">${tot} kcal</div></div></div>`}
 
-// ═══════════════════════════════════════════════
-// PROFILE
-// ═══════════════════════════════════════════════
+function renderBMI(){
+  const p=S.profile;if(!p||!p.height)return;
+  const w=curWeight();if(!w)return;
+  const b=(w/((p.height/100)**2)).toFixed(1);
+  let cl='',lbl='';
+  if(b<18.5){cl='bmi-uw';lbl='Underweight'}else if(b<25){cl='bmi-n';lbl='Normal ✓'}else if(b<30){cl='bmi-ow';lbl='Overweight'}else{cl='bmi-ob';lbl='Obese'}
+  const bv=document.getElementById('pr-bmi');if(bv){bv.textContent=b;bv.style.color=cl==='bmi-n'?'var(--cp)':cl==='bmi-ow'?'var(--cor)':'var(--cred)'}
+  const bl=document.getElementById('pr-bmi-l');if(bl){bl.textContent=lbl;bl.className='bmi-l '+cl}
+  const ht=document.getElementById('pr-ht');if(ht)ht.textContent=p.height;
+  document.getElementById('d-bmi').textContent=b;
+  const pb=document.getElementById('ps-bmi');if(pb)pb.textContent=b;
+}
+
+function renderGoalProg(){
+  const p=S.profile;if(!p)return;
+  const cur=curWeight()||p.weight,st=p.startWeight||p.weight,tg=p.targetWeight;
+  const tot=st-tg,lost=st-cur;
+  const pct=tot>0?Math.max(0,Math.min(100,Math.round(lost/tot*100))):0;
+  document.getElementById('pr-pct').textContent=pct+'%';
+  document.getElementById('pr-desc').textContent=lost.toFixed(1)+' kg lost · '+Math.max(0,cur-tg).toFixed(1)+' kg to go';
+  document.getElementById('pr-pb').style.width=pct+'%';
+  document.getElementById('pr-sw').textContent=st+' kg';
+  document.getElementById('pr-tw').textContent=tg+' kg';
+  const psw=document.getElementById('ps-wt');if(psw)psw.textContent=(cur||p.weight).toFixed(1);
+  const pst=document.getElementById('ps-tgt');if(pst)pst.textContent=tg;
+}
+
+function renderWkGrid(){
+  const g=document.getElementById('wk-grid');if(!g)return;
+  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const now=new Date();let h='';
+  for(let i=6;i>=0;i--){
+    const d=new Date(now);d.setDate(d.getDate()-i);
+    const ds=d.toISOString().split('T')[0];
+    const isT=ds===TODAY(),hw=S.weights.find(w=>w.date===ds);
+    h+=`<div class="wk-day"><div class="wk-dl">${days[d.getDay()]}</div><div class="wk-dot ${hw?'full':''} ${isT?'today':''}">${hw?'✓':''}</div></div>`;
+  }
+  g.innerHTML=h;
+}
+
+function renderBadges(){
+  const g=document.getElementById('bdg-grid');if(!g)return;
+  g.innerHTML=BADGES_DEF.map(b=>`<div class="bdg-it ${S.badges.includes(b.id)?'earn':''}" title="${b.d}"><div class="bdg-em">${b.e}</div><div class="bdg-nm">${b.n}</div></div>`).join('');
+}
+
+function renderWkSum(){
+  const el=document.getElementById('wk-sum');if(!el)return;
+  const wk=new Date();wk.setDate(wk.getDate()-7);
+  const wkW=S.weights.filter(w=>new Date(w.date+'T00:00:00')>=wk);
+  if(wkW.length<2){el.innerHTML='<div class="empty-st"><div class="empty-txt">Log at least 2 days of weight to see summary.</div></div>';return}
+  const avg=(wkW.reduce((s,w)=>s+w.weight,0)/wkW.length).toFixed(1);
+  const ch=(wkW[wkW.length-1].weight-wkW[0].weight).toFixed(1);
+  const tot=S.todayFood.reduce((s,f)=>s+f.cal,0);
+  el.innerHTML=`<div class="g2"><div><div class="card-t">Avg Weight</div><div style="font-family:var(--fd);font-size:24px;font-weight:700;color:var(--cpd)">${avg} kg</div></div><div><div class="card-t">Week Change</div><div style="font-family:var(--fd);font-size:24px;font-weight:700;color:${ch<0?'var(--cp)':'var(--cred)'}">${ch>0?'+':''}${ch} kg</div></div><div><div class="card-t">Days Logged</div><div style="font-family:var(--fd);font-size:24px;font-weight:700;color:var(--cpd)">${wkW.length}/7</div></div><div><div class="card-t">Today's Cal</div><div style="font-family:var(--fd);font-size:24px;font-weight:700;color:var(--cpd)">${tot} kcal</div></div></div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// PROFILE — auto-save on tab switch / close / 1-min idle
+// ═══════════════════════════════════════════════════════
+let _profIdleTimer=null;
+function resetProfIdle(){
+  if(S.page!=='profile')return;
+  clearTimeout(_profIdleTimer);
+  _profIdleTimer=setTimeout(()=>{if(S.page==='profile')saveProf()},60000);
+}
+document.addEventListener('input',e=>{if(S.page==='profile')resetProfIdle()});
+document.addEventListener('change',e=>{if(S.page==='profile')resetProfIdle()});
+window.addEventListener('beforeunload',()=>{if(S.profile&&S.page==='profile')saveProf()});
+
 function renderProfile(){
   const p=S.profile;if(!p)return;
-  document.getElementById('prof-nm').textContent=p.name;document.getElementById('prof-sub').textContent=(p.age?p.age+' yrs · ':'')+(p.gender==='male'?'Male':'Female')+(p.height?' · '+p.height+'cm':'');
+  document.getElementById('prof-nm').textContent=p.name;
+  document.getElementById('prof-sub').textContent=(p.age?p.age+' yrs · ':'')+(p.gender==='male'?'Male':'Female')+(p.height?' · '+p.height+'cm':'');
   if(p.photo){const ph=document.getElementById('prof-ph');ph.innerHTML=`<img src="${p.photo}" alt="">`}
-  document.getElementById('e-name').value=p.name||'';document.getElementById('e-age').value=p.age||'';document.getElementById('e-gen').value=p.gender||'male';document.getElementById('e-ht').value=p.height||'';document.getElementById('e-wt').value=p.weight||'';document.getElementById('e-tw').value=p.targetWeight||'';
+  document.getElementById('e-name').value=p.name||'';
+  document.getElementById('e-age').value=p.age||'';
+  document.getElementById('e-gen').value=p.gender||'male';
+  document.getElementById('e-ht').value=p.height||'';
+  document.getElementById('e-wt').value=p.weight||'';
+  document.getElementById('e-tw').value=p.targetWeight||'';
   const tog=document.getElementById('notif-tog');if(tog)tog.classList.toggle('on',!!S.notif);
   renderBMI();renderGoalProg();
 }
-// Profile auto-save — triggered on: tab switch, app close, 1-min idle
-let _profIdleTimer=null;
-function resetProfIdle(){
-  // Only track idle when on profile page
-  if(S.page!=='profile')return;
-  clearTimeout(_profIdleTimer);
-  _profIdleTimer=setTimeout(()=>{
-    if(S.page==='profile')saveProf();
-  },60000); // 1 minute idle
-}
-// Listen for any input on profile page to reset idle timer
-document.addEventListener('input',e=>{if(S.page==='profile')resetProfIdle()});
-document.addEventListener('change',e=>{if(S.page==='profile')resetProfIdle()});
-// Save on beforeunload (tab close / refresh)
-window.addEventListener('beforeunload',()=>{
-  if(S.profile&&S.page==='profile')saveProf();
-});
+
 async function saveProf(){
   const p=S.profile||{id:S.uid};
-  p.name=document.getElementById('e-name').value.trim()||p.name;p.age=parseInt(document.getElementById('e-age').value)||p.age;p.gender=document.getElementById('e-gen').value;p.height=parseFloat(document.getElementById('e-ht').value)||p.height;p.weight=parseFloat(document.getElementById('e-wt').value)||p.weight;p.targetWeight=parseFloat(document.getElementById('e-tw').value)||p.targetWeight;
-  await userPut(p);S.profile=p;renderProfile();renderToday();updSBUser();const st=document.getElementById('prof-save-status');if(st)st.innerHTML='<span style="color:var(--cp)">✅ Saved '+new Date().toLocaleTimeString('en-MY',{hour:'2-digit',minute:'2-digit'})+'</span>';
+  p.name=document.getElementById('e-name').value.trim()||p.name;
+  p.age=parseInt(document.getElementById('e-age').value)||p.age;
+  p.gender=document.getElementById('e-gen').value;
+  p.height=parseFloat(document.getElementById('e-ht').value)||p.height;
+  p.weight=parseFloat(document.getElementById('e-wt').value)||p.weight;
+  p.targetWeight=parseFloat(document.getElementById('e-tw').value)||p.targetWeight;
+  await userPut(p);S.profile=p;
+  renderProfile();renderToday();updSBUser();
+  const st=document.getElementById('prof-save-status');
+  if(st)st.innerHTML='<span style="color:var(--cp)">✅ Saved '+new Date().toLocaleTimeString('en-MY',{hour:'2-digit',minute:'2-digit'})+'</span>';
 }
+
 function handlePhoto(inp,ctx){
-  const f=inp.files[0];if(!f)return;const r=new FileReader();
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
   r.onload=async e=>{
     const d=e.target.result;
     if(ctx==='ob'){S.tmpPhoto.ob=d;const a=document.getElementById('ob-ph-area');if(a)a.innerHTML=`<img src="${d}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%">`}
-    else if(ctx.startsWith('eu-')){const uid=parseInt(ctx.slice(3));S.tmpPhoto['eu_'+uid]=d;const a=document.getElementById('eu-ph-area');if(a)a.innerHTML=`<img src="${d}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%">`}
-    else if(ctx==='au'){S.tmpPhoto.au=d;const a=document.getElementById('au-ph-area');if(a)a.innerHTML=`<img src="${d}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%">`}
     else if(ctx==='profile'){if(S.profile){S.profile.photo=d;await userPut(S.profile);document.getElementById('prof-ph').innerHTML=`<img src="${d}" alt="">`;updSBUser();toast('✅ Photo updated!')}}
-  };r.readAsDataURL(f);
+  };
+  r.readAsDataURL(f);
 }
-function updSBUser(){const p=S.profile;if(!p)return;document.getElementById('sb-unm').textContent=p.name.split(' ')[0];const av=document.getElementById('sb-av');if(p.photo)av.innerHTML=`<img src="${p.photo}" alt="">`;else{av.innerHTML='';av.textContent=p.name.charAt(0).toUpperCase()}}
 
-// ═══════════════════════════════════════════════
-// ADMIN — DEFAULT PIN 1211
-// ═══════════════════════════════════════════════
-async function openAdmin(){
-  const pin=await kvGet('adminPin')||DEFAULT_ADMIN_PIN;
-  if(!S.adminUnlocked){
-    showPinModal(false,async(entered)=>{
-      if(entered===pin){S.adminUnlocked=true;go('admin')}
-      else toast('❌ Wrong PIN!');
-    });
-  }else go('admin');
+function updSBUser(){
+  const p=S.profile;if(!p)return;
+  document.getElementById('sb-unm').textContent=p.name.split(' ')[0];
+  const av=document.getElementById('sb-av');
+  if(p.photo)av.innerHTML=`<img src="${p.photo}" alt="">`;
+  else{av.innerHTML='';av.textContent=p.name.charAt(0).toUpperCase()}
 }
-function showPinModal(isSetting,cb){
-  const m=document.createElement('div');m.className='modal-ov';m.id='pin-modal';
-  m.innerHTML=`<div class="modal" style="text-align:center"><div class="modal-x" onclick="closeM('pin-modal')">✕</div><div class="modal-ttl">🔒 ${isSetting?'Set New PIN':'Admin PIN'}</div><div class="modal-sub">${isSetting?'Enter a new 4-digit PIN':'Enter your 4-digit admin PIN'}</div><div class="pin-wrap"><input class="pin-d" id="pd0" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(0)"><input class="pin-d" id="pd1" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(1)"><input class="pin-d" id="pd2" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(2)"><input class="pin-d" id="pd3" type="tel" maxlength="1" inputmode="numeric" oninput="pinNav(3)"></div><button class="btn btn-p btn-w btn-lg" onclick="submitPin()">${isSetting?'Set PIN':'Unlock'}</button></div>`;
-  m._cb=cb;document.body.appendChild(m);setTimeout(()=>document.getElementById('pd0')&&document.getElementById('pd0').focus(),80);
+
+// ═══════════════════════════════════════════════════════
+// NOTIFICATIONS
+// ═══════════════════════════════════════════════════════
+async function reqNotif(fromOb){
+  if(!('Notification'in window)){toast('Notifications not supported.');if(fromOb)obNext();return}
+  const perm=await Notification.requestPermission();
+  if(perm==='granted'){
+    S.notif=true;await kvSet('notif',true);toast('✅ Notifications enabled!');
+    const t=document.getElementById('notif-tog');if(t)t.classList.add('on');
+    schedNotifs();
+  } else toast('Notifications blocked. Enable in browser settings.');
+  if(fromOb)obNext();
 }
-function pinNav(i){const v=document.getElementById('pd'+i);if(v&&v.value&&i<3)document.getElementById('pd'+(i+1)).focus()}
-function submitPin(){const pin=[0,1,2,3].map(i=>{const el=document.getElementById('pd'+i);return el?el.value.trim():''}).join('');if(pin.length!==4){toast('Enter all 4 digits');return}const m=document.getElementById('pin-modal');if(m&&m._cb){m._cb(pin);closeM('pin-modal')}}
-async function changeAdminPin(){
-  showPinModal(true,async(newPin)=>{
-    await kvSet('adminPin',newPin);S.adminUnlocked=true;
-    toast('✅ Admin PIN changed to: '+newPin);
-    const hint=document.querySelector('.adm-ttl ~ .adm-sub');
+async function togNotif(){
+  if(S.notif){S.notif=false;await kvSet('notif',false);document.getElementById('notif-tog').classList.remove('on');toast('🔕 Disabled')}
+  else reqNotif(false);
+}
+function schedNotifs(){
+  if(!S.notif||Notification.permission!=='granted')return;
+  S.notifTimers.forEach(t=>clearTimeout(t));S.notifTimers=[];
+  const now=new Date();
+  [{h:7,m:0,t:'🌅 Morning Routine!',b:'Aloe Vera, TeaMix, Shake F1!'},{h:8,m:0,t:'⚖️ Log Your Weight!',b:'Open My Fit to log your weight!'},{h:10,m:30,t:'🍏 Snack 1 Time!',b:'Pick your snack + 1L water.'},{h:13,m:0,t:'🍛 Lunch Time!',b:'2 cups rice, 2 protein, 2 cups veggies!'},{h:16,m:30,t:'🍌 Snack 2 Time!',b:'Afternoon snack time!'},{h:20,m:0,t:'🌙 Evening Routine!',b:'Aloe Vera, TeaMix, Shake F1!'},{h:22,m:0,t:'💤 Reminder',b:"Don't forget to log your weight today!",chkWt:true}].forEach(n=>{
+    const tgt=new Date(now);tgt.setHours(n.h,n.m,0,0);if(tgt<=now)return;
+    S.notifTimers.push(setTimeout(()=>{
+      if(n.chkWt&&S.weights.find(w=>w.date===TODAY()))return;
+      new Notification(n.t,{body:n.b,tag:'mf-'+n.h});
+    },tgt-now));
   });
 }
-async function renderAdminPanel(){
-  const users=await userAll();
-  const cnt=document.getElementById('adm-ucnt');if(cnt)cnt.textContent='All Users ('+users.length+')';
-  const grid=document.getElementById('adm-ugrid');if(!grid)return;
-  let h='';
-  for(const u of users){
-    const isActive=u.id===S.uid;const wts=await kvGet('wts_'+u.id)||[];const lastW=wts.length?wts[wts.length-1].weight:(u.weight||null);
-    const bmi=u.height&&lastW?((lastW)/((u.height/100)**2)).toFixed(1):'—';const streak=calcStreakFor(wts);
-    const av=u.photo?`<img src="${u.photo}" alt="${u.name}">`:(u.name.charAt(0).toUpperCase());
-    h+=`<div class="uc ${isActive?'active-u':''}">
-      ${isActive?'<div class="uc-tag">Active</div>':''}
-      <div class="uc-top"><div class="uc-av">${av}</div><div><div class="uc-nm">${u.name}</div><div class="uc-inf">${u.age?u.age+' yrs · ':''}${u.gender==='male'?'♂️':'♀️'} · ${u.height||'—'}cm</div></div></div>
-      <div class="uc-stats"><div class="uc-stat"><div class="uc-sv">${lastW?lastW.toFixed(1):'—'}</div><div class="uc-sl">kg</div></div><div class="uc-stat"><div class="uc-sv">${bmi}</div><div class="uc-sl">BMI</div></div><div class="uc-stat"><div class="uc-sv">${u.targetWeight||'—'}</div><div class="uc-sl">target</div></div><div class="uc-stat"><div class="uc-sv">🔥${streak}</div><div class="uc-sl">streak</div></div></div>
-      <div class="uc-acts">${!isActive?`<button class="btn btn-p btn-sm" onclick="switchUser(${u.id})">↔ Switch</button>`:'<span class="bdg bdg-g" style="padding:7px 14px">Active ✓</span>'}<button class="btn btn-s btn-sm" onclick="openEditUserModal(${u.id})">✏️ Edit</button>${!isActive?`<button class="btn btn-d btn-sm" onclick="deleteUser(${u.id})">✕ Delete</button>`:''}</div>
-    </div>`;
-  }
-  h+=`<div class="add-usr-btn" onclick="openAddUserModal()"><span style="font-size:22px">➕</span> Add New User</div>`;
-  grid.innerHTML=h;
-}
-async function switchUser(uid){S.uid=uid;await kvSet('activeUser',uid);S.profile=await userGet(uid);S.adminUnlocked=true;await loadDay();renderToday();renderCL();renderFood();renderProfile();updSBUser();updSBStreak();renderAdminPanel();toast('✅ Switched to '+S.profile.name)}
-function openAddUserModal(){
-  S.tmpPhoto.au=null;const m=document.createElement('div');m.className='modal-ov';m.id='au-modal';
-  m.innerHTML=`<div class="modal"><div class="modal-x" onclick="closeM('au-modal')">✕</div><div class="modal-ttl">Add New User</div><div class="modal-sub">Create a new profile</div><div class="ph-up" id="au-ph-area" onclick="document.getElementById('au-ph-inp').click()" style="width:72px;height:72px;font-size:20px;margin-bottom:16px">📷<input type="file" id="au-ph-inp" accept="image/*" style="display:none" onchange="handlePhoto(this,'au')"></div><div class="g2"><div class="fg"><label class="fl">Full Name *</label><input type="text" class="fi fi-sm" id="au-name" placeholder="e.g. Siti"></div><div class="fg"><label class="fl">Age</label><input type="number" class="fi fi-sm" id="au-age" placeholder="28"></div><div class="fg"><label class="fl">Gender</label><select class="fi fi-sm" id="au-gen"><option value="male">Male</option><option value="female">Female</option></select></div><div class="fg"><label class="fl">Height (cm)</label><input type="number" class="fi fi-sm" id="au-h" placeholder="160"></div><div class="fg"><label class="fl">Weight (kg)</label><input type="number" class="fi fi-sm" id="au-w" placeholder="65" step="0.1"></div><div class="fg"><label class="fl">Target (kg)</label><input type="number" class="fi fi-sm" id="au-tw" placeholder="55" step="0.1"></div></div><button class="btn btn-p btn-w" onclick="saveNewUser()">Add User ✓</button></div>`;
-  document.body.appendChild(m);
-}
-async function saveNewUser(){
-  const nm=document.getElementById('au-name').value.trim();if(!nm){toast('Please enter a name!');return}
-  const p={name:nm,age:parseInt(document.getElementById('au-age').value)||0,gender:document.getElementById('au-gen').value,height:parseFloat(document.getElementById('au-h').value)||0,weight:parseFloat(document.getElementById('au-w').value)||0,targetWeight:parseFloat(document.getElementById('au-tw').value)||0,photo:S.tmpPhoto.au||null,startDate:TODAY(),startWeight:parseFloat(document.getElementById('au-w').value)||0};
-  const saved=await userAdd(p);if(p.weight)await wtsSave(saved.id,TODAY(),p.weight);S.tmpPhoto.au=null;closeM('au-modal');toast('✅ '+p.name+' added!');renderAdminPanel();
-}
-async function openEditUserModal(uid){
-  const u=await userGet(uid);if(!u)return;S.tmpPhoto['eu_'+uid]=null;
-  const m=document.createElement('div');m.className='modal-ov';m.id='eu-modal';
-  m.innerHTML=`<div class="modal"><div class="modal-x" onclick="closeM('eu-modal')">✕</div><div class="modal-ttl">Edit Profile</div><div class="modal-sub">${u.name}</div><div class="ph-up" id="eu-ph-area" onclick="document.getElementById('eu-ph-inp').click()" style="width:72px;height:72px;font-size:20px;margin-bottom:16px">${u.photo?`<img src="${u.photo}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:50%">`:'📷'}<input type="file" id="eu-ph-inp" accept="image/*" style="display:none" onchange="handlePhoto(this,'eu-${uid}')"></div><div class="g2"><div class="fg"><label class="fl">Full Name *</label><input type="text" class="fi fi-sm" id="eu-name" value="${u.name||''}"></div><div class="fg"><label class="fl">Age</label><input type="number" class="fi fi-sm" id="eu-age" value="${u.age||''}"></div><div class="fg"><label class="fl">Gender</label><select class="fi fi-sm" id="eu-gen"><option value="male" ${u.gender==='male'?'selected':''}>Male</option><option value="female" ${u.gender==='female'?'selected':''}>Female</option></select></div><div class="fg"><label class="fl">Height (cm)</label><input type="number" class="fi fi-sm" id="eu-h" value="${u.height||''}"></div><div class="fg"><label class="fl">Weight (kg)</label><input type="number" class="fi fi-sm" id="eu-w" value="${u.weight||''}" step="0.1"></div><div class="fg"><label class="fl">Target (kg)</label><input type="number" class="fi fi-sm" id="eu-tw" value="${u.targetWeight||''}" step="0.1"></div><div class="fg"><label class="fl">Start Weight (kg)</label><input type="number" class="fi fi-sm" id="eu-sw" value="${u.startWeight||u.weight||''}" step="0.1"></div></div><button class="btn btn-p btn-w" onclick="saveEditUser(${uid})">Save Changes ✓</button></div>`;
-  document.body.appendChild(m);
-}
-async function saveEditUser(uid){
-  const u=await userGet(uid);if(!u)return;
-  u.name=document.getElementById('eu-name').value.trim()||u.name;u.age=parseInt(document.getElementById('eu-age').value)||u.age;u.gender=document.getElementById('eu-gen').value;u.height=parseFloat(document.getElementById('eu-h').value)||u.height;u.weight=parseFloat(document.getElementById('eu-w').value)||u.weight;u.targetWeight=parseFloat(document.getElementById('eu-tw').value)||u.targetWeight;u.startWeight=parseFloat(document.getElementById('eu-sw').value)||u.startWeight||u.weight;
-  if(S.tmpPhoto['eu_'+uid])u.photo=S.tmpPhoto['eu_'+uid];delete S.tmpPhoto['eu_'+uid];
-  await userPut(u);if(uid===S.uid){S.profile=u;renderProfile();renderToday();updSBUser()}closeM('eu-modal');toast('✅ '+u.name+' updated!');renderAdminPanel();
-}
-async function deleteUser(uid){
-  const u=await userGet(uid);if(!u)return;if(!confirm('Delete '+u.name+'? All data will be removed permanently.'))return;
-  await userDel(uid);await kvDel('wts_'+uid);await kvDel('badges_'+uid);const allFood=await foodAll();for(const f of allFood.filter(x=>x.userId===uid))await foodDel(f.id);toast('🗑️ '+u.name+' deleted');renderAdminPanel();
-}
-function showUserSwitcher(){window.location.href='admin.html'}
 
-// ═══════════════════════════════════════════════
-// NOTIFICATIONS
-// ═══════════════════════════════════════════════
-async function reqNotif(fromOb){if(!('Notification'in window)){toast('Notifications not supported.');if(fromOb)obNext();return}const perm=await Notification.requestPermission();if(perm==='granted'){S.notif=true;await kvSet('notif',true);toast('✅ Notifications enabled!');const t=document.getElementById('notif-tog');if(t)t.classList.add('on');schedNotifs()}else toast('Notifications blocked. Enable in browser settings.');if(fromOb)obNext()}
-async function togNotif(){if(S.notif){S.notif=false;await kvSet('notif',false);document.getElementById('notif-tog').classList.remove('on');toast('🔕 Disabled')}else reqNotif(false)}
-function schedNotifs(){if(!S.notif||Notification.permission!=='granted')return;S.notifTimers.forEach(t=>clearTimeout(t));S.notifTimers=[];const now=new Date();[{h:7,m:0,t:'🌅 Morning Routine!',b:'Aloe Vera, TeaMix, Shake F1!'},{h:8,m:0,t:'⚖️ Log Your Weight!',b:'Open My Fit to log your weight!'},{h:10,m:30,t:'🍏 Snack 1 Time!',b:'Pick your snack + 1L water.'},{h:13,m:0,t:'🍛 Lunch Time!',b:'2 cups rice, 2 protein, 2 cups veggies!'},{h:16,m:30,t:'🍌 Snack 2 Time!',b:'Afternoon snack time!'},{h:20,m:0,t:'🌙 Evening Routine!',b:'Aloe Vera, TeaMix, Shake F1!'},{h:22,m:0,t:'💤 Reminder',b:"Don't forget to log your weight today!",chkWt:true}].forEach(n=>{const tgt=new Date(now);tgt.setHours(n.h,n.m,0,0);if(tgt<=now)return;S.notifTimers.push(setTimeout(()=>{if(n.chkWt&&S.weights.find(w=>w.date===TODAY()))return;new Notification(n.t,{body:n.b,tag:'af-'+n.h})},tgt-now))})}
-
-// ═══════════════════════════════════════════════
-// STREAK & HELPERS
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════
 function calcStreak(){return calcStreakFor(S.weights)}
-function calcStreakFor(weights){if(!weights||!weights.length)return 0;const dates=weights.map(w=>w.date).sort().reverse();let st=0,check=new Date();for(const d of dates){const dd=new Date(d+'T00:00:00');const diff=Math.floor((check-dd)/864e5);if(diff===0||diff===1){st++;check=dd}else break}return st}
+function calcStreakFor(weights){
+  if(!weights||!weights.length)return 0;
+  const dates=weights.map(w=>w.date).sort().reverse();
+  let st=0,check=new Date();
+  for(const d of dates){
+    const dd=new Date(d+'T00:00:00');
+    const diff=Math.floor((check-dd)/864e5);
+    if(diff===0||diff===1){st++;check=dd}else break;
+  }
+  return st;
+}
 function updSBStreak(){const st=calcStreak();const el=document.getElementById('sb-sv');if(el)el.textContent=st+(st===1?' day':' days')}
-function curWeight(){const tw=S.weights.find(w=>w.date===TODAY());if(tw)return tw.weight;return S.weights.length?S.weights[S.weights.length-1].weight:(S.profile?S.profile.weight:null)}
+function curWeight(){
+  const tw=S.weights.find(w=>w.date===TODAY());
+  if(tw)return tw.weight;
+  return S.weights.length?S.weights[S.weights.length-1].weight:(S.profile?S.profile.weight:null);
+}
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // BADGES
-// ═══════════════════════════════════════════════
-async function awardBadge(id){if(S.badges.includes(id))return;S.badges.push(id);await kvSet('badges_'+S.uid,S.badges);const b=BADGES_DEF.find(x=>x.id===id);if(b){toast('🏅 Badge: '+b.n+' '+b.e);renderBadges()}}
+// ═══════════════════════════════════════════════════════
+async function awardBadge(id){
+  if(S.badges.includes(id))return;
+  S.badges.push(id);await kvSet('badges_'+S.uid,S.badges);
+  const b=BADGES_DEF.find(x=>x.id===id);
+  if(b){toast('🏅 Badge: '+b.n+' '+b.e);renderBadges()}
+}
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // DAILY RESET
-// ═══════════════════════════════════════════════
-function scheduleDailyReset(){const now=new Date(),midnight=new Date(now);midnight.setHours(24,0,0,0);setTimeout(async()=>{S.todayCL={};S.todayFood=[];S.waterGlasses=0;await loadDay();renderToday();renderCL();renderFood();scheduleDailyReset();schedNotifs()},midnight-now)}
+// ═══════════════════════════════════════════════════════
+function scheduleDailyReset(){
+  const now=new Date(),midnight=new Date(now);midnight.setHours(24,0,0,0);
+  setTimeout(async()=>{
+    S.todayCL={};S.todayFood=[];S.waterGlasses=0;
+    await loadDay();renderToday();renderCL();renderFood();
+    scheduleDailyReset();schedNotifs();
+  },midnight-now);
+}
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // EXPORT
-// ═══════════════════════════════════════════════
-async function expJSON(){const data=await collectAllData();const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='azizfit-backup-'+TODAY()+'.json';a.click();toast('💾 Exported!')}
+// ═══════════════════════════════════════════════════════
+async function expJSON(){
+  const data=await collectUserData(S.uid);
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='myfit-backup-'+TODAY()+'.json';a.click();
+  toast('💾 Exported!');
+}
 function expPDF(){toast('📄 Opening print dialog…');setTimeout(()=>window.print(),500)}
-async function handleImpJSON(inp){const f=inp.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!confirm('Import this data?'))return;await importDataObj(data);await loadDay();renderToday();renderCL();renderFood();renderProfile();toast('✅ Data imported!')}catch{toast('❌ Import failed.')}}
+async function handleImpJSON(inp){
+  const f=inp.files[0];if(!f)return;
+  try{
+    const data=JSON.parse(await f.text());
+    if(!confirm('Import this data?'))return;
+    if(data.user) await userPut({...data.user,id:S.uid});
+    if(data.weights) await kvSet('wts_'+S.uid,data.weights);
+    if(data.badges) await kvSet('badges_'+S.uid,data.badges);
+    if(data.food){const all=await foodAll();for(const fe of data.food){if(!all.find(x=>x.id===fe.id))await foodAdd(fe)}}
+    await loadDay();renderToday();renderCL();renderFood();renderProfile();
+    toast('✅ Data imported!');
+  }catch{toast('❌ Import failed.')}
+}
 async function expImg(){
   const p=S.profile,w=curWeight(),st=calcStreak();
-  document.getElementById('sc-name').textContent=p?p.name.split(' ')[0]:'User';document.getElementById('sc-date').textContent=new Date().toLocaleDateString('en-MY',{month:'long',day:'numeric',year:'numeric'});document.getElementById('sc-wt').textContent=w?w.toFixed(1):'—';document.getElementById('sc-st').textContent=st;if(p&&p.height&&w)document.getElementById('sc-bmi').textContent=(w/((p.height/100)**2)).toFixed(1);if(p&&w){const tot=p.startWeight-p.targetWeight,lost=p.startWeight-w;document.getElementById('sc-prog').textContent=tot>0?Math.round(Math.max(0,lost/tot*100))+'%':'0%'}
+  document.getElementById('sc-name').textContent=p?p.name.split(' ')[0]:'User';
+  document.getElementById('sc-date').textContent=new Date().toLocaleDateString('en-MY',{month:'long',day:'numeric',year:'numeric'});
+  document.getElementById('sc-wt').textContent=w?w.toFixed(1):'—';
+  document.getElementById('sc-st').textContent=st;
+  if(p&&p.height&&w) document.getElementById('sc-bmi').textContent=(w/((p.height/100)**2)).toFixed(1);
+  if(p&&w){const tot=p.startWeight-p.targetWeight,lost=p.startWeight-w;document.getElementById('sc-prog').textContent=tot>0?Math.round(Math.max(0,lost/tot*100))+'%':'0%'}
   const card=document.getElementById('share-card');card.style.top='0';card.style.left='0';
-  try{const canvas=await html2canvas(card,{scale:2,backgroundColor:null,useCORS:true});card.style.top='-9999px';canvas.toBlob(blob=>{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='azizfit-progress-'+TODAY()+'.png';a.click();toast('📸 Image saved!')})}
-  catch{card.style.top='-9999px';toast('❌ Image export failed.')}
+  try{
+    const canvas=await html2canvas(card,{scale:2,backgroundColor:null,useCORS:true});
+    card.style.top='-9999px';
+    canvas.toBlob(blob=>{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='myfit-progress-'+TODAY()+'.png';a.click();toast('📸 Image saved!')});
+  }catch{card.style.top='-9999px';toast('❌ Image export failed.')}
 }
-async function resetAll(){if(!confirm('Reset ALL data?'))return;if(!confirm('Last chance!'))return;['kv','users','food'].forEach(s=>{try{DB.transaction(s,'readwrite').objectStore(s).clear()}catch(e){}});location.reload()}
+async function resetAll(){
+  if(!confirm('Reset ALL data?'))return;
+  if(!confirm('Last chance!'))return;
+  ['kv','users','food'].forEach(s=>{try{DB.transaction(s,'readwrite').objectStore(s).clear()}catch(e){}});
+  location.reload();
+}
 
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // TOAST & CONFETTI
-// ═══════════════════════════════════════════════
-function toast(msg){const c=document.getElementById('toast-c'),t=document.createElement('div');t.className='toast-msg';t.textContent=msg;c.appendChild(t);setTimeout(()=>t.remove(),3100)}
-function confetti(){const c=document.createElement('div');c.className='confetti-c';document.body.appendChild(c);const cols=['#22c55e','#16a34a','#4ade80','#fbbf24','#f87171','#60a5fa','#a78bfa','#fb923c'];for(let i=0;i<90;i++){const p=document.createElement('div');p.className='cf';p.style.cssText=`left:${Math.random()*100}%;background:${cols[Math.floor(Math.random()*cols.length)]};width:${Math.random()*8+4}px;height:${Math.random()*8+4}px;border-radius:${Math.random()>.5?'50%':'0'};animation-duration:${Math.random()*2+2}s;animation-delay:${Math.random()*.4}s`;c.appendChild(p)}setTimeout(()=>c.remove(),4200)}
-
-// ═══════════════════════════════════════════════
-// ADMIN TABS
-// ═══════════════════════════════════════════════
-function switchAdmTab(tab){
-  ['users','coach','settings'].forEach(t=>{
-    document.getElementById('atab-'+t).classList.toggle('act',t===tab);
-    document.getElementById('apane-'+t).classList.toggle('act',t===tab);
-  });
-  if(tab==='coach')renderCoachDashboard();
-  if(tab==='settings')loadAdmGHSettings();
+// ═══════════════════════════════════════════════════════
+function toast(msg){
+  const c=document.getElementById('toast-c'),t=document.createElement('div');
+  t.className='toast-msg';t.textContent=msg;c.appendChild(t);
+  setTimeout(()=>t.remove(),3100);
 }
-
-// ═══════════════════════════════════════════════
-// COACH DASHBOARD
-// ═══════════════════════════════════════════════
-async function renderCoachDashboard(){
-  const users=await userAll();
-  const today=TODAY();
-  // Summary stats
-  let loggedToday=0,totalStreak=0,onTrack=0;
-  for(const u of users){
-    const wts=await kvGet('wts_'+u.id)||[];
-    if(wts.find(w=>w.date===today))loggedToday++;
-    const st=calcStreakFor(wts);totalStreak+=st;
-    if(u.weight&&u.targetWeight&&u.startWeight){const lost=u.startWeight-u.weight;const needed=u.startWeight-u.targetWeight;if(lost/needed>=0.1)onTrack++}
+function confetti(){
+  const c=document.createElement('div');c.className='confetti-c';document.body.appendChild(c);
+  const cols=['#22c55e','#16a34a','#4ade80','#fbbf24','#f87171','#60a5fa','#a78bfa','#fb923c'];
+  for(let i=0;i<90;i++){
+    const p=document.createElement('div');p.className='cf';
+    p.style.cssText=`left:${Math.random()*100}%;background:${cols[Math.floor(Math.random()*cols.length)]};width:${Math.random()*8+4}px;height:${Math.random()*8+4}px;border-radius:${Math.random()>.5?'50%':'0'};animation-duration:${Math.random()*2+2}s;animation-delay:${Math.random()*.4}s`;
+    c.appendChild(p);
   }
-  document.getElementById('c-total-users').textContent=users.length;
-  document.getElementById('c-logged-today').textContent=loggedToday;
-  document.getElementById('c-avg-streak').textContent=users.length?Math.round(totalStreak/users.length):0;
-  document.getElementById('c-on-track').textContent=onTrack;
-
-  // GitHub pull area
-  const ghArea=document.getElementById('coach-gh-area');
-  if(GH.repo&&GH.token){
-    ghArea.innerHTML=`<button class="gh-pull-btn" onclick="coachPullGitHub()">☁️ Pull Latest Data from GitHub Repo</button><div style="font-size:12px;color:var(--ctm);text-align:center;margin-bottom:16px">Pulls all users' latest data from <strong>${GH.repo}</strong></div>`;
-  }else{
-    ghArea.innerHTML=`<div class="info-box" style="margin-bottom:14px">⚠️ GitHub not configured. Go to <strong>Settings tab</strong> to connect a shared repo — then you can pull data from all devices here.</div>`;
-  }
-
-  // Member cards
-  const mc=document.getElementById('coach-members');if(!mc)return;
-  if(!users.length){mc.innerHTML='<div class="empty-st"><div class="empty-ico">👥</div><div class="empty-txt">No users yet. Add users in the Users tab.</div></div>';return}
-  let h='<h2 style="margin-bottom:14px">Member Progress ('+users.length+')</h2>';
-  for(const u of users){
-    const wts=await kvGet('wts_'+u.id)||[];
-    const lastW=wts.length?wts[wts.length-1].weight:u.weight;
-    const bmi=u.height&&lastW?((lastW)/((u.height/100)**2)).toFixed(1):'—';
-    const streak=calcStreakFor(wts);
-    const startW=u.startWeight||u.weight||0,targetW=u.targetWeight||0;
-    const lost=startW-(lastW||startW),needed=startW-targetW;
-    const progPct=needed>0?Math.max(0,Math.min(100,Math.round(lost/needed*100))):0;
-    const isLoggedToday=wts.find(w=>w.date===today);
-    const lastDate=wts.length?new Date(wts[wts.length-1].date+'T00:00:00').toLocaleDateString('en-MY',{month:'short',day:'numeric',year:'numeric'}):'Never';
-    const bmiNum=parseFloat(bmi);const bmiColor=isNaN(bmiNum)?'var(--ctm)':bmiNum<18.5?'var(--cbl)':bmiNum<25?'var(--cp)':bmiNum<30?'var(--cor)':'var(--cred)';
-    const av=u.photo?`<img src="${u.photo}" alt="">`:(u.name.charAt(0).toUpperCase());
-    const isActive=u.id===S.uid;
-    h+=`<div class="mon-card">
-      <div class="mon-top">
-        <div class="mon-av">${av}</div>
-        <div style="flex:1">
-          <div class="mon-nm">${u.name} ${isActive?'<span class="bdg bdg-g" style="font-size:10px">You</span>':''}</div>
-          <div class="mon-inf">${u.age?u.age+' yrs · ':''}${u.gender==='male'?'♂️':'♀️'} · ${u.height||'—'}cm · ${isLoggedToday?'<span style="color:var(--cp);font-weight:700">✓ Logged today</span>':'<span style="color:var(--cor)">⏳ Not logged today</span>'}</div>
-        </div>
-        <div style="text-align:right;flex-shrink:0">
-          <div style="font-size:11px;color:var(--ctm)">Streak</div>
-          <div style="font-family:var(--fd);font-size:22px;font-weight:700;color:${streak>=7?'var(--cp)':streak>=3?'var(--cor)':'var(--ctm)'}">🔥${streak}</div>
-        </div>
-      </div>
-      <div class="mon-stats">
-        <div class="mon-stat"><div class="mon-sv">${lastW?lastW.toFixed(1):'—'}</div><div class="mon-sl">kg now</div></div>
-        <div class="mon-stat"><div class="mon-sv">${startW||'—'}</div><div class="mon-sl">start kg</div></div>
-        <div class="mon-stat"><div class="mon-sv">${targetW||'—'}</div><div class="mon-sl">target kg</div></div>
-        <div class="mon-stat"><div class="mon-sv" style="color:${lost>0?'var(--cp)':'var(--ctm)'}">${lost>0?'-'+lost.toFixed(1):'0'}</div><div class="mon-sl">kg lost</div></div>
-        <div class="mon-stat"><div class="mon-sv" style="color:${bmiColor}">${bmi}</div><div class="mon-sl">BMI</div></div>
-      </div>
-      <div>
-        <div class="mon-prog-bar"><div class="mon-prog-fill" style="width:${progPct}%"></div></div>
-        <div class="mon-prog-lbl"><span>${progPct}% to goal</span><span>${Math.max(0,(lastW||startW)-targetW).toFixed(1)} kg to go</span></div>
-      </div>
-      <div class="mon-last">Last weight log: ${lastDate} · ${wts.length} total entries · <button onclick="switchUser(${u.id})" style="color:var(--cp);font-weight:700;font-size:11px;background:none;border:none;cursor:pointer">Switch to this user →</button></div>
-    </div>`;
-  }
-  mc.innerHTML=h;
-}
-
-async function coachPullGitHub(){
-  if(!GH.repo||!GH.token){toast('GitHub not configured. Go to Settings tab.');return}
-  toast('⏳ Pulling from GitHub…');
-  const ok=await ghLoad();
-  if(ok){await loadDay();renderToday();renderCoachDashboard();toast('✅ Pulled latest data from GitHub!')}
-  else toast('❌ Pull failed. Check connection in Settings tab.');
-}
-
-// ═══════════════════════════════════════════════
-// ADMIN GITHUB SETTINGS (mirrors Profile GH settings)
-// ═══════════════════════════════════════════════
-async function loadAdmGHSettings(){
-  const s=await kvGet('ghSettings');if(!s)return;
-  const ri=document.getElementById('adm-gh-repo');if(ri)ri.value=s.repo||'';
-  const ti=document.getElementById('adm-gh-token');if(ti)ti.value=s.token||'';
-  const bi=document.getElementById('adm-gh-branch');if(bi)bi.value=s.branch||'main';
-  const fi=document.getElementById('adm-gh-file');if(fi)fi.value=s.file||'azizfit-data.json';
-  updAdmGHStatus();updAdmGHLastSync();
-}
-async function saveAdmGHSettings(){
-  const repo=(document.getElementById('adm-gh-repo').value||'').trim();
-  const token=(document.getElementById('adm-gh-token').value||'').trim();
-  const branch=(document.getElementById('adm-gh-branch').value||'main').trim();
-  const file=(document.getElementById('adm-gh-file').value||'azizfit-data.json').trim();
-  if(!repo||!token){toast('❌ Please enter repo and token!');return}
-  GH={repo,token,branch,file};
-  await kvSet('ghSettings',{repo,token,branch,file});
-  // Also sync profile fields if visible
-  const ri=document.getElementById('gh-repo');if(ri)ri.value=repo;
-  const ti=document.getElementById('gh-token');if(ti)ti.value=token;
-  toast('⏳ Testing connection…');updAdmGHStatus('syncing');updGHStatus('syncing');
-  const ok=await ghTestConnection();
-  if(ok){toast('✅ GitHub connected! Syncing now…');schedGHSync();await ghSync();updAdmGHStatus('ok')}
-  else{toast('❌ Connection failed. Check repo name and token.');updAdmGHStatus('err')}
-}
-function updAdmGHStatus(state){
-  const area=document.getElementById('adm-gh-status-area');if(!area)return;
-  if(!GH.repo||!GH.token){area.innerHTML=`<div class="gh-adm-setup"><span style="font-size:13px;color:var(--ctm)">☁️ Not configured — fill in the form below to connect.</span></div>`;return}
-  if(state==='syncing'){area.innerHTML=`<div class="gh-adm-setup"><span style="font-size:13px;color:var(--ctm)">⏳ Testing connection to <strong>${GH.repo}</strong>…</span></div>`;return}
-  if(state==='err'){area.innerHTML=`<div class="gh-adm-setup" style="background:#fef2f2;border-color:#fecaca"><span style="font-size:13px;color:var(--cred)">❌ Connection failed. Check token &amp; repo name.</span></div>`;return}
-  area.innerHTML=`<div class="gh-adm-connected"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:20px">☁️</span><div><div style="font-weight:700;font-size:14px;color:var(--cpd)">${GH.repo}</div><div style="font-size:12px;color:var(--ctm)" id="adm-gh-sub">Connected</div></div></div><span class="bdg bdg-g">Active ✓</span></div>`;
-  updAdmGHLastSync();
-}
-async function updAdmGHLastSync(){
-  const ls=await kvGet('ghLastSync');
-  const el=document.getElementById('adm-gh-last-sync');const sc=document.getElementById('adm-gh-sub');
-  if(ls){const t=new Date(ls).toLocaleString('en-MY',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});if(el)el.textContent='Last synced: '+t;if(sc)sc.textContent='Last synced: '+t}
+  setTimeout(()=>c.remove(),4200);
 }
 
 document.addEventListener('DOMContentLoaded',init);
